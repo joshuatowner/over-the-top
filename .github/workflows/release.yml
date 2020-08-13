@@ -1,0 +1,37 @@
+name: release
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build package
+      run: yarn package
+
+    - name: Zip package
+      run: |
+        zip -r release.zip out
+        
+    - name: Create a Release
+      id: create_release
+      uses: actions/create-release@v1
+      with:
+        tag_name: github.GITHUB_REF
+        release_name: latest
+        
+    - name: Upload a Release Asset
+      uses: actions/upload-release-asset@v1.0.2
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./release.zip
+        asset_name: release.zip
+        asset_content_type: application/zip
+        

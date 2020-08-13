@@ -2,9 +2,8 @@ name: release
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    tags:
+    - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
 jobs:
   build:
@@ -26,15 +25,6 @@ jobs:
     - name: Zip package
       run: |
         zip -r release.zip out
-        
-    - name: Create a Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
         
     - name: Upload Release Zip
       uses: actions/upload-release-asset@v1.0.2

@@ -142,7 +142,8 @@ export default class NetworkUsageGraph {
         if (bytes <= 0) {
             return 0;
         }
-        const amount = Math.log(bytes * ONE_BYTE) / Math.log(max) - Math.log(min) / Math.log(max);
+        const denom = Math.log(max / min);
+        const amount = (Math.log(bytes * ONE_BYTE) - Math.log(min)) / denom;
         return Math.max(Math.min(amount, 1), 0);
     }
 }

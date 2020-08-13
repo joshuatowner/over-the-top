@@ -7,7 +7,6 @@ let defaultNetworkInterface: string | undefined;
 
 export async function networkTransferUpdate(): Promise<NetworkTransferUpdate> {
     const siNetworkStats = await si.networkStats(await getNetworkAdapter());
-    // TODO size check
     return {
         up: siNetworkStats[0].tx_sec,
         down: siNetworkStats[0].rx_sec,

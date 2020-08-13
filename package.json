@@ -1,0 +1,49 @@
+{
+  "name": "over-the-top",
+  "version": "1.0.0",
+  "description": "A minimal Electron application written with Typescript",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc -w",
+    "lint": "tslint -c tslint.json -p tsconfig.json",
+    "start": "yarn run build && electron ./dist/main.js",
+    "package-curent": "electron-packager . --out=out",
+    "package-linux": "electron-packager . --out=out --platform=linux --arch=x64",
+    "package-win": "electron-packager . --out=out --platform=win32 --arch=x64",
+    "package-mac": "electron-packager . --out=out --platform=darwin --arch=x64",
+    "clear-packages": "rm -rf out/*",
+    "package": "yarn clear-packages && yarn build && yarn package-linux && yarn package-win && yarn package-mac"
+  },
+  "repository": "https://github.com/electron/electron-quick-start-typescript",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo",
+    "typescript"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "@types/color": "^3.0.1",
+    "@types/react": "^16.9.44",
+    "@types/react-dom": "^16.9.8",
+    "@types/styled-components": "^5.1.2",
+    "@types/two.js": "^0.7.2",
+    "electron": "^9.0.4",
+    "electron-packager": "^15.0.0",
+    "eslint": "^6.1.2",
+    "typescript": "^3.9.5"
+  },
+  "dependencies": {
+    "color": "^3.1.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-perfect-scrollbar": "^1.5.8",
+    "styled-components": "^5.1.1",
+    "systeminformation": "^4.26.10",
+    "two.js": "^0.7.0-stable.1"
+  }
+}

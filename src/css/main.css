@@ -1,0 +1,108 @@
+body {
+    background-color: #242424;
+    font-family: 'Exo', sans-serif;
+}
+
+p {
+    margin: 0;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+}
+
+.column1 {
+    width: 45%;
+}
+
+.column2 {
+    width: 35%;
+}
+
+.column3 {
+    width: 20%;
+}
+
+.cpuProcessContainer {
+    width: 75%;
+    margin: auto;
+}
+
+.processTestText {
+    color: white;
+}
+
+/* PROCESS STYLING */
+
+.processBox {
+    width: 300px;
+    height: 200px;
+    border: 1px solid #888888;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    color: #FFFFFF;
+    overflow: hidden;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.processBoxTitleContainer {
+    text-align: center;
+    width: 100%;
+    border-bottom: 1px solid #DDDDDD;
+    box-sizing: border-box;
+    font-family: 'Exo', sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 20px;
+    padding: 8px 0;
+}
+
+.processBoxTitle {
+    margin: 0;
+}
+
+.processItemContainer {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    width: 100%;
+    border-bottom: 1px solid #444444;
+    font-size: 15px;
+}
+
+.processItemNameContainer p {
+    margin: 0 0 0 4px;
+    padding: 8px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.processItemNameContainer {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.processItemValueContainer {
+    flex-grow: 0;
+    width: 85px;
+    padding: 8px 10px;
+    text-align: right;
+    height: 100%;
+
+    box-sizing: border-box;
+}
+
+.processesContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+}
+
+.processesContainer:hover {
+    overflow-y: scroll;
+}

@@ -6,6 +6,7 @@ import ProcessBox from "./processBox";
 import {formatBinaryBytes} from "../util/data";
 import {CPU_PRIMARY, MEMORY_PRIMARY} from "../constants/styles";
 import {memoryInfo} from "../../backend/memory";
+import {setIntervalImmediate} from "../../util/timing";
 
 interface State {
     processes: AllProcessesInfo
@@ -24,12 +25,12 @@ export default class ProcessesComponent extends React.Component<{}, State> {
             },
         }
         memoryInfo().then(info => {
-            this.maxMemory = info.capacity
+            this.maxMemory = info.memoryCapacity
         });
     }
 
     componentDidMount() {
-        setInterval(() => this.update(), getConfig().process.timing.updateInterval);
+        setIntervalImmediate(() => this.update(), getConfig().process.timing.updateInterval);
     }
 
     render() {

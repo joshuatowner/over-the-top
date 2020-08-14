@@ -42,7 +42,8 @@ export interface Config {
                 numSegments: number,
             },
             color: {
-                primary: string,
+                memPrimary: string,
+                swapPrimary: string,
                 graphBaseColor: string,
                 graphGuideColor: string,
                 labelColor: string,

@@ -7,7 +7,8 @@ const DEFAULT_CONFIG: Config = {
         },
         ui: {
             color: {
-                primary: "#9e69c2",
+                memPrimary: "#9e69c2",
+                swapPrimary: "#9e69c2",
                 graphBaseColor: "#FFFFFF",
                 graphGuideColor: "#535353",
                 labelColor: "#FFFFFF",
@@ -25,7 +26,7 @@ const DEFAULT_CONFIG: Config = {
         timing: {
             bandwidthUpdateInterval: 1000,
             pingUpdateInterval: 3000,
-            webUpdateInterval: 2000,
+            webUpdateInterval: 10000,
         },
         color: {
             primary: "#c29769",

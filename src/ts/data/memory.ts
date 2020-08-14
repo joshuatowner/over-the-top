@@ -1,10 +1,13 @@
 export interface MemoryInfo {
-    capacity: number,
+    memoryCapacity: number,
+    swapCapacity: number,
 }
 
 export interface MemoryUsageUpdate {
-    usage: number,
-    usageBytes: number,
+    memoryUsage: number,
+    memoryUsageBytes: number,
+    swapUsage: number,
+    swapUsageBytes: number,
 }
 
 export interface SwapUsageUpdate {

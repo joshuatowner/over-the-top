@@ -1,7 +1,6 @@
 import * as React from "react";
 import Two = require("two.js");
-import {HexagonStatus} from "../common/hexagonStatus";
-import {pingUpdate} from "../../backend/network";
+import {pingUpdate, webUpdate} from "../../backend/network";
 import {getConfig} from "../../config";
 import HexagonStatusText from "../common/hexagonStatusText";
 import {setIntervalImmediate} from "../../util/timing";
@@ -9,7 +8,7 @@ import {setIntervalImmediate} from "../../util/timing";
 const WIDTH = 100;
 const HEIGHT = 100;
 
-export default class PingComponent extends React.Component<{}, {}> {
+export default class RequestComponent extends React.Component<{}, {}> {
 
     ref: React.RefObject<HTMLDivElement>;
     ui?: HexagonStatusText;
@@ -27,18 +26,18 @@ export default class PingComponent extends React.Component<{}, {}> {
                 height: HEIGHT,
             });
             this.ui = new HexagonStatusText(two, {x: WIDTH / 2, y: HEIGHT / 2}, WIDTH, HEIGHT, {
-                period: config.timing.pingUpdateInterval,
+                period: config.timing.webUpdateInterval,
                 minOpacity: 0.2,
             });
-            setIntervalImmediate(() => this.update(), config.timing.pingUpdateInterval);
+            setIntervalImmediate(() => this.update(), config.timing.webUpdateInterval);
             two.appendTo(this.ref.current);
         }
     }
 
     async update() {
-        const pingInfo = await pingUpdate();
-        if (pingInfo.latency) {
-            this.ui?.update(`${Math.round(pingInfo.latency)}`);
+        const webInfo = await webUpdate();
+        if (webInfo.latency) {
+            this.ui?.update(`${Math.round(webInfo.latency)}`);
         }
     }
 

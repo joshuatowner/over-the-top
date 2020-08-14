@@ -5,6 +5,7 @@ import ProcessesProcessData = Systeminformation.ProcessesProcessData;
 import {isLinux, isMac} from "../../util/os";
 import {ONE_BYTE, ONE_KIBIBYTE} from "../../ui/constants/data";
 
+const SYSTEM_IDLE = "System Idle Process";
 
 interface ProcessUsageInfo {
     name: string,
@@ -33,6 +34,7 @@ function reduceByName(data: ProcessesProcessData[]): ProcessUsageInfo[] {
     const nameMap = new Map<string, ProcessUsageInfo>();
     for (const process of data) {
         const name = process.name;
+        if (name === SYSTEM_IDLE) continue;
         const current = nameMap.get(name);
         const mem = process.mem_rss * (ONE_KIBIBYTE / ONE_BYTE);
         const newEntry = {

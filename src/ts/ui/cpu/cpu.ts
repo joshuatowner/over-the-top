@@ -5,6 +5,7 @@ import OverallLoad from "./overallLoad";
 import {CpuInfo} from "../../data/cpu";
 import {cpuInfo, cpuUsageUpdate} from "../../backend/cpu";
 import {getConfig} from "../../config";
+import {setIntervalImmediate} from "../../util/timing";
 
 interface CpuComponentSizes {
     coresInnerRadius: number,
@@ -54,7 +55,7 @@ export default class CpuUI {
     }
 
     private startTimers(): void {
-        setInterval(() => this.update(), getConfig().cpu.timing.updateInterval);
+        setIntervalImmediate(() => this.update(), getConfig().cpu.timing.updateInterval);
     }
 
     private async update(): Promise<void> {

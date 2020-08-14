@@ -8,6 +8,7 @@ import {getTextWidth} from "../../util/font";
 import {networkTransferUpdate} from "../../../backend/network";
 import DynamicText from "../../common/dynamicText";
 import {formatBytes} from "../../util/data";
+import {setIntervalImmediate} from "../../../util/timing";
 
 const LABEL_FONT_SIZE = 15;
 const LABEL_HEIGHT = 28;
@@ -96,7 +97,7 @@ export default class NetworkUsage {
     }
 
     private startTimers() {
-        setInterval(() => this.update(), this.period);
+        setIntervalImmediate(() => this.update(), this.period);
     }
 
 }

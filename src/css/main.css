@@ -89,6 +89,7 @@ p {
 .processItemValueContainer {
     flex-grow: 0;
     width: 85px;
+    min-width: 85px;
     padding: 8px 10px;
     text-align: right;
     height: 100%;

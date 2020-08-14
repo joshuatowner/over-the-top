@@ -1,19 +1,15 @@
 import {DEFAULT_FONT_FAMILY, MEMORY_LABEL_COLOR, MEMORY_PRIMARY, NETWORK_LABEL_COLOR} from "../../constants/styles";
 import MemoryUsageGraph from "./memoryUsageGraph";
-import {MemoryInfo} from "../../../data/memory";
-import {memoryInfo, memoryUsageUpdate} from "../../../backend/memory";
 import Two = require("two.js");
 import {getConfig} from "../../../config";
 import {getTextWidth} from "../../util/font";
 import DynamicText from "../../common/dynamicText";
-import {formatBinaryBytes, formatBytes} from "../../util/data";
-import {getAllProcessInfoWorker} from "../../../backend/process";
+import {formatBinaryBytes} from "../../util/data";
+import Color = require("color");
 
 const LABEL_FONT_SIZE = 15;
 const LABEL_HEIGHT = 28;
 
-const CAPACITY_STRING = "CAPACITY";
-const USAGE_STRING = "USAGE";
 const EXAMPLE_VALUE = "100.00 GiB";
 
 export default class MemoryUsage {
@@ -23,6 +19,10 @@ export default class MemoryUsage {
     height: number;
     period: number;
 
+    topLabel: string;
+    bottomLabel: string;
+    color: Color;
+
     usageLabel?: DynamicText;
     graph?: MemoryUsageGraph;
     labelGroup: Two.Group;
@@ -31,6 +31,10 @@ export default class MemoryUsage {
         element: HTMLElement,
         width: number,
         height: number,
+        topLabel: string,
+        bottomLabel: string,
+        color: Color,
+        capacityBytes: number,
     ) {
         this.two = new Two({width, height});
         this.two.appendTo(element);
@@ -38,39 +42,42 @@ export default class MemoryUsage {
         this.height = height;
         this.period = getConfig().memory.timing.updateInterval;
 
+        this.topLabel = topLabel;
+        this.bottomLabel = bottomLabel;
+        this.color = color;
+
         this.labelGroup = this.two.makeGroup([]);
 
-        this.startTimers();
-        memoryInfo().then(info => this.init(info));
+        this.init(capacityBytes);
     }
 
-    init(memoryInfo: MemoryInfo) {
+    init(capacityBytes: number) {
         const settings = getConfig().memory;
-        this.initLabels(memoryInfo);
+        this.initLabels(capacityBytes);
         this.graph = new MemoryUsageGraph(
             this.two, {x: 0, y: LABEL_HEIGHT}, this.width, this.height - LABEL_HEIGHT * 2,
             settings.ui.sizing.numSegments, settings.ui.sizing.barPadding, settings.timing.updateInterval, {}
         );
     }
 
-    private initLabels(memoryInfo: MemoryInfo) {
+    private initLabels(capacityBytes: number) {
         const settings = getConfig().memory;
-        const capacityLabelWidth = getTextWidth(CAPACITY_STRING, `${LABEL_FONT_SIZE}px`, DEFAULT_FONT_FAMILY);
-        const usageLabelWidth = getTextWidth(USAGE_STRING, `${LABEL_FONT_SIZE}px`, DEFAULT_FONT_FAMILY);
+        const capacityLabelWidth = getTextWidth(this.topLabel, `${LABEL_FONT_SIZE}px`, DEFAULT_FONT_FAMILY);
+        const usageLabelWidth = getTextWidth(this.bottomLabel, `${LABEL_FONT_SIZE}px`, DEFAULT_FONT_FAMILY);
         const valueWidth = getTextWidth(EXAMPLE_VALUE, `${LABEL_FONT_SIZE}px`, DEFAULT_FONT_FAMILY);
-        const capacityLabel = new Two.Text(CAPACITY_STRING, capacityLabelWidth / 2, LABEL_HEIGHT / 2 + 3, {
+        const capacityLabel = new Two.Text(this.topLabel, capacityLabelWidth / 2, LABEL_HEIGHT / 2 + 3, {
             fill: MEMORY_LABEL_COLOR,
             size: `${LABEL_FONT_SIZE}px`,
             family: DEFAULT_FONT_FAMILY,
             weight: 700,
         });
-        const usageLabel = new Two.Text(USAGE_STRING, usageLabelWidth / 2, this.height - LABEL_HEIGHT / 2, {
+        const usageLabel = new Two.Text(this.bottomLabel, usageLabelWidth / 2, this.height - LABEL_HEIGHT / 2, {
             fill: MEMORY_LABEL_COLOR,
             size: `${LABEL_FONT_SIZE}px`,
             family: DEFAULT_FONT_FAMILY,
             weight: 700,
         });
-        const capacityValueLabel = new Two.Text(formatBinaryBytes(memoryInfo.capacity, 2),
+        const capacityValueLabel = new Two.Text(formatBinaryBytes(capacityBytes, 2),
             capacityLabelWidth + valueWidth / 2, LABEL_HEIGHT / 2 + 3, {
             fill: MEMORY_LABEL_COLOR,
             size: `${LABEL_FONT_SIZE}px`,
@@ -86,14 +93,9 @@ export default class MemoryUsage {
         this.two.scene.add(capacityLabel, usageLabel, capacityValueLabel);
     }
 
-    private async update() {
-        const memUpdate = await memoryUsageUpdate();
-        this.graph?.update(memUpdate.usage);
-        this.usageLabel?.update(formatBinaryBytes(memUpdate.usageBytes, 2));
-    }
-
-    private startTimers() {
-        setInterval(() => this.update(), this.period);
+    update(usagePercent: number, usageBytes: number) {
+        this.graph?.update(usagePercent);
+        this.usageLabel?.update(formatBinaryBytes(usageBytes, 2));
     }
 
 }

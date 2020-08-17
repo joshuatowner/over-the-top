@@ -4,7 +4,10 @@ import MemoryUsageComponent from "./memoryUsage";
 export default class MemoryUIComponent extends React.Component<{}, {}> {
     render() {
         return (
-            <MemoryUsageComponent />
+            <div className={"memoryContainer"}>
+                <div className={"sectionTitle"}>MEMORY</div>
+                <MemoryUsageComponent />
+            </div>
         );
     }
 }

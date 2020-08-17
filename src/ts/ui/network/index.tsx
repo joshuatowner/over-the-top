@@ -6,10 +6,14 @@ import RequestComponent from "./request";
 export default class NetworkUIComponent extends React.Component<{}, {}> {
 
     render() {
-        return <>
+        return <div className={"networkContainer"}>
+            <div className={"sectionTitle"}>NETWORK</div>
             <NetworkUsageComponent />
-            <PingComponent />
-            <RequestComponent />
-        </>;
+            <div className={"connectivityContainer flex-horz"}>
+                <PingComponent />
+                <div className={"vbar-flex"}/>
+                <RequestComponent />
+            </div>
+        </div>;
     }
 }

@@ -1,15 +1,15 @@
 import * as React from "react";
 import Two = require("two.js");
-import {HexagonStatus} from "../common/hexagonStatus";
-import {pingUpdate} from "../../backend/network";
-import {getConfig} from "../../config";
-import HexagonStatusText from "../common/hexagonStatusText";
-import {setIntervalImmediate} from "../../util/timing";
+import {HexagonStatus} from "../../common/hexagonStatus";
+import {pingUpdate} from "../../../backend/network";
+import {getConfig} from "../../../config";
+import HexagonStatusText from "../../common/hexagonStatusText";
+import {setIntervalImmediate} from "../../../util/timing";
 
 const WIDTH = 100;
 const HEIGHT = 100;
 
-export default class PingComponent extends React.Component<{}, {}> {
+export default class PingHexComponent extends React.Component<{}, {}> {
 
     ref: React.RefObject<HTMLDivElement>;
     ui?: HexagonStatusText;

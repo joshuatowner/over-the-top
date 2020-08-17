@@ -13,30 +13,103 @@ p {
 }
 
 .column1 {
-    width: 45%;
+    flex-grow: 1;
 }
 
-.column2 {
-    width: 35%;
+.column1, .column2, .column3 {
+    padding: 0 20px;
 }
 
-.column3 {
-    width: 20%;
+.cpuProcessContainer, .memoryContainer, .networkContainer {
+    padding: 20px;
 }
 
-.cpuProcessContainer {
-    width: 75%;
-    margin: auto;
+.pingContainer {
+    padding: 10px;
+}
+
+.connectivityContainer {
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.processContainer {
+    margin-left: 20px;
+}
+
+.conn-title, .conn-subtitle {
+    color: white;
+    font-size: 15px;
+}
+
+.conn-title {
+    font-weight: 700;
+}
+
+.conn-subtitle {
+    margin-bottom: 10px;
 }
 
 .processTestText {
     color: white;
 }
 
+.sectionTitle {
+    font-size: 25px;
+    color: white;
+    width: 100%;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.hbar {
+    width: 100%;
+    height: 1px;
+    background-color: #808080;
+}
+
+.vbar {
+    width: 1px;
+    height: 100%;
+    background-color: #808080;
+}
+
+.vbar-flex {
+    width: 1px;
+    background-color: #808080;
+    align-self: stretch;
+}
+
+.flex-vert {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-horz {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-center {
+    align-items: center;
+}
+
+.flex-grow {
+    flex-grow: 1;
+}
+
+.vspace20 {
+    width: 100%;
+    height: 20px;
+}
+
+
 /* PROCESS STYLING */
 
 .processBox {
-    width: 300px;
+    min-width: 300px;
+    width: 100%;
+    box-sizing: border-box;
     height: 200px;
     border: 1px solid #888888;
     border-radius: 5px;

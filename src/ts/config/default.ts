@@ -8,7 +8,7 @@ const DEFAULT_CONFIG: Config = {
         ui: {
             color: {
                 memPrimary: "#9e69c2",
-                swapPrimary: "#9e69c2",
+                swapPrimary: "#C269BE",
                 graphBaseColor: "#FFFFFF",
                 graphGuideColor: "#535353",
                 labelColor: "#FFFFFF",
@@ -22,10 +22,10 @@ const DEFAULT_CONFIG: Config = {
     network: {
         interface: 'default',
         pingIp: '8.8.8.8',
-        webUrl: 'google.com',
+        webUrl: 'https://www.google.com/',
         timing: {
             bandwidthUpdateInterval: 1000,
-            pingUpdateInterval: 3000,
+            pingUpdateInterval: 2500,
             webUpdateInterval: 10000,
         },
         color: {

@@ -35,7 +35,7 @@ export default class ProcessesComponent extends React.Component<{}, State> {
 
     render() {
         return (
-            <>
+            <div className={"flex-vert processContainer flex-grow"}>
                 <ProcessBox
                     sortedProcesses={this.state.processes.cpuProcs}
                     title={"PROCESSES BY CPU"}
@@ -43,6 +43,7 @@ export default class ProcessesComponent extends React.Component<{}, State> {
                     percentOfTotalValue={this.percentCpu}
                     color={CPU_PRIMARY}
                 />
+                <div className={"vspace20"} />
                 <ProcessBox
                     sortedProcesses={this.state.processes.memoryProcs}
                     title={"PROCESSES BY MEMORY"}
@@ -50,7 +51,7 @@ export default class ProcessesComponent extends React.Component<{}, State> {
                     percentOfTotalValue={this.percentMem}
                     color={MEMORY_PRIMARY}
                 />
-            </>
+            </div>
         );
     }
 

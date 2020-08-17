@@ -11,10 +11,10 @@ export default class App extends React.Component<{}, {}> {
             <div className={"main"}>
                 <div className={"column1"}>
                     <CpuProcessUIComponent />
-                    <ProcessesComponent />
                 </div>
                 <div className={"column2"}>
                     <MemoryUIComponent />
+                    <div className={"hbar"} />
                     <NetworkUIComponent />
                 </div>
                 <div className={"column3"}>

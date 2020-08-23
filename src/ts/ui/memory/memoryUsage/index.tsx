@@ -19,6 +19,8 @@ export default class MemorySwapUsageComponent extends React.Component<{}, {}> {
     memUi?: MemoryUsage;
     swapUi?: MemoryUsage;
 
+    swapEnabled: false;
+
     constructor(props: Readonly<{}>) {
         super(props);
         this.memElement = React.createRef();
@@ -37,7 +39,7 @@ export default class MemorySwapUsageComponent extends React.Component<{}, {}> {
 
         if (this.memElement.current) {
             if (swapEnabled) {
-                this.memUi = new MemoryUsage(this.memElement.current, 496, 200,
+                this.memUi = new MemoryUsage(this.memElement.current, 496, 150,
                     CAP_MEM_LABEL, USG_MEM_LABEL, MEMORY_PRIMARY, info.memoryCapacity);
                 this.swapUi = new MemoryUsage(this.memElement.current, 496, 150,
                     CAP_SWP_LABEL, USG_SWP_LABEL, SWAP_PRIMARY, info.swapCapacity);
@@ -62,6 +64,7 @@ export default class MemorySwapUsageComponent extends React.Component<{}, {}> {
         return (
             <>
                 <div className={"memoryGraph"} ref={this.memElement} />
+                {this.swapEnabled && <div className={"vspace40"} />}
                 <div className={"swapGraph"} ref={this.swapElement} />
             </>
         )

@@ -14,7 +14,6 @@ export default class App extends React.Component<{}, {}> {
                 </div>
                 <div className={"column2"}>
                     <MemoryUIComponent />
-                    <div className={"hbar"} />
                     <NetworkUIComponent />
                 </div>
                 <div className={"column3"}>

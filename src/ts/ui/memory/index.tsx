@@ -6,7 +6,9 @@ export default class MemoryUIComponent extends React.Component<{}, {}> {
         return (
             <div className={"memoryContainer"}>
                 <div className={"sectionTitle"}>MEMORY</div>
-                <MemoryUsageComponent />
+                <div className={"sectionContainer sectionContainerMid"}>
+                    <MemoryUsageComponent />
+                </div>
             </div>
         );
     }

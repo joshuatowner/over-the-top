@@ -43,7 +43,7 @@ export default class ProcessesComponent extends React.Component<{}, State> {
                     percentOfTotalValue={this.percentCpu}
                     color={CPU_PRIMARY}
                 />
-                <div className={"vspace20"} />
+                <div className={"vspace40"} />
                 <ProcessBox
                     sortedProcesses={this.state.processes.memoryProcs}
                     title={"PROCESSES BY MEMORY"}

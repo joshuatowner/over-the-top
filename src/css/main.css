@@ -17,11 +17,11 @@ p {
 }
 
 .column1, .column2, .column3 {
-    padding: 0 20px;
+    padding: 0 30px;
 }
 
 .cpuProcessContainer, .memoryContainer, .networkContainer {
-    padding: 20px;
+    padding: 0;
 }
 
 .pingContainer {
@@ -34,7 +34,11 @@ p {
 }
 
 .processContainer {
-    margin-left: 20px;
+    margin-left: 40px;
+    padding-left: 40px;
+    border-left: 1px solid #535353;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .conn-title, .conn-subtitle {
@@ -54,12 +58,28 @@ p {
     color: white;
 }
 
+.memoryGraph {
+    width: min-content;
+}
+
 .sectionTitle {
     font-size: 25px;
     color: white;
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    margin-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #DDDDDD;
     text-align: center;
+}
+
+.sectionContainer {
+    padding: 20px 40px;
+}
+
+.sectionContainerMid {
+    border-bottom: 1px solid #DDDDDD;
+    padding-bottom: 30px;
 }
 
 .hbar {
@@ -98,9 +118,9 @@ p {
     flex-grow: 1;
 }
 
-.vspace20 {
+.vspace40 {
     width: 100%;
-    height: 20px;
+    height: 40px;
 }
 
 
@@ -111,8 +131,6 @@ p {
     width: 100%;
     box-sizing: border-box;
     height: 200px;
-    border: 1px solid #888888;
-    border-radius: 5px;
     display: flex;
     flex-direction: column;
     color: #FFFFFF;
@@ -175,6 +193,7 @@ p {
     flex-direction: column;
     width: 100%;
     overflow: hidden;
+    border-bottom: 1px solid #DDDDDD;
 }
 
 .processesContainer:hover {

@@ -1,6 +1,7 @@
 body {
-    background-color: #242424;
+    background-color: #444444;
     font-family: 'Exo', sans-serif;
+    margin: 0;
 }
 
 p {
@@ -16,12 +17,18 @@ p {
     flex-grow: 1;
 }
 
+.column2, .column3 {
+    margin-left: -10px;
+}
+
 .column1, .column2, .column3 {
-    padding: 0 30px;
+
 }
 
 .cpuProcessContainer, .memoryContainer, .networkContainer {
     padding: 0;
+    background-color: #242424;
+    margin: 10px;
 }
 
 .pingContainer {
@@ -66,9 +73,7 @@ p {
     font-size: 25px;
     color: white;
     width: 100%;
-    margin-bottom: 10px;
-    margin-top: 15px;
-    padding-bottom: 15px;
+    padding: 15px 0;
     border-bottom: 1px solid #DDDDDD;
     text-align: center;
 }
@@ -78,7 +83,6 @@ p {
 }
 
 .sectionContainerMid {
-    border-bottom: 1px solid #DDDDDD;
     padding-bottom: 30px;
 }
 
@@ -112,6 +116,7 @@ p {
 
 .flex-center {
     align-items: center;
+    justify-content: center;
 }
 
 .flex-grow {
@@ -125,6 +130,8 @@ p {
 
 
 /* PROCESS STYLING */
+
+
 
 .processBox {
     min-width: 300px;
@@ -198,4 +205,10 @@ p {
 
 .processesContainer:hover {
     overflow-y: scroll;
+}
+
+@media only screen and (max-width: 1400px) {
+    .processContainer {
+        display: none;
+    }
 }

@@ -19,7 +19,7 @@ export default class MemorySwapUsageComponent extends React.Component<{}, {}> {
     memUi?: MemoryUsage;
     swapUi?: MemoryUsage;
 
-    swapEnabled: false;
+    swapEnabled?: false;
 
     constructor(props: Readonly<{}>) {
         super(props);

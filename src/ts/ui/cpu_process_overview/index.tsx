@@ -9,7 +9,7 @@ export default class CpuProcessUIComponent extends React.Component<{}, {}>{
                 <div className={"sectionTitle"}>
                     CPU & PROCESSES
                 </div>
-                <div className={"flex-horz sectionContainer sectionContainerMid"}>
+                <div className={"flex-horz sectionContainer sectionContainerMid flex-center"}>
                     <CpuUIComponent width={400} height={400} />
                     <ProcessesComponent />
                 </div>

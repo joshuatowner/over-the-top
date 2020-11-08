@@ -5,10 +5,11 @@ import Color = require("color");
 import LinearHistoryBars from "../../common/linearHistoryBar/linearHistoryBars";
 import {memoryUsageUpdate} from "../../../backend/memory";
 import LevelLabel from "../../common/linearHistoryBar/levelLabel";
+import {Vec2} from "../../../util/vec2";
 
 export default class MemoryUsageGraph {
 
-    topLeft: Point;
+    topLeft: Vec2;
     width: number;
     height: number;
     padding: number;
@@ -27,7 +28,7 @@ export default class MemoryUsageGraph {
 
     constructor(
         two: Two,
-        topLeft: Point,
+        topLeft: Vec2,
         width: number,
         height: number,
         numSegments: number,

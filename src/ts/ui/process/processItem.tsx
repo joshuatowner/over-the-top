@@ -1,32 +1,32 @@
 import * as React from "react";
-import Color = require("color");
+import {CSSProperties} from "react";
 
 interface PropTypes {
-    name: string,
-    value: string,
-    percentOfTotal: number,
-    lastItem?: boolean,
-    color: Color,
-}
-
-function getColor(color: Color, opacity: number) {
-    return color.alpha(opacity).rgb().string();
+  name: string,
+  value: string,
+  percentOfTotal: number,
+  lastItem?: boolean,
 }
 
 export default class ProcessItem extends React.Component<PropTypes, {}> {
-    render() {
-        return (
-            <div className={'processItemContainer'}>
-                <div className={'processItemNameContainer'}>
-                    <p>{this.props.name}</p>
-                </div>
-                <div className={'processItemValueContainer'}
-                     style={{
-                         backgroundColor: getColor(this.props.color, this.props.percentOfTotal)
-                     }}>
-                    <p>{this.props.value}</p>
-                </div>
-            </div>
-        )
+
+  getStyle(): CSSProperties {
+    return {
+      opacity: this.props.percentOfTotal
     }
+  }
+
+  render() {
+    return (
+      <div className={'process-item-container'}>
+        <div className={'process-item-title-container'}>
+          <p>{this.props.name}</p>
+        </div>
+        <div className={'process-item-value-container'}
+             style={this.getStyle()}>
+          <p>{this.props.value}</p>
+        </div>
+      </div>
+    )
+  }
 }

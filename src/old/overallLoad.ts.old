@@ -10,14 +10,14 @@ interface TimedArc {
 export default class OverallLoad {
 
     two: Two;
-    center: Point;
+    center: Vec2;
     outerRadius: number;
 
     loadText?: Two.Text;
 
     constructor(
         two: Two,
-        center: Point,
+        center: Vec2,
         outerRadius: number,
     ) {
         this.two = two;

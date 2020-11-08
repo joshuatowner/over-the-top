@@ -1,7 +1,10 @@
-import {isProcessResponseType, ProcessMessage, WorkerResponse} from "./interface";
+import {isProcessResponseType, WorkerResponse} from "./interface";
 import {AllProcessesInfo} from "../data/process";
+// @ts-ignore
+import Worker from "worker-loader!./main.worker.ts";
 
-const worker = new Worker(__dirname + '/worker.js');
+const worker = new Worker();
+console.log(worker);
 
 type responseTypeGuard<T extends WorkerResponse> = (response: WorkerResponse) => response is T;
 
@@ -12,6 +15,8 @@ function sendMessage<T, U extends WorkerResponse>(
 ): Promise<U | undefined> {
     return new Promise((resolve, reject) => {
         const timer = setTimeout(() => resolve(undefined), timeout);
+        console.log("sending message");
+        // @ts-ignore
         worker.onmessage = (event) => {
             clearTimeout(timer);
             const response = event.data as WorkerResponse;

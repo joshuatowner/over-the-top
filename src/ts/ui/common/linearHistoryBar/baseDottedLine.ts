@@ -1,13 +1,14 @@
 import Two = require("two.js");
 import Color = require("color");
 import {getColorForPercentage} from "../../util/gradient";
+import {Vec2} from "../../../util/vec2";
 
 export default class BaseDottedLine {
 
     two: Two;
     group: Two.Group;
 
-    topLeft: Point;
+    topLeft: Vec2;
     width: number;
     height: number;
     numSegments: number;
@@ -16,7 +17,7 @@ export default class BaseDottedLine {
 
     constructor(
         two: Two,
-        topLeft: Point,
+        topLeft: Vec2,
         width: number,
         height: number,
         numSegments: number,

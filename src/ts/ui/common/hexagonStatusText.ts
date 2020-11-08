@@ -3,6 +3,7 @@ import {BACKGROUND_COLOR, NETWORK_PRIMARY} from "../constants/styles";
 import {HexagonStatus} from "./hexagonStatus";
 import DynamicText from "./dynamicText";
 import Color = require("color");
+import {Vec2} from "../../util/vec2";
 
 export default class HexagonStatusText extends HexagonStatus {
 
@@ -13,7 +14,7 @@ export default class HexagonStatusText extends HexagonStatus {
 
     constructor(
         two: Two,
-        center: Point,
+        center: Vec2,
         width: number,
         height: number, {
             percentInnerSize = 0.7,

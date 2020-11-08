@@ -16,21 +16,15 @@ interface CpuComponentSizes {
 
 export default class CpuUI {
 
-    targetWidth: number;
-    targetHeight: number;
+    size: Size
     two: Two;
     cores?: CoreLoad;
     history?: LoadHistory;
     overallLoad?: OverallLoad;
 
-    constructor(element: HTMLElement, width: number, height: number) {
-        this.targetWidth = width;
-        this.targetHeight = height;
-        const params = {
-            width: this.targetWidth,
-            height: this.targetHeight
-        };
-        this.two = new Two(params).appendTo(element);
+    constructor(two: Two, size: Size) {
+        this.size = size;
+        this.two = two;
         this.startTimers();
         cpuInfo().then((info) => this.init(info));
     }
@@ -39,7 +33,7 @@ export default class CpuUI {
         const center = this.getCenter();
         const sizes = this.getSizes();
         const updateInterval = getConfig().cpu.timing.updateInterval;
-        const historyNumSegements = getConfig().cpu.ui.sizing.historyNumSegments;
+        const historyNumSegments = getConfig().cpu.ui.sizing.historyNumSegments;
         this.cores = new CoreLoad(
             this.two, center,
             sizes.coresInnerRadius, sizes.coresOuterRadius,
@@ -48,7 +42,7 @@ export default class CpuUI {
         this.history = new LoadHistory(
             this.two, center,
             sizes.historyInnerRadius, sizes.historyOuterRadius,
-            historyNumSegements, updateInterval,
+            historyNumSegments, updateInterval,
         );
         this.overallLoad = new OverallLoad(this.two, center, sizes.coresInnerRadius);
         this.two.update();
@@ -66,7 +60,7 @@ export default class CpuUI {
     }
 
     private getSizes(): CpuComponentSizes {
-        const fullRadius = Math.min(this.targetWidth, this.targetHeight) / 2;
+        const fullRadius = Math.min(this.size.width, this.size.height) / 2;
         const configSizes = getConfig().cpu.ui.sizing;
         return {
             coresInnerRadius: fullRadius * configSizes.coresStart,
@@ -76,10 +70,10 @@ export default class CpuUI {
         }
     }
 
-    private getCenter(): Point {
+    private getCenter(): Vec2 {
         return {
-            x: this.targetWidth / 2,
-            y: this.targetHeight / 2
+            x: this.size.width / 2,
+            y: this.size.height / 2
         }
     }
 

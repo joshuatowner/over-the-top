@@ -1,0 +1,27 @@
+.cpu-usage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.cpu-graph-wrapper {
+    flex-grow: 1;
+}
+
+.cpu-cores-bar {
+    transform-origin: center;
+}
+
+.cpu-usage {
+    flex-grow: 1;
+}
+
+.cpu-fade-out {
+    animation: fadeOut 5s forwards;
+}
+
+.cpu-overall {
+    dominant-baseline: middle;
+    text-anchor: middle;
+}

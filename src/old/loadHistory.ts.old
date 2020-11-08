@@ -11,7 +11,7 @@ interface TimedArc {
 export default class LoadHistory {
 
     two: Two;
-    center: Point;
+    center: Vec2;
     innerRadius: number;
     outerRadius: number;
     padding: number;
@@ -25,7 +25,7 @@ export default class LoadHistory {
 
     constructor(
         two: Two,
-        center: Point,
+        center: Vec2,
         innerRadius: number,
         outerRadius: number,
         numSegments: number,

@@ -3,6 +3,7 @@ import {FEATURE_BACKGROUND_COLOR} from "../../constants/styles";
 import {darkerLighterGradient, getColorForPercentage, GradientEntry} from "../../util/gradient";
 import Color = require("color");
 import {Group} from "two.js";
+import {Vec2} from "../../../util/vec2";
 
 interface HistoryBar {
     rect: Two.Rectangle,
@@ -12,7 +13,7 @@ interface HistoryBar {
 export default class LinearHistoryBars {
 
     two: Two;
-    topLeft: Point;
+    topLeft: Vec2;
     width: number;
     height: number;
     padding: number;
@@ -33,7 +34,7 @@ export default class LinearHistoryBars {
 
     constructor(
         two: Two,
-        topLeft: Point,
+        topLeft: Vec2,
         width: number,
         height: number,
         period: number,

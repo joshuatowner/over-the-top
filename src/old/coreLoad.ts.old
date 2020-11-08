@@ -5,7 +5,7 @@ import getArcSegment from "../shapes/getArcSegment";
 export default class CoreLoad {
 
     two: Two;
-    center: Point;
+    center: Vec2;
     innerRadius: number;
     outerRadius: number;
     padding: number;
@@ -23,7 +23,7 @@ export default class CoreLoad {
 
     constructor(
         two: Two,
-        center: Point,
+        center: Vec2,
         innerRadius: number,
         outerRadius: number,
         period: number,

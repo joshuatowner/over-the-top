@@ -1,7 +1,6 @@
 import {ProcessInfo} from "../../data/process";
 import * as React from "react";
 import ProcessItem from "./processItem";
-import Color = require("color");
 
 
 interface PropTypes {
@@ -9,7 +8,6 @@ interface PropTypes {
     title: string,
     displayValue?: (value: number) => string,
     percentOfTotalValue?: (value: number) => number,
-    color: Color,
 }
 
 
@@ -21,17 +19,14 @@ export default class ProcessBox extends React.Component<PropTypes, {}> {
 
     render() {
         return (
-            <div className={"processBox"}>
-                <div className={"processBoxTitleContainer"}>
-                    <p className={"processBoxTitle"}>{this.props.title}</p>
-                </div>
-                <div className={"processesContainer"}>
+            <div className={"process-box"}>
+                <p className={"process-box-title"}>{this.props.title}</p>
+                <div className={"process-box-items-container"}>
                 {this.props.sortedProcesses.map((proc) =>
                     <ProcessItem
                         name={proc.name}
                         value={this.getDisplayValue(proc.usage)}
                         key={proc.name}
-                        color={this.props.color}
                         percentOfTotal={this.getPercentOfTotal(proc.usage)}
                     />
                 )}

@@ -1,0 +1,69 @@
+.default-theme {
+    background-color: #242424;
+    width: 100%;
+    height: 100%;
+    color: #FFFFFF;
+}
+
+text {
+    fill: #FFFFFF;
+}
+
+.background-primary {
+    background-color: #242424;
+}
+
+.background-secondary {
+    background-color: #444444;
+}
+
+.background-primary-fill {
+    fill: #242424;
+}
+
+.background-secondary-fill {
+    fill: #444444;
+}
+
+.background-primary-stroke {
+    stroke: #242424;
+}
+
+.background-secondary-stroke {
+    stroke: #444444;
+}
+
+.cpu-primary-fill {
+    fill: #699CC2
+}
+
+.cpu-cores-frame-segment {
+    fill: transparent;
+    stroke-width: 4px;
+}
+
+.background-dot {
+    fill: #444444;
+}
+
+.widget {
+    border-top: 2px solid #999999;
+    border-bottom: 2px solid #999999;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.widget-title {
+    margin-bottom: 10px;
+    font-size: 14pt;
+}
+
+.cpu-cores-bar {
+    transform-origin: center;
+    transition: transform 250ms ease-in-out;
+}
+
+.cpu-history-bar {
+    stroke-width: 1px;
+    font-size: 14pt;
+}

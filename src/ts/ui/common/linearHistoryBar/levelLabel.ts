@@ -2,6 +2,7 @@ import Two = require("two.js");
 import Color = require("color");
 import {DEFAULT_FONT_FAMILY} from "../../constants/styles";
 import {getTextWidth} from "../../util/font";
+import {Vec2} from "../../../util/vec2";
 
 const PADDING = 2;
 const FONT_SIZE = 10;
@@ -13,7 +14,7 @@ export default class LevelLabel {
     two: Two;
     group: Two.Group;
 
-    topLeft: Point;
+    topLeft: Vec2;
     width: number;
     height: number;
     color: Color;
@@ -22,7 +23,7 @@ export default class LevelLabel {
 
     constructor(
         two: Two,
-        topLeft: Point,
+        topLeft: Vec2,
         width: number,
         height: number,
         label: string,

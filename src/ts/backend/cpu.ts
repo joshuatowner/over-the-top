@@ -1,5 +1,7 @@
 import {CpuInfo, CpuUsageUpdate} from "../data/cpu";
 import * as si from "systeminformation";
+import IntervalObservable from "../data/intervalObservable";
+import {getConfig} from "../config";
 
 export async function cpuInfo(): Promise<CpuInfo> {
     const siCpuInfo = await si.cpu();
@@ -17,3 +19,5 @@ export async function cpuUsageUpdate(): Promise<CpuUsageUpdate> {
         coreUsages,
     }
 }
+
+export const cpuUsage = new IntervalObservable(cpuUsageUpdate, getConfig().cpu.timing.updateInterval);

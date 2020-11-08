@@ -3,18 +3,19 @@ import {DEFAULT_FONT_FAMILY, FEATURE_BACKGROUND_COLOR} from "../constants/styles
 import {darkerLighterGradient, getColorForPercentage, GradientEntry} from "../util/gradient";
 import Color = require("color");
 import {Group} from "two.js";
+import {Vec2} from "../../util/vec2";
 
 export default class DynamicText {
 
     two: Two;
-    center: Point;
+    center: Vec2;
     fontSize: number;
     group: Two.Group;
     text: Two.Text;
 
     constructor(
         two: Two,
-        center: Point,
+        center: Vec2,
         fontSize: number, {
             initialValue = "",
             group = two.makeGroup([]),

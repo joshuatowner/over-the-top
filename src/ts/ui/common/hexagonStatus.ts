@@ -1,11 +1,12 @@
 import Two = require("two.js");
 import Color = require("color");
 import {BACKGROUND_COLOR, NETWORK_PRIMARY} from "../constants/styles";
+import {Vec2} from "../../util/vec2";
 
 export class HexagonStatus {
 
     two: Two;
-    center: Point;
+    center: Vec2;
     width: number;
     height: number;
     percentInnerSize: number;
@@ -19,7 +20,7 @@ export class HexagonStatus {
 
     constructor(
         two: Two,
-        center: Point,
+        center: Vec2,
         width: number,
         height: number, {
             percentInnerSize = .7,

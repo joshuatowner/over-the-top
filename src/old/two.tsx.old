@@ -1,0 +1,42 @@
+import * as React from "react";
+import {elementSize} from "../util/size";
+import {Types} from "two.js";
+import Two = require("two.js");
+
+interface PropType {
+  size: Size
+}
+
+export default abstract class TwoComponent extends React.Component<PropType, {}> {
+  mainElement: React.RefObject<HTMLDivElement>;
+  two?: Two;
+
+  protected constructor(props: Readonly<PropType>) {
+    super(props);
+    this.mainElement = React.createRef();
+  }
+
+  componentDidMount() {
+    if (this.mainElement.current) {
+      const params = {
+        width: this.props.size.width,
+        height: this.props.size.height
+      };
+      this.mainElement.current.parentElement &&
+        console.log(elementSize(this.mainElement.current.parentElement));
+      this.two = new Two({
+        ...params,
+        type: Types.svg
+      }).appendTo(this.mainElement.current);
+      this.init(this.two, this.props.size);
+    }
+  }
+
+  abstract init(two: Two, size: Size): void;
+
+  render() {
+    return (
+      <div ref={this.mainElement} />
+    )
+  }
+}

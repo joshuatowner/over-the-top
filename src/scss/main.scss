@@ -1,0 +1,47 @@
+@use "cpu";
+@use "fonts";
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    font-family: 'Exo', sans-serif;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+#root {
+    height: 100%;
+    width: 100%;
+}
+
+p {
+    margin: 0;
+}
+
+.main {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.full {
+    width: 100%;
+    height: 100%;
+}
+
+.background {
+    width: 100%;
+    height: 100%;
+}
+
+
+@keyframes fadeOut {
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}

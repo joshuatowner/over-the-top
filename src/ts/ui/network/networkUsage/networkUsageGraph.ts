@@ -8,10 +8,11 @@ import Color = require("color");
 import LinearHistoryBars from "../../common/linearHistoryBar/linearHistoryBars";
 import LevelLabel from "../../common/linearHistoryBar/levelLabel";
 import {ONE_BYTE, ONE_GIGABIT, ONE_GIGABYTE, ONE_KILOBIT, ONE_KILOBYTE} from "../../constants/data";
+import {Vec2} from "../../../util/vec2";
 
 export default class NetworkUsageGraph {
 
-    topLeft: Point;
+    topLeft: Vec2;
     width: number;
     height: number;
     padding: number;
@@ -31,7 +32,7 @@ export default class NetworkUsageGraph {
 
     constructor(
         two: Two,
-        topLeft: Point,
+        topLeft: Vec2,
         width: number,
         height: number,
         numSegments: number,

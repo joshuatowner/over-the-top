@@ -1,4 +1,5 @@
 import Two = require("two.js");
+import {Vec2} from "../../util/vec2";
 
 interface OptionalParameters {
     fill?: string,
@@ -12,7 +13,7 @@ export default function getArcSegment(
     two: Two,
     innerRadius: number,
     outerRadius: number,
-    center: Point,
+    center: Vec2,
     numSegments: number,
     segmentId: number,
     extras: OptionalParameters,

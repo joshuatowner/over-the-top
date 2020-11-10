@@ -1,3 +1,4 @@
+import {setIntervalImmediate} from "../util/timing";
 
 type Observer<T> = (value: T) => unknown;
 type Source<T> = () => T | Promise<T>;
@@ -9,7 +10,7 @@ export default class IntervalObservable<T> {
   constructor(source:  Source<T>, interval: number) {
     this.source = source;
     this.observers = [];
-    setInterval(this.update, interval);
+    setIntervalImmediate(this.update, interval);
   }
 
   watch(observer: Observer<T>) {

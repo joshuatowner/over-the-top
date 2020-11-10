@@ -16,7 +16,7 @@
     "package-linux": "electron-packager . --out=out --platform=linux --arch=x64",
     "package-win": "electron-packager . --out=out --platform=win32 --arch=x64",
     "package-mac": "electron-packager . --out=out --platform=darwin --arch=x64",
-    "clear-packages": "rm -rf out/*",
+    "clear-packages": "rm -rf out/* dist/*",
     "package": "yarn clear-packages && yarn build:prod && yarn package-linux && yarn package-win && yarn package-mac"
   },
   "repository": "https://github.com/electron/electron-quick-start-typescript",

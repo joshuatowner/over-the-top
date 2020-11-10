@@ -4,6 +4,7 @@ import CpuCoreUsageGraphBackground from "./background";
 import {ReactNode} from "react";
 import CpuCoreUsageGraphBar from "./bar";
 import {AnnulusPosition} from "../../../../util/vec2";
+import {cpuInfo} from "../../../../backend/cpu";
 
 interface PropType {
   position: AnnulusPosition
@@ -18,8 +19,16 @@ export default class CpuCoreUsageGraph extends React.Component<PropType, StateTy
   constructor(props: Readonly<PropType>) {
     super(props);
     this.state = {
-      numCores: 4,
+      numCores: 0,
     }
+    this.loadNumCores();
+  }
+
+  async loadNumCores() {
+    const data = await cpuInfo();
+    this.setState({
+      numCores: data.cores
+    });
   }
 
   getCoreGraphs(numCores: number): ReactNode {
@@ -39,7 +48,7 @@ export default class CpuCoreUsageGraph extends React.Component<PropType, StateTy
 
   render() {
     if (!this.state.numCores) {
-      return;
+      return null;
     }
     return (
       <>

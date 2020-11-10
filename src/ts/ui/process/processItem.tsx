@@ -22,8 +22,8 @@ export default class ProcessItem extends React.Component<PropTypes, {}> {
         <div className={'process-item-title-container'}>
           <p>{this.props.name}</p>
         </div>
-        <div className={'process-item-value-container'}
-             style={this.getStyle()}>
+        <div className={'process-item-value-container'}>
+          <div className={'process-item-value-background full'} style={this.getStyle()} />
           <p>{this.props.value}</p>
         </div>
       </div>

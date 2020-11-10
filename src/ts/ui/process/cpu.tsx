@@ -32,12 +32,13 @@ export default class CpuProcesses extends React.Component<{}, StateType> {
 
   render() {
     return (
-      <ProcessBox
-        sortedProcesses={this.state.processes}
-        title={"PROCESSES BY CPU"}
-        displayValue={this.formatCpu}
-        percentOfTotalValue={this.percentCpu}
-      />
+      <div className={"cpu-process-box"}>
+        <ProcessBox
+            sortedProcesses={this.state.processes}
+            displayValue={this.formatCpu}
+            percentOfTotalValue={this.percentCpu}
+        />
+      </div>
     );
   }
 

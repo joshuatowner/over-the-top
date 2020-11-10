@@ -5,7 +5,6 @@ import ProcessItem from "./processItem";
 
 interface PropTypes {
     sortedProcesses: ProcessInfo[],
-    title: string,
     displayValue?: (value: number) => string,
     percentOfTotalValue?: (value: number) => number,
 }
@@ -20,7 +19,6 @@ export default class ProcessBox extends React.Component<PropTypes, {}> {
     render() {
         return (
             <div className={"process-box"}>
-                <p className={"process-box-title"}>{this.props.title}</p>
                 <div className={"process-box-items-container"}>
                 {this.props.sortedProcesses.map((proc) =>
                     <ProcessItem

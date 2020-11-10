@@ -48,12 +48,12 @@ export default class Layout extends React.Component<{}, LayoutState> {
       />
       <CpuProcessesWidget
         initialTopLeft={{x: 9, y: 0}}
-        initialBottomRight={{x: 14, y: 4}}
+        initialBottomRight={{x: 18, y: 4}}
         windowSize={this.state.windowSize}
       />
       <MemoryProcessesWidget
         initialTopLeft={{x: 9, y: 4}}
-        initialBottomRight={{x: 14, y: 8}}
+        initialBottomRight={{x: 18, y: 8}}
         windowSize={this.state.windowSize}
       />
     </div>)

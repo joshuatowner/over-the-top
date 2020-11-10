@@ -62,7 +62,7 @@
     "react-dom": "^16.13.1",
     "react-perfect-scrollbar": "^1.5.8",
     "styled-components": "^5.1.1",
-    "systeminformation": "^4.26.10",
+    "systeminformation": "^4.29.3",
     "two.js": "^0.7.0-stable.1"
   }
 }

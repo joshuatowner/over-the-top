@@ -44,15 +44,16 @@ export default class MemoryProcesses extends React.Component<{}, StateType> {
 
   render() {
     if (!this.state.maxMemory) {
-      return;
+      return null;
     }
     return (
-      <ProcessBox
-        sortedProcesses={this.state.processes}
-        title={"PROCESSES BY CPU"}
-        displayValue={this.formatMem}
-        percentOfTotalValue={this.percentMem}
-      />
+      <div className={"mem-process-box"}>
+        <ProcessBox
+          sortedProcesses={this.state.processes}
+          displayValue={this.formatMem}
+          percentOfTotalValue={this.percentMem}
+        />
+      </div>
     );
   }
 

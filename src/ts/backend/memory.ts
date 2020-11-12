@@ -1,6 +1,8 @@
 import {MemoryInfo, MemoryUsageUpdate} from "../data/memory";
 import * as si from "systeminformation";
 import {isMac} from "../util/os";
+import IntervalObservable from "../data/intervalObservable";
+import {getConfig} from "../config";
 
 
 export async function memoryInfo(): Promise<MemoryInfo> {
@@ -21,3 +23,5 @@ export async function memoryUsageUpdate(): Promise<MemoryUsageUpdate> {
         swapUsageBytes: siMemoryInfo.swapused,
     }
 }
+
+export const memoryUsage = new IntervalObservable(memoryUsageUpdate, getConfig().memory.timing.updateInterval);

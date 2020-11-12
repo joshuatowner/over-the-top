@@ -63,7 +63,8 @@
 }
 
 .process-item-value-container p {
-  opacity: 1;
+  position: relative;
+  z-index: 2;
 }
 
 .process-box-items-container {

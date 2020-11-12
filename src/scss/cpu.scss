@@ -13,14 +13,6 @@
     transform-origin: center;
 }
 
-.cpu-usage {
-    flex-grow: 1;
-}
-
-.cpu-fade-out {
-    animation: fadeOut 5s forwards;
-}
-
 .cpu-overall {
     dominant-baseline: middle;
     text-anchor: middle;

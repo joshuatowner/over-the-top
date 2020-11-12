@@ -4,15 +4,11 @@ import CpuHistoryGraphBar from "./bar";
 import {getEndAngle, getStartAngle} from "../../../util/angle";
 import {cpuUsage, cpuUsageUpdate} from "../../../../backend/cpu";
 import {CpuUsageUpdate} from "../../../../data/cpu";
+import {BarValue} from "../../../util/bar";
 
 interface PropType {
   position: AnnulusPosition;
   numBars: number;
-}
-
-interface BarValue {
-  percent: number;
-  fading: boolean;
 }
 
 interface StateType {

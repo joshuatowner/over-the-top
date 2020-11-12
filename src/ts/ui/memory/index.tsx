@@ -1,15 +1,17 @@
 import * as React from "react";
-import MemoryUsageComponent from "./memoryUsage";
+import Widget from "../layout/widget";
+import {Size} from "../../util/vec2";
+import CpuUsageGraph from "./graph";
+import MemoryUsageGraph from "./graph";
 
-export default class MemoryUIComponent extends React.Component<{}, {}> {
-    render() {
+export default class MemoryUsageWidget extends Widget {
+    renderContent(pixelSize: Size): React.ReactNode {
         return (
-            <div className={"memoryContainer"}>
-                <div className={"sectionTitle"}>MEMORY</div>
-                <div className={"sectionContainer sectionContainerMid"}>
-                    <MemoryUsageComponent />
-                </div>
+            <div className={"cpu-usage"}>
+                <div className={"cpu-title widget-title"}>MEMORY USAGE</div>
+                <MemoryUsageGraph />
             </div>
         );
     }
+
 }

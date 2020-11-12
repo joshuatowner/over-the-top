@@ -13,7 +13,7 @@ export default class CpuUsageGraph extends React.Component<{}, {}>{
     const cx = VIEWBOX_WIDTH / 2;
     const cy = VIEWBOX_HEIGHT / 2
     return (
-      <svg viewBox={`0 0 ${VIEWBOX_WIDTH} ${VIEWBOX_HEIGHT}`} className={'cpu-usage'}>
+      <svg viewBox={`0 0 ${VIEWBOX_WIDTH} ${VIEWBOX_HEIGHT}`} className={'cpu-usage-graph'}>
         <CpuCoreUsageGraph
           position={{
             cx, cy,

@@ -1,6 +1,7 @@
-@use "cpu";
 @use "fonts";
+@use "cpu";
 @use "processes";
+@use "memory";
 
 html {
     height: 100%;
@@ -46,6 +47,10 @@ p {
     flex-direction: column;
     height: 100%;
     width: 100%;
+}
+
+.cpu-fade-out, .memory-fade-out {
+    animation: fadeOut 5s forwards;
 }
 
 @keyframes fadeOut {

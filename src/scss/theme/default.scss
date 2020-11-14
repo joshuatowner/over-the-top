@@ -37,6 +37,14 @@ text {
     fill: #699CC2
 }
 
+.memory-primary-fill, .memory-usage-graph .linear-graph-bar {
+    fill: #9e69c2;
+}
+
+.swap-primary-fill, .swap-usage-graph .linear-graph-bar {
+    fill: #c269b9;
+}
+
 .cpu-cores-frame-segment {
     fill: transparent;
     stroke-width: 4px;
@@ -71,4 +79,9 @@ text {
 
 .graph-mid-line {
     stroke: #FFFFFF;
+}
+
+.memory-usage-graph-legend-label {
+    font-size: 8px;
+    font-weight: bold;
 }

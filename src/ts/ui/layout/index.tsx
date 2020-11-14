@@ -4,7 +4,7 @@ import CpuUsageWidget from "../cpu";
 import {Size} from "../../util/vec2";
 import "../../../scss/theme/default.scss";
 import {CpuProcessesWidget, MemoryProcessesWidget} from "../process";
-import MemoryUsageWidget from "../memory";
+import MemoryUsageWidget, {SwapUsageWidget} from "../memory";
 
 interface LayoutState {
   windowSize: Size
@@ -60,6 +60,11 @@ export default class Layout extends React.Component<{}, LayoutState> {
       <MemoryUsageWidget
         initialTopLeft={{x: 19, y: 0}}
         initialBottomRight={{x: 30, y: 6}}
+        windowSize={this.state.windowSize}
+      />
+      <SwapUsageWidget
+        initialTopLeft={{x: 19, y: 6}}
+        initialBottomRight={{x: 30, y: 12}}
         windowSize={this.state.windowSize}
       />
     </div>)

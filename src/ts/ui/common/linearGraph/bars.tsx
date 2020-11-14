@@ -1,29 +1,28 @@
 import {Size, Vec2} from "../../../util/vec2";
 import * as React from "react";
 import {BarValue} from "../../util/bar";
-import MemoryUsageGraphBar from "./bar";
-import {CpuUsageUpdate} from "../../../data/cpu";
-import {cpuUsage} from "../../../backend/cpu";
-import {memoryUsage} from "../../../backend/memory";
-import {MemoryUsageUpdate} from "../../../data/memory";
+import IntervalObservable from "../../../data/intervalObservable";
+import LinearGraphBar from "./bar";
 
-interface PropType {
+interface PropType<T> {
   topLeft: Vec2;
   size: Size;
   numBars: number;
   dashWidth: number;
   dashSpace: number;
+  observable: IntervalObservable<T>;
+  getValue: (update: T) => number;
 }
 
 interface StateType {
   barValues: BarValue[];
 }
 
-export default class MemoryUsageGraphBars extends React.Component<PropType, StateType>{
+export default class LinearGraphBars<T> extends React.Component<PropType<T>, StateType>{
 
   currentIndex: number;
 
-  constructor(props: Readonly<PropType>) {
+  constructor(props: Readonly<PropType<T>>) {
     super(props);
     this.currentIndex = 0;
     const barValues = [];
@@ -36,12 +35,13 @@ export default class MemoryUsageGraphBars extends React.Component<PropType, Stat
     this.state = { barValues }
   }
 
-  updateUsage = (update: MemoryUsageUpdate) => {
+  updateUsage = (update: T) => {
     const newValues = [...this.state.barValues];
+    const newValue: number = this.props.getValue(update);
     newValues[this.currentIndex] = {
-      percent: update.memoryUsage,
+      percent: newValue > 0 ? newValue : 0,
       fading: false
-    }
+    };
     const beginFadeIndex = (Math.round(this.props.numBars * 0.4) + this.currentIndex) % this.props.numBars;
     newValues[beginFadeIndex] = {
       percent: newValues[beginFadeIndex].percent,
@@ -54,16 +54,16 @@ export default class MemoryUsageGraphBars extends React.Component<PropType, Stat
   }
 
   componentDidMount() {
-    memoryUsage.watch(this.updateUsage)
+    this.props.observable.watch(this.updateUsage)
   }
 
   componentWillUnmount() {
-    memoryUsage.remove(this.updateUsage);
+    this.props.observable.remove(this.updateUsage);
   }
 
   render() {
     const {topLeft, dashWidth, dashSpace, size} = this.props;
-    const bars = this.state.barValues.map((value, i) => <MemoryUsageGraphBar
+    const bars = this.state.barValues.map((value, i) => <LinearGraphBar
       topLeft={{
         x: topLeft.x + (dashSpace + dashWidth) * i,
         y: topLeft.y

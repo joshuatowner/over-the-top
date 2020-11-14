@@ -49,7 +49,19 @@ p {
     width: 100%;
 }
 
-.cpu-fade-out, .memory-fade-out {
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.cpu-usage, .memory-usage, .swap-usage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.cpu-fade-out, .fade-out {
     animation: fadeOut 5s forwards;
 }
 

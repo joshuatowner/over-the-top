@@ -1,17 +1,29 @@
 import * as React from "react";
 import Widget from "../layout/widget";
 import {Size} from "../../util/vec2";
-import CpuUsageGraph from "./graph";
 import MemoryUsageGraph from "./graph";
+import SwapUsageGraph from "./swap/graph";
 
 export default class MemoryUsageWidget extends Widget {
-    renderContent(pixelSize: Size): React.ReactNode {
-        return (
-            <div className={"cpu-usage"}>
-                <div className={"cpu-title widget-title"}>MEMORY USAGE</div>
-                <MemoryUsageGraph />
-            </div>
-        );
-    }
+  renderContent(pixelSize: Size): React.ReactNode {
+    return (
+      <div className={"memory-usage"}>
+        <div className={"memory-title widget-title"}>MEMORY USAGE</div>
+        <MemoryUsageGraph />
+      </div>
+    );
+  }
+
+}
+
+export class SwapUsageWidget extends Widget {
+  renderContent(pixelSize: Size): React.ReactNode {
+    return (
+      <div className={"swap-usage"}>
+        <div className={"swap-title widget-title"}>SWAP USAGE</div>
+        <SwapUsageGraph />
+      </div>
+    );
+  }
 
 }

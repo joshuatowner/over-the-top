@@ -8,15 +8,15 @@ interface PropType {
   value: BarValue;
 }
 
-export default class MemoryUsageGraphBar extends React.Component<PropType, {}>{
+export default class LinearGraphBar extends React.Component<PropType, {}>{
 
   constructor(props: Readonly<PropType>) {
     super(props);
   }
 
   getClass(): string {
-    const fadingClass = this.props.value.fading ? 'memory-fade-out' : ''
-    return `memory-usage-bar memory-primary-fill ${fadingClass}`
+    const fadingClass = this.props.value.fading ? 'fade-out' : ''
+    return `linear-graph-bar ${fadingClass}`
   }
 
   render() {

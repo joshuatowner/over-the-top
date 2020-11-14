@@ -24,24 +24,46 @@ jobs:
 
     - name: Zip package
       run: |
-        zip -r release.zip out
-        
-    - name: Create a Release	
-      id: create_release	
-      uses: actions/create-release@v1	
-      env:	
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}	
-      with:	
-        tag_name: ${{ github.ref }}	
-        release_name: Release ${{ github.ref }}	
+        zip -r over-the-top-${{github.ref}}-win.zip out/over-the-top-win32-x64
+        zip -r over-the-top-${{github.ref}}-linux.zip out/over-the-top-linux-x64
+        zip -r over-the-top-${{github.ref}}-mac.zip out/over-the-top-darwin-x64
 
-    - name: Upload Release Zip
+    - name: Create a Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+
+    - name: Upload Windows Release Zip
       uses: actions/upload-release-asset@v1.0.2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./release.zip
-        asset_name: release.zip
+        asset_path: ./over-the-top-${{github.ref}}-win.zip
+        asset_name: over-the-top-${{github.ref}}-win.zip
         asset_content_type: application/zip
-        
+
+    - name: Upload Linux Release Zip
+      uses: actions/upload-release-asset@v1.0.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./over-the-top-${{github.ref}}-linux.zip
+        asset_name: over-the-top-${{github.ref}}-linux.zip
+        asset_content_type: application/zip
+
+    - name: Upload Mac Release Zip
+      uses: actions/upload-release-asset@v1.0.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./over-the-top-${{github.ref}}-mac.zip
+        asset_name: over-the-top-${{github.ref}}-mac.zip
+        asset_content_type: application/zip
+

@@ -12,6 +12,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Tag name
+      id: tag_name
+      run: |
+        echo ::set-output name=SOURCE_TAG::${GITHUB_REF#refs/tags/}
+
     - name: Install wine
       run: |
         sudo apt install wine64
@@ -24,9 +29,9 @@ jobs:
 
     - name: Zip package
       run: |
-        zip -r over-the-top-${{github.ref}}-win.zip out/over-the-top-win32-x64
-        zip -r over-the-top-${{github.ref}}-linux.zip out/over-the-top-linux-x64
-        zip -r over-the-top-${{github.ref}}-mac.zip out/over-the-top-darwin-x64
+        zip -r over-the-top-${{ steps.tag_name.outputs.SOURCE_TAG }}-win.zip out/over-the-top-win32-x64
+        zip -r over-the-top-${{ steps.tag_name.outputs.SOURCE_TAG }}-linux.zip out/over-the-top-linux-x64
+        zip -r over-the-top-${{ steps.tag_name.outputs.SOURCE_TAG }}-mac.zip out/over-the-top-darwin-x64
 
     - name: Create a Release
       id: create_release
@@ -43,8 +48,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./over-the-top-${{github.ref}}-win.zip
-        asset_name: over-the-top-${{github.ref}}-win.zip
+        asset_path: ./over-the-top-${{ steps.tag_name.outputs.SOURCE_TAG }}-win.zip
+        asset_name: over-the-top-${{ steps.tag_name.outputs.SOURCE_TAG }}-win.zip
         asset_content_type: application/zip
 
     - name: Upload Linux Release Zip
@@ -53,8 +58,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./over-the-top-${{github.ref}}-linux.zip
-        asset_name: over-the-top-${{github.ref}}-linux.zip
+        asset_path: ./over-the-top-${{ steps.tag_name.outputs.SOURCE_TAG }}-linux.zip
+        asset_name: over-the-top-${{ steps.tag_name.outputs.SOURCE_TAG }}-linux.zip
         asset_content_type: application/zip
 
     - name: Upload Mac Release Zip
@@ -63,7 +68,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./over-the-top-${{github.ref}}-mac.zip
-        asset_name: over-the-top-${{github.ref}}-mac.zip
+        asset_path: ./over-the-top-${{ steps.tag_name.outputs.SOURCE_TAG }}-mac.zip
+        asset_name: over-the-top-${{ steps.tag_name.outputs.SOURCE_TAG }}-mac.zip
         asset_content_type: application/zip
 

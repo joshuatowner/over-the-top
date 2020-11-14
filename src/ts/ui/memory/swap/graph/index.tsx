@@ -1,40 +1,60 @@
 import * as React from "react";
-import SwapUsageGraphCapacityLabel from "./capacityLabel";
+import MemoryUsageGraphCapacityLabel from "./capacityLabel";
+import MemoryUsageGraphUsageLabel from "./usageLabel";
 import SwapUsageGraphUsageLabel from "./usageLabel";
+import SwapUsageGraphCapacityLabel from "./capacityLabel";
 import {MemoryUsageUpdate} from "../../../../data/memory";
+import {Size} from "../../../../util/vec2";
 import LinearGraphBackground from "../../../common/linearGraph/background";
 import LinearGraphBars from "../../../common/linearGraph/bars";
 import {memoryUsage} from "../../../../backend/memory";
 
-const VIEWBOX_WIDTH = 300 - 3;
-const VIEWBOX_HEIGHT = 150;
-const DASH_WIDTH = 9;
-const DASH_SPACE = 3;
-const NUM_BARS = 25;
+const DASH_WIDTH = 12;
+const DASH_SPACE = 4;
 
 const getGraphValue = (update: MemoryUsageUpdate) => update.swapUsage;
 
-export default class SwapUsageGraph extends React.Component<{}, {}>{
+interface PropType {
+  size: Size;
+}
+
+export default class MemoryUsageGraph extends React.Component<PropType, {}>{
+
+  viewboxHeight(): number {
+    return this.props.size.height;
+  }
+
+  viewboxWidth(): number {
+    return this.props.size.width - (this.props.size.width % (DASH_WIDTH + DASH_SPACE)) + DASH_WIDTH;
+  }
+
+  numBars(): number {
+    return Math.ceil(this.viewboxWidth() / (DASH_SPACE + DASH_WIDTH));
+  }
+
   render() {
+    const width = this.viewboxWidth();
+    const height = this.viewboxHeight();
+    const numBars = this.numBars();
     return (
-      <div className={'swap-usage-graph-container'}>
+      <div className={'memory-usage-graph-container'}>
         <svg
-          viewBox={`0 0 ${VIEWBOX_WIDTH} ${VIEWBOX_HEIGHT}`}
-          className={'swap-usage-graph full'} preserveAspectRatio="xMidYMid meet">
+          viewBox={`0 0 ${width} ${height}`}
+          className={'memory-usage-graph full'} preserveAspectRatio="xMidYMid meet">
           <SwapUsageGraphCapacityLabel />
           <LinearGraphBackground
-            numBars={NUM_BARS} dashWidth={DASH_WIDTH} dashSpace={DASH_SPACE}
-            topLeft={{x: 0, y: 15}}
-            size={{height: VIEWBOX_HEIGHT - 30, width: VIEWBOX_WIDTH}}
+            numBars={numBars} dashWidth={DASH_WIDTH} dashSpace={DASH_SPACE}
+            topLeft={{x: 0, y: 24}}
+            size={{height: height - 48, width: width}}
           />
           <LinearGraphBars
-            numBars={NUM_BARS} dashWidth={DASH_WIDTH} dashSpace={DASH_SPACE}
-            topLeft={{x: 0, y: 15}}
-            size={{height: VIEWBOX_HEIGHT - 30 - DASH_SPACE, width: VIEWBOX_WIDTH}}
+            numBars={numBars} dashWidth={DASH_WIDTH} dashSpace={DASH_SPACE}
+            topLeft={{x: 0, y: 24}}
+            size={{height: height - 48 - DASH_SPACE, width: width}}
             observable={memoryUsage} getValue={getGraphValue}
           />
           <SwapUsageGraphUsageLabel
-            graphSize={{height: VIEWBOX_HEIGHT, width: VIEWBOX_WIDTH}}
+            graphSize={{height: height, width: width}}
           />
         </svg>
       </div>

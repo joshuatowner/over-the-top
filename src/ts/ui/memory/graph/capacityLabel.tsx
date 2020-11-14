@@ -21,8 +21,8 @@ export default class MemoryUsageGraphCapacityLabel extends React.Component<{}, S
 
   render() {
     return (<g>
-      <text x={0} y={10} className={"memory-usage-capacity-label"}>CAPACITY:</text>
-      <text x={55} y={10} className={"memory-usage-capacity-value"}>
+      <text x={0} y={15} className={"memory-usage-capacity-label"}>CAPACITY:</text>
+      <text x={80} y={15} className={"memory-usage-capacity-value"}>
         {formatBinaryBytes(this.state.capacityBytes)}
       </text>
     </g>);

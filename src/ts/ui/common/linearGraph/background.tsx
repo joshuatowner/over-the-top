@@ -28,7 +28,7 @@ export default class LinearGraphBackground extends React.Component<PropType, {}>
         />
         <text
           className={"memory-usage-graph-legend-label background-secondary-fill"}
-          x={topLeft.x + size.width} y={topLeft.y + 2}
+          x={topLeft.x + size.width} y={topLeft.y + 4}
         >
           100%
         </text>
@@ -39,7 +39,7 @@ export default class LinearGraphBackground extends React.Component<PropType, {}>
         />
         <text
           className={"memory-usage-graph-legend-label background-secondary-fill"}
-          x={topLeft.x + size.width} y={topLeft.y + 2 + (this.props.size.height - this.props.dashSpace) / 2}
+          x={topLeft.x + size.width} y={topLeft.y + 4 + (this.props.size.height - this.props.dashSpace) / 2}
         >
           50%
         </text>

@@ -33,8 +33,8 @@ export default class MemoryUsageGraphUsageLabel extends React.Component<PropType
 
   render() {
     return (<g>
-      <text x={0} y={this.props.graphSize.height - 3} className={"memory-usage-usage-label"}>USAGE:</text>
-      <text x={42} y={this.props.graphSize.height - 3} className={"memory-usage-usage-value"}>
+      <text x={0} y={this.props.graphSize.height - 6} className={"memory-usage-usage-label"}>USAGE:</text>
+      <text x={60} y={this.props.graphSize.height - 6} className={"memory-usage-usage-value"}>
         {formatBinaryBytes(this.state.usageBytes)}
       </text>
     </g>);

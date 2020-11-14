@@ -64,7 +64,7 @@ export default class Layout extends React.Component<{}, LayoutState> {
       />
       <SwapUsageWidget
         initialTopLeft={{x: 19, y: 6}}
-        initialBottomRight={{x: 30, y: 12}}
+        initialBottomRight={{x: 30, y: 10}}
         windowSize={this.state.windowSize}
       />
     </div>)

@@ -9,7 +9,10 @@ export default class MemoryUsageWidget extends Widget {
     return (
       <div className={"memory-usage"}>
         <div className={"memory-title widget-title"}>MEMORY USAGE</div>
-        <MemoryUsageGraph />
+        <MemoryUsageGraph size={{
+          width: pixelSize.width,
+          height: pixelSize.height - 35
+        }} />
       </div>
     );
   }
@@ -21,7 +24,10 @@ export class SwapUsageWidget extends Widget {
     return (
       <div className={"swap-usage"}>
         <div className={"swap-title widget-title"}>SWAP USAGE</div>
-        <SwapUsageGraph />
+        <SwapUsageGraph size={{
+          width: pixelSize.width,
+          height: pixelSize.height - 35
+        }} />
       </div>
     );
   }

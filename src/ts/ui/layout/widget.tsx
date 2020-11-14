@@ -30,6 +30,14 @@ export default abstract class Widget extends React.Component<WidgetProps, {}>{
     }
   }
 
+  private getContentSize(): Size {
+    const pixelSize = this.getPixelSize();
+    return {
+      height: pixelSize.height - 24,
+      width: pixelSize.width - 20
+    }
+  }
+
   protected getPixelTopLeft(): Vec2 {
     return pointToPixel(this.props.windowSize, this.topLeftPoint);
   }
@@ -54,7 +62,7 @@ export default abstract class Widget extends React.Component<WidgetProps, {}>{
 
   render() {
     return (<div className={"widget"} style={this.getCSSStyle()}>
-      {this.renderContent(this.getPixelSize())}
+      {this.renderContent(this.getContentSize())}
     </div>)
   }
 }

@@ -37,10 +37,10 @@ export default class MemoryUsageGraph extends React.Component<PropType, {}>{
     const height = this.viewboxHeight();
     const numBars = this.numBars();
     return (
-      <div className={'memory-usage-graph-container'}>
+      <div className={'swap-usage-graph-container'}>
         <svg
           viewBox={`0 0 ${width} ${height}`}
-          className={'memory-usage-graph full'} preserveAspectRatio="xMidYMid meet">
+          className={'swap-usage-graph full'} preserveAspectRatio="xMidYMid meet">
           <SwapUsageGraphCapacityLabel />
           <LinearGraphBackground
             numBars={numBars} dashWidth={DASH_WIDTH} dashSpace={DASH_SPACE}

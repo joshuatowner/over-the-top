@@ -42,7 +42,7 @@ export default class LinearGraphBars<T> extends React.Component<PropType<T>, Sta
       percent: newValue > 0 ? newValue : 0,
       fading: false
     };
-    const beginFadeIndex = (Math.round(this.props.numBars * 0.4) + this.currentIndex) % this.props.numBars;
+    const beginFadeIndex = (Math.round(this.props.numBars * 0.25) + this.currentIndex) % this.props.numBars;
     newValues[beginFadeIndex] = {
       percent: newValues[beginFadeIndex].percent,
       fading: true

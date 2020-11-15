@@ -1,8 +1,6 @@
 import Two = require("two.js");
-import {DEFAULT_FONT_FAMILY, FEATURE_BACKGROUND_COLOR} from "../constants/styles";
-import {darkerLighterGradient, getColorForPercentage, GradientEntry} from "../util/gradient";
 import Color = require("color");
-import {Group} from "two.js";
+import {DEFAULT_FONT_FAMILY} from "../constants/styles";
 import {Vec2} from "../../util/vec2";
 
 export default class DynamicText {

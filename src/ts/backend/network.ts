@@ -2,6 +2,7 @@ import {getConfig} from "../config";
 import {DEFAULT_NETWORK_ADAPTER} from "../config/const";
 import * as si from "systeminformation";
 import {NetworkTransferUpdate, PingUpdate, WebUpdate} from "../data/network";
+import IntervalObservable from "../data/intervalObservable";
 
 let defaultNetworkInterface: string | undefined;
 
@@ -47,3 +48,5 @@ function getPingIp() {
 function getWebUrl() {
     return getConfig().network.webUrl;
 }
+
+export const networkUsage = new IntervalObservable(networkTransferUpdate, getConfig().network.timing.bandwidthUpdateInterval);

@@ -45,6 +45,10 @@ text {
     fill: #c269b9;
 }
 
+.network-primary-fill, .network-usage-graph .linear-graph-bar {
+    fill: #C29769;
+}
+
 .cpu-cores-frame-segment {
     fill: transparent;
     stroke-width: 4px;

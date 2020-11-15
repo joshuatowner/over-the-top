@@ -1,4 +1,4 @@
-import {parseDomain, fromUrl} from "parse-domain";
+import {fromUrl, parseDomain} from "parse-domain";
 import {getConfig} from "../../config";
 
 export function getDomain(): string {

@@ -69,3 +69,25 @@ p {
     0% {opacity: 1;}
     100% {opacity: 0;}
 }
+
+.linear-graph-legend-label {
+    font-size: 12px;
+    font-weight: bold;
+    text-anchor: end;
+    alignment-baseline: hanging;
+}
+
+.linear-graph-inverted {
+    .linear-graph-legend-label {
+        alignment-baseline: baseline;
+    }
+}
+
+.value-label, .value-value {
+    font-size: 15px;
+}
+
+
+.value-label {
+    font-weight: bold;
+}

@@ -3,23 +3,3 @@
   width: 100%;
   min-height: 0;
 }
-
-.memory-usage-capacity-label, .memory-usage-capacity-value,
-.memory-usage-usage-label, .memory-usage-usage-value {
-  font-size: 15px;
-}
-
-.memory-usage-graph-legend-label {
-  font-size: 12px;
-  font-weight: bold;
-}
-
-
-.memory-usage-capacity-label, .memory-usage-usage-label {
-  font-weight: bold;
-}
-
-.memory-usage-graph-legend-label {
-  text-anchor: end;
-  alignment-baseline: hanging;
-}

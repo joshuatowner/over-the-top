@@ -1,8 +1,8 @@
 import Two = require("two.js");
+import Color = require("color");
 import {BACKGROUND_COLOR, NETWORK_PRIMARY} from "../constants/styles";
 import {HexagonStatus} from "./hexagonStatus";
 import DynamicText from "./dynamicText";
-import Color = require("color");
 import {Vec2} from "../../util/vec2";
 
 export default class HexagonStatusText extends HexagonStatus {

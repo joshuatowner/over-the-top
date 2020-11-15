@@ -1,8 +1,7 @@
 import * as React from "react";
-import AnnulusSegment from "../../../svg/annulusSegment";
+import {CSSProperties} from "react";
 import PieSegment from "../../../svg/pieSegment";
 import {getEndAngle, getStartAngle} from "../../../util/angle";
-import {CSSProperties} from "react";
 import {AnnulusPosition} from "../../../../util/vec2";
 import {CpuUsageUpdate} from "../../../../data/cpu";
 import {cpuUsage} from "../../../../backend/cpu";

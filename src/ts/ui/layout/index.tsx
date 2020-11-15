@@ -5,6 +5,7 @@ import {Size} from "../../util/vec2";
 import "../../../scss/theme/default.scss";
 import {CpuProcessesWidget, MemoryProcessesWidget} from "../process";
 import MemoryUsageWidget, {SwapUsageWidget} from "../memory";
+import {NetworkUsageWidget} from "../network";
 
 interface LayoutState {
   windowSize: Size
@@ -65,6 +66,11 @@ export default class Layout extends React.Component<{}, LayoutState> {
       <SwapUsageWidget
         initialTopLeft={{x: 19, y: 4}}
         initialBottomRight={{x: 30, y: 8}}
+        windowSize={this.state.windowSize}
+      />
+      <NetworkUsageWidget
+        initialTopLeft={{x: 19, y: 8}}
+        initialBottomRight={{x: 30, y: 14}}
         windowSize={this.state.windowSize}
       />
     </div>)

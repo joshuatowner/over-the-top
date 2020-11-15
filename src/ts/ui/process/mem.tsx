@@ -57,7 +57,7 @@ export default class MemoryProcesses extends React.Component<{}, StateType> {
     );
   }
 
-  formatMem = (amount: number) => formatBinaryBytes(amount, 0);
+  formatMem = (amount: number) => formatBinaryBytes(amount);
   percentMem = (amount: number) =>
     Math.min(1, Math.max(0, (amount / (this.state.maxMemory || amount))));
 }

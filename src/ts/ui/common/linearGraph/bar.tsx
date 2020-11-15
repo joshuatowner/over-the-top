@@ -6,9 +6,12 @@ interface PropType {
   topLeft: Vec2;
   size: Size;
   value: BarValue;
+  inverted?: boolean;
 }
 
 export default class LinearGraphBar extends React.Component<PropType, {}>{
+
+  inverted = () => !!(this.props.inverted);
 
   constructor(props: Readonly<PropType>) {
     super(props);
@@ -23,7 +26,7 @@ export default class LinearGraphBar extends React.Component<PropType, {}>{
     const {topLeft, size, value} = this.props;
     return <rect
       x={topLeft.x}
-      y={topLeft.y + size.height * (1 - value.percent)}
+      y={this.inverted() ? topLeft.y : topLeft.y + size.height * (1 - value.percent)}
       width={size.width}
       height={size.height * value.percent}
       className={this.getClass()}

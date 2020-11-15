@@ -2,7 +2,7 @@ import * as React from "react";
 import {AnnulusPosition} from "../../../../util/vec2";
 import CpuHistoryGraphBar from "./bar";
 import {getEndAngle, getStartAngle} from "../../../util/angle";
-import {cpuUsage, cpuUsageUpdate} from "../../../../backend/cpu";
+import {cpuUsage} from "../../../../backend/cpu";
 import {CpuUsageUpdate} from "../../../../data/cpu";
 import {BarValue} from "../../../util/bar";
 

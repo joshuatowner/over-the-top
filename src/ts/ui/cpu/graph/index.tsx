@@ -1,4 +1,3 @@
-import {CirclePosition} from "../../../util/vec2";
 import * as React from "react";
 import CpuCoreUsageGraph from "./cores";
 import CpuHistoryGraph from "./history";

@@ -1,5 +1,4 @@
 import * as React from "react";
-import {getConfig} from "../../../config";
 import RequestHexComponent from "./requestHex";
 import {getDomain} from "../../util/url";
 

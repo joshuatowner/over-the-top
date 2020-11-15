@@ -1,8 +1,8 @@
 import {AllProcessesInfo} from "../../data/process";
 import * as si from "systeminformation";
 import {Systeminformation} from "systeminformation";
-import ProcessesProcessData = Systeminformation.ProcessesProcessData;
 import {ONE_BYTE, ONE_KIBIBYTE} from "../../ui/constants/data";
+import ProcessesProcessData = Systeminformation.ProcessesProcessData;
 
 const SYSTEM_IDLE = "System Idle Process";
 

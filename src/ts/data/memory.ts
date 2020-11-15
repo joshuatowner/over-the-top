@@ -6,8 +6,10 @@ export interface MemoryInfo {
 export interface MemoryUsageUpdate {
     memoryUsage: number,
     memoryUsageBytes: number,
+    memCapacity: number,
     swapUsage: number,
     swapUsageBytes: number,
+    swapCapacity: number,
 }
 
 export interface SwapUsageUpdate {

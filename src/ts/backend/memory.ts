@@ -19,8 +19,10 @@ export async function memoryUsageUpdate(): Promise<MemoryUsageUpdate> {
     return {
         memoryUsage: used / siMemoryInfo.total,
         memoryUsageBytes: used,
+        memCapacity: siMemoryInfo.total,
         swapUsage: siMemoryInfo.swapused / siMemoryInfo.swaptotal,
         swapUsageBytes: siMemoryInfo.swapused,
+        swapCapacity: siMemoryInfo.swaptotal,
     }
 }
 

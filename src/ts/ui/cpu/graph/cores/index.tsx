@@ -1,7 +1,7 @@
 import * as React from "react";
+import {ReactNode} from "react";
 import CpuCoreUsageGraphFrame from "./frame";
 import CpuCoreUsageGraphBackground from "./background";
-import {ReactNode} from "react";
 import CpuCoreUsageGraphBar from "./bar";
 import {AnnulusPosition} from "../../../../util/vec2";
 import {cpuInfo} from "../../../../backend/cpu";

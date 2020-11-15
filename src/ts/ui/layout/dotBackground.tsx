@@ -1,6 +1,6 @@
 import * as React from "react";
-import {pointToPixel, numPointsX, numPointsY} from "./points";
 import {ReactNode} from "react";
+import {numPointsX, numPointsY, pointToPixel} from "./points";
 import {Size, Vec2} from "../../util/vec2";
 
 interface DotProps {

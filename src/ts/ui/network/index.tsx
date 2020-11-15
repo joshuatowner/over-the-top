@@ -1,19 +1,18 @@
 import * as React from "react";
-import PingComponent from "./ping";
-import RequestComponent from "./request";
+import Widget from "../layout/widget";
+import {Size} from "../../util/vec2";
+import NetworkUsageGraph from "./usage";
 
-export default class NetworkUIComponent extends React.Component<{}, {}> {
-
-    render() {
-        return <div className={"networkContainer"}>
-            <div className={"sectionTitle"}>NETWORK</div>
-            <div className={"sectionContainer"}>
-            <div className={"connectivityContainer flex-horz"}>
-                <PingComponent />
-                <div className={"vbar-flex"}/>
-                <RequestComponent />
-            </div>
-            </div>
-        </div>;
+export class NetworkUsageWidget extends Widget {
+    renderContent(pixelSize: Size): React.ReactNode {
+        return (
+          <div className={"network-usage"}>
+              <div className={"network-title widget-title"}>NETWORK USAGE</div>
+              <NetworkUsageGraph size={{
+                  width: pixelSize.width,
+                  height: pixelSize.height - 35
+              }} />
+          </div>
+        );
     }
 }

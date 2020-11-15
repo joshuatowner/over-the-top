@@ -1,6 +1,6 @@
 import * as React from "react";
-import AnnulusSegment from "../../../svg/annulusSegment";
 import {ReactNode} from "react";
+import AnnulusSegment from "../../../svg/annulusSegment";
 import {getEndAngle, getStartAngle} from "../../../util/angle";
 import {AnnulusPosition} from "../../../../util/vec2";
 

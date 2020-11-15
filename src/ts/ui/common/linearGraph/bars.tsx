@@ -12,6 +12,7 @@ interface PropType<T> {
   dashSpace: number;
   observable: IntervalObservable<T>;
   getValue: (update: T) => number;
+  inverted?: boolean;
 }
 
 interface StateType {
@@ -21,6 +22,7 @@ interface StateType {
 export default class LinearGraphBars<T> extends React.Component<PropType<T>, StateType>{
 
   currentIndex: number;
+  inverted = () => !!(this.props.inverted);
 
   constructor(props: Readonly<PropType<T>>) {
     super(props);
@@ -74,6 +76,7 @@ export default class LinearGraphBars<T> extends React.Component<PropType<T>, Sta
       }}
       value={value}
       key={i}
+      inverted={this.inverted()}
     />);
     return <g>{bars}</g>;
   }

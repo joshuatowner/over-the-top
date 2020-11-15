@@ -1,9 +1,9 @@
 import * as React from "react";
-import Two = require("two.js");
-import {pingUpdate, webUpdate} from "../../../backend/network";
+import {webUpdate} from "../../../backend/network";
 import {getConfig} from "../../../config";
 import HexagonStatusText from "../../common/hexagonStatusText";
 import {setIntervalImmediate} from "../../../util/timing";
+import Two = require("two.js");
 
 const WIDTH = 100;
 const HEIGHT = 100;

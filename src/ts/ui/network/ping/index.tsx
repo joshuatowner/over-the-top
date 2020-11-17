@@ -1,16 +1,19 @@
 import * as React from "react";
 import {getConfig} from "../../../config";
-import PingHexComponent from "./pingHex";
+import HexagonBadge from "../../common/hexagonStatus";
+import {ping} from "../../../backend/network";
+import {PingUpdate} from "../../../data/network";
+import Widget from "../../layout/widget";
+import {Size} from "../../../util/vec2";
+import NetworkUsageGraph from "../usage";
 
-export default class PingComponent extends React.Component<{}, {}> {
 
+export default class PingHexagonBadge extends React.Component<{}, {}>{
     render() {
-        return <>
-            <div className={'flex-vert flex-center pingContainer'}>
-                <div className={'conn-title'}>PING</div>
-                <div className={'conn-subtitle'}>{getConfig().network.pingIp}</div>
-                <PingHexComponent />
-            </div>
-        </>
+        return <HexagonBadge
+          observable={ping}
+          getValue={(update: PingUpdate) => update.latency?.toFixed(0) || ""}
+          className={"network-primary-fill"}
+        />
     }
 }

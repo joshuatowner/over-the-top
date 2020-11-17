@@ -50,3 +50,5 @@ function getWebUrl() {
 }
 
 export const networkUsage = new IntervalObservable(networkTransferUpdate, getConfig().network.timing.bandwidthUpdateInterval);
+export const ping = new IntervalObservable(pingUpdate, getConfig().network.timing.pingUpdateInterval);
+export const webRequest = new IntervalObservable(webUpdate, getConfig().network.timing.webUpdateInterval);

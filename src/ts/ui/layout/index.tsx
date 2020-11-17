@@ -5,7 +5,7 @@ import {Size} from "../../util/vec2";
 import "../../../scss/theme/default.scss";
 import {CpuProcessesWidget, MemoryProcessesWidget} from "../process";
 import MemoryUsageWidget, {SwapUsageWidget} from "../memory";
-import {NetworkUsageWidget} from "../network";
+import {NetworkUsageWidget, PingWidget, WebRequestWidget} from "../network";
 
 interface LayoutState {
   windowSize: Size
@@ -71,6 +71,16 @@ export default class Layout extends React.Component<{}, LayoutState> {
       <NetworkUsageWidget
         initialTopLeft={{x: 19, y: 8}}
         initialBottomRight={{x: 30, y: 14}}
+        windowSize={this.state.windowSize}
+      />
+      <PingWidget
+        initialTopLeft={{x: 19, y: 14}}
+        initialBottomRight={{x: 22, y: 18}}
+        windowSize={this.state.windowSize}
+      />
+      <WebRequestWidget
+        initialTopLeft={{x: 23, y: 14}}
+        initialBottomRight={{x: 26, y: 18}}
         windowSize={this.state.windowSize}
       />
     </div>)

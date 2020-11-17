@@ -2,6 +2,7 @@
 @use "cpu";
 @use "processes";
 @use "memory";
+@use "network";
 
 html {
     height: 100%;
@@ -54,7 +55,7 @@ p {
     flex-direction: row;
 }
 
-.cpu-usage, .memory-usage, .swap-usage {
+.cpu-usage, .memory-usage, .swap-usage, .network-ping {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -90,4 +91,10 @@ p {
 
 .value-label {
     font-weight: bold;
+}
+
+.hex-label {
+    font-size: 20px;
+    dominant-baseline: middle;
+    text-anchor: middle;
 }

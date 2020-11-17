@@ -6,10 +6,12 @@ type Source<T> = () => T | Promise<T>;
 export default class IntervalObservable<T> {
   private readonly source: Source<T>;
   private observers: Observer<T>[];
+  public readonly interval: number;
 
   constructor(source:  Source<T>, interval: number) {
     this.source = source;
     this.observers = [];
+    this.interval = interval;
     setIntervalImmediate(this.update, interval);
   }
 

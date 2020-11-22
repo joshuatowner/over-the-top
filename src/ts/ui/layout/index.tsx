@@ -6,6 +6,8 @@ import "../../../scss/theme/default.scss";
 import {CpuProcessesWidget, MemoryProcessesWidget} from "../process";
 import MemoryUsageWidget, {SwapUsageWidget} from "../memory";
 import {NetworkUsageWidget, PingWidget, WebRequestWidget} from "../network";
+import {numPointsX, numPointsY} from "./points";
+import ResponsiveLayoutEngine from "./engine/default";
 
 interface LayoutState {
   windowSize: Size
@@ -43,46 +45,7 @@ export default class Layout extends React.Component<{}, LayoutState> {
   render() {
     return (<div id={"main"} className={"default-theme"}>
       <DotBackground windowSize={this.state.windowSize} />
-      <CpuUsageWidget
-        initialTopLeft={{x: 0, y: 0}}
-        initialBottomRight={{x: 8, y: 8}}
-        windowSize={this.state.windowSize}
-      />
-      <CpuProcessesWidget
-        initialTopLeft={{x: 9, y: 0}}
-        initialBottomRight={{x: 18, y: 4}}
-        windowSize={this.state.windowSize}
-      />
-      <MemoryProcessesWidget
-        initialTopLeft={{x: 9, y: 4}}
-        initialBottomRight={{x: 18, y: 8}}
-        windowSize={this.state.windowSize}
-      />
-      <MemoryUsageWidget
-        initialTopLeft={{x: 19, y: 0}}
-        initialBottomRight={{x: 30, y: 4}}
-        windowSize={this.state.windowSize}
-      />
-      <SwapUsageWidget
-        initialTopLeft={{x: 19, y: 4}}
-        initialBottomRight={{x: 30, y: 8}}
-        windowSize={this.state.windowSize}
-      />
-      <NetworkUsageWidget
-        initialTopLeft={{x: 19, y: 8}}
-        initialBottomRight={{x: 30, y: 14}}
-        windowSize={this.state.windowSize}
-      />
-      <PingWidget
-        initialTopLeft={{x: 19, y: 14}}
-        initialBottomRight={{x: 22, y: 18}}
-        windowSize={this.state.windowSize}
-      />
-      <WebRequestWidget
-        initialTopLeft={{x: 23, y: 14}}
-        initialBottomRight={{x: 26, y: 18}}
-        windowSize={this.state.windowSize}
-      />
+      <ResponsiveLayoutEngine windowSize={this.state.windowSize} />
     </div>)
   }
 }

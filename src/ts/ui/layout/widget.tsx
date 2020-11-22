@@ -2,23 +2,19 @@ import * as React from "react";
 import {CSSProperties, ReactNode} from "react";
 import {pointToPixel} from "./points";
 import {Size, Vec2} from "../../util/vec2";
+import SettingsButton from "../config/button";
 
 interface WidgetProps {
-  initialTopLeft: Vec2,
-  initialBottomRight: Vec2,
+  topLeft: Vec2,
+  size: Size,
   windowSize: Size,
   title?: string
 }
 
 export default abstract class Widget extends React.Component<WidgetProps, {}>{
 
-  protected topLeftPoint: Vec2;
-  protected bottomRightPoint: Vec2;
-
   constructor(props: WidgetProps) {
     super(props);
-    this.topLeftPoint = props.initialTopLeft;
-    this.bottomRightPoint = props.initialBottomRight;
   }
 
   protected getPixelSize(): Size {
@@ -39,11 +35,14 @@ export default abstract class Widget extends React.Component<WidgetProps, {}>{
   }
 
   protected getPixelTopLeft(): Vec2 {
-    return pointToPixel(this.props.windowSize, this.topLeftPoint);
+    return pointToPixel(this.props.windowSize, this.props.topLeft);
   }
 
   protected getPixelBottomRight(): Vec2 {
-    return pointToPixel(this.props.windowSize, this.bottomRightPoint);
+    return pointToPixel(this.props.windowSize, {
+      x: this.props.topLeft.x + this.props.size.width,
+      y: this.props.topLeft.y + this.props.size.height,
+    });
   }
 
   private getCSSStyle(): CSSProperties {
@@ -60,8 +59,17 @@ export default abstract class Widget extends React.Component<WidgetProps, {}>{
 
   abstract renderContent(pixelSize: Size): ReactNode;
 
+  renderSettings(): ReactNode | null {
+    return null;
+  };
+
   render() {
+    const settings = this.renderSettings();
+    const showSettings = settings !== null;
     return (<div className={"widget"} style={this.getCSSStyle()}>
+      {showSettings && <SettingsButton>
+        {settings}
+      </SettingsButton>}
       {this.renderContent(this.getContentSize())}
     </div>)
   }

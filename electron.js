@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 
 try {
@@ -7,12 +7,18 @@ try {
 
 async function createWindow() {
     // Create the browser window.
+    ipcMain.handle('config-file-name', async (event, path) => {
+        return app.getPath("userData");
+    });
+
     const mainWindow = new BrowserWindow({
         height: 1000,
         width: 1800,
         webPreferences: {
             nativeWindowOpen: true,
             nodeIntegrationInWorker: true,
+            nodeIntegration: true,
+            contextIsolation: false,
             preload: path.join(__dirname, "./dist/bundle.js")
         },
     });

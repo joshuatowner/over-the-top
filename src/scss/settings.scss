@@ -1,0 +1,23 @@
+.widget-settings-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 25px;
+  height: 25px;
+  opacity: 0;
+  transition: opacity 250ms;
+}
+
+.widget-settings-button:hover {
+  opacity: 1;
+}
+
+.widget-settings-dialog {
+  position: absolute;
+  right: 0;
+  top: 30px;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: max-content max-content;
+  grid-gap: 10px;
+}

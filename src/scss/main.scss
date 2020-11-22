@@ -3,6 +3,7 @@
 @use "processes";
 @use "memory";
 @use "network";
+@use "settings";
 
 html {
     height: 100%;
@@ -97,4 +98,8 @@ p {
     font-size: 20px;
     dominant-baseline: middle;
     text-anchor: middle;
+}
+
+.widget {
+    position: relative;
 }

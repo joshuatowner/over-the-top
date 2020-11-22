@@ -4,6 +4,7 @@ import {Size} from "../../util/vec2";
 import NetworkUsageGraph from "./usage";
 import PingHexagonBadge from "./ping";
 import WebHexagonBadge from "./request";
+import NetworkInterfaceSettingDropdown from "../config/network/interface";
 
 export class NetworkUsageWidget extends Widget {
     renderContent(pixelSize: Size): React.ReactNode {
@@ -16,6 +17,10 @@ export class NetworkUsageWidget extends Widget {
               }} />
           </div>
         );
+    }
+
+    renderSettings(): React.ReactNode | null {
+      return <NetworkInterfaceSettingDropdown />
     }
 }
 

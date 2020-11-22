@@ -3,7 +3,7 @@ import {Config} from "./interface";
 const DEFAULT_CONFIG: Config = {
     memory: {
         timing: {
-            updateInterval: 1000,
+            updateInterval: 5000,
         },
         ui: {
             color: {

@@ -19,6 +19,8 @@ interface StateType {
 
 export default class HexagonBadge<T> extends React.Component<PropType<T>, StateType> {
 
+  fadeTimeout?: number;
+
   constructor(props: Readonly<PropType<T>>) {
     super(props);
     this.state = {
@@ -39,7 +41,7 @@ export default class HexagonBadge<T> extends React.Component<PropType<T>, StateT
       value: this.props.getValue(update),
       fading: false
     });
-    setTimeout(() => this.setState({
+    this.fadeTimeout = setTimeout(() => this.setState({
       fading: true
     }), this.props.observable.interval / 10);
   }
@@ -50,6 +52,7 @@ export default class HexagonBadge<T> extends React.Component<PropType<T>, StateT
 
   componentWillUnmount() {
     this.props.observable.remove(this.updateUsage);
+    this.fadeTimeout && clearTimeout(this.fadeTimeout);
   }
 
   render() {

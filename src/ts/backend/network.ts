@@ -32,13 +32,22 @@ export async function webUpdate(): Promise<WebUpdate> {
 async function getNetworkAdapter(): Promise<string> {
     const configAdapter = getConfig().network.interface;
     if (configAdapter === DEFAULT_NETWORK_ADAPTER) {
-        if (!defaultNetworkInterface) {
-            defaultNetworkInterface = await si.networkInterfaceDefault();
-        }
-        return defaultNetworkInterface;
+        return getDefaultInterface();
     } else {
         return configAdapter;
     }
+}
+
+export async function getDefaultInterface() {
+    if (!defaultNetworkInterface) {
+        defaultNetworkInterface = await si.networkInterfaceDefault();
+    }
+    return defaultNetworkInterface;
+}
+
+export async function getAllInterfaces(): Promise<string[]> {
+    const response = await si.networkInterfaces();
+    return response.map(int => int.iface);
 }
 
 function getPingIp() {

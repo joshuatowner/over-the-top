@@ -3,8 +3,9 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import App from "./ui";
+import {loadConfig} from "./config";
 
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", async () => {
   const replaceText = (selector: string, text: string) => {
     const element = document.getElementById(selector);
     if (element) {
@@ -15,6 +16,8 @@ window.addEventListener("DOMContentLoaded", () => {
   for (const type of ["chrome", "node", "electron"]) {
     replaceText(`${type}-version`, (process.versions as any)[type]);
   }
+
+  await loadConfig();
 
   const rootElement = document.getElementById("root")
   if (rootElement) {

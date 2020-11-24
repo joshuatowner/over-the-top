@@ -22,8 +22,10 @@ export default class SettingsButton extends React.Component<{}, StateType>{
 
   render() {
     return (
-      <div className={"widget-settings-button"}>
-        <MdSettings onClick={this.onButtonClick} className={"full"}/>
+      <div className={"widget-settings-button-container"}>
+        <button onClick={this.onButtonClick} className={"widget-settings-button full"}>
+          <MdSettings className={"full"}/>
+        </button>
         {
           this.state.showDialog && <SettingsDialog>
             {this.props.children}

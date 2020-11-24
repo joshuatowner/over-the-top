@@ -76,6 +76,7 @@ export default class LinearGraphBars<T> extends React.Component<PropType<T>, Sta
       }}
       value={value}
       key={i}
+      interval={this.props.observable.interval}
       inverted={this.inverted()}
     />);
     return <g>{bars}</g>;

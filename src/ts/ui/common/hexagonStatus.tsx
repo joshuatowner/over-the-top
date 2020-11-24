@@ -9,12 +9,14 @@ const HEIGHT = 100;
 interface PropType<T> {
   observable: IntervalObservable<T>;
   getValue: (update: T) => string;
+  isError?: (update: T) => boolean;
   className?: string;
 }
 
 interface StateType {
   value: string;
   fading: boolean;
+  error: boolean;
 }
 
 export default class HexagonBadge<T> extends React.Component<PropType<T>, StateType> {
@@ -25,7 +27,8 @@ export default class HexagonBadge<T> extends React.Component<PropType<T>, StateT
     super(props);
     this.state = {
       value: "",
-      fading: false
+      fading: false,
+      error: false
     }
   }
 
@@ -39,7 +42,8 @@ export default class HexagonBadge<T> extends React.Component<PropType<T>, StateT
   updateUsage = (update: T) => {
     this.setState({
       value: this.props.getValue(update),
-      fading: false
+      fading: false,
+      error: !!this.props.isError && this.props.isError(update)
     });
     this.fadeTimeout = setTimeout(() => this.setState({
       fading: true
@@ -60,7 +64,8 @@ export default class HexagonBadge<T> extends React.Component<PropType<T>, StateT
       <Hexagon
         center={{x: WIDTH / 2, y: HEIGHT / 2}}
         height={Math.min(WIDTH, HEIGHT)}
-        style={this.getStyle()} className={this.props.className}
+        style={this.getStyle()}
+        className={this.state.error ? "error-fill" : this.props.className}
       />
       <Hexagon
         center={{x: WIDTH / 2, y: HEIGHT / 2}}

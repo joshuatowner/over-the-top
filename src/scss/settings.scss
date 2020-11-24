@@ -1,4 +1,4 @@
-.widget-settings-button {
+.widget-settings-button-container {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -8,7 +8,7 @@
   transition: opacity 250ms;
 }
 
-.widget-settings-button:hover {
+.widget-settings-button-container:hover {
   opacity: 1;
 }
 
@@ -20,4 +20,13 @@
   display: grid;
   grid-template-columns: max-content max-content;
   grid-gap: 10px;
+}
+
+.widget-settings-button {
+  border: 0;
+  padding: 0;
+  font-size: 100%;
+  background-color: transparent;
+  color: inherit;
+  outline: none;
 }

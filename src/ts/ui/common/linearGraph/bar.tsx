@@ -1,11 +1,13 @@
 import {Size, Vec2} from "../../../util/vec2";
 import * as React from "react";
 import {BarValue} from "../../util/bar";
+import {CSSProperties} from "react";
 
 interface PropType {
   topLeft: Vec2;
   size: Size;
   value: BarValue;
+  interval: number;
   inverted?: boolean;
 }
 
@@ -17,9 +19,14 @@ export default class LinearGraphBar extends React.Component<PropType, {}>{
     super(props);
   }
 
-  getClass(): string {
-    const fadingClass = this.props.value.fading ? 'fade-out' : ''
-    return `linear-graph-bar ${fadingClass}`
+  getStyle(): CSSProperties {
+    if (this.props.value.fading) {
+      return {
+        animation: `fadeOut ${this.props.interval * 6}ms forwards`
+      };
+    } else {
+      return {};
+    }
   }
 
   render() {
@@ -29,7 +36,8 @@ export default class LinearGraphBar extends React.Component<PropType, {}>{
       y={this.inverted() ? topLeft.y : topLeft.y + size.height * (1 - value.percent)}
       width={size.width}
       height={size.height * value.percent}
-      className={this.getClass()}
+      className={"linear-graph-bar"}
+      style={this.getStyle()}
     />;
   }
 

@@ -29,7 +29,7 @@ export default class CpuHistoryGraphBars extends React.Component<PropType, State
         fading: true
       });
     }
-    this.state = { barValues }
+    this.state = {barValues}
   }
 
   updateUsage = (update: CpuUsageUpdate) => {

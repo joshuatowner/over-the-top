@@ -1,19 +1,19 @@
 export interface NetworkTransferUpdate {
-    up: number,
-    down: number,
+  up: number,
+  down: number,
 }
 
 export interface PingUpdate {
-    latency?: number,
+  latency?: number,
 }
 
 export interface WebUpdate {
-    latency?: number,
-    responseCode: number,
+  latency?: number,
+  responseCode: number,
 }
 
 export interface NetworkSpeedUpdate {
-    up: number,
-    down: number,
-    latency: number,
+  up: number,
+  down: number,
+  latency: number,
 }

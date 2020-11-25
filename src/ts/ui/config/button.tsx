@@ -7,7 +7,7 @@ interface StateType {
 }
 
 
-export default class SettingsButton extends React.Component<{}, StateType>{
+export default class SettingsButton extends React.Component<{}, StateType> {
 
   constructor(props: Readonly<{}>) {
     super(props);

@@ -34,9 +34,9 @@ export default class CpuProcesses extends React.Component<{}, StateType> {
     return (
       <div className={"cpu-process-box"}>
         <ProcessBox
-            sortedProcesses={this.state.processes}
-            displayValue={this.formatCpu}
-            percentOfTotalValue={this.percentCpu}
+          sortedProcesses={this.state.processes}
+          displayValue={this.formatCpu}
+          percentOfTotalValue={this.percentCpu}
         />
       </div>
     );

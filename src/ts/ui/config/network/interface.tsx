@@ -1,6 +1,6 @@
 import * as React from "react";
-import {getAllInterfaces, getDefaultInterface} from "../../../backend/network";
 import {ChangeEvent, ReactNode} from "react";
+import {getAllInterfaces, getDefaultInterface} from "../../../backend/network";
 import {getConfig, updateConfig} from "../../../config";
 
 interface StateType {

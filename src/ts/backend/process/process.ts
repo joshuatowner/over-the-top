@@ -19,12 +19,12 @@ export async function getAllProcessInfo(numCpu: number, numMem: number): Promise
     .filter(item => item.cpu > 0)
     .sort((first, second) => second.cpu - first.cpu)
     .slice(0, numCpu)
-    .map(proc => ({ name: proc.name, usage: proc.cpu }));
+    .map(proc => ({name: proc.name, usage: proc.cpu}));
   const byMem = Array.from(allProcesses)
     .filter(item => item.mem > 0)
     .sort((first, second) => second.mem - first.mem)
     .slice(0, numMem)
-    .map(proc => ({ name: proc.name, usage: proc.mem }));
+    .map(proc => ({name: proc.name, usage: proc.mem}));
   return {
     cpuProcs: byCpu,
     memoryProcs: byMem,

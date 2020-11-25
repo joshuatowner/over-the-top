@@ -18,7 +18,7 @@ export default class CpuUsageOverall extends React.Component<{}, StateType> {
   }
 
   render() {
-    return(
+    return (
       <text x="50%" y="50%" className={"cpu-overall"}>
         {(this.state.percent * 100).toFixed(2)}%
       </text>

@@ -8,7 +8,7 @@ export default class IntervalObservable<T> {
   private observers: Observer<T>[];
   public readonly interval: number;
 
-  constructor(source:  Source<T>, interval: number) {
+  constructor(source: Source<T>, interval: number) {
     this.source = source;
     this.observers = [];
     this.interval = interval;

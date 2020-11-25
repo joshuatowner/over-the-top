@@ -19,7 +19,7 @@ interface StateType {
   barValues: BarValue[];
 }
 
-export default class LinearGraphBars<T> extends React.Component<PropType<T>, StateType>{
+export default class LinearGraphBars<T> extends React.Component<PropType<T>, StateType> {
 
   currentIndex: number;
   inverted = () => !!(this.props.inverted);
@@ -34,7 +34,7 @@ export default class LinearGraphBars<T> extends React.Component<PropType<T>, Sta
         fading: true
       });
     }
-    this.state = { barValues }
+    this.state = {barValues}
   }
 
   updateUsage = (update: T) => {

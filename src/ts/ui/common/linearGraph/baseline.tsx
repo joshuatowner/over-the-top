@@ -7,7 +7,7 @@ interface PropType {
   y: number;
 }
 
-export default class LinearGraphBaseline extends React.Component<PropType, {}>{
+export default class LinearGraphBaseline extends React.Component<PropType, {}> {
   render() {
     const {dashWidth, dashSpace, y} = this.props;
     const bars = [];

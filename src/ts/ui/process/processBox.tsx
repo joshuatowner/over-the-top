@@ -4,40 +4,40 @@ import ProcessItem from "./processItem";
 
 
 interface PropTypes {
-    sortedProcesses: ProcessInfo[],
-    displayValue?: (value: number) => string,
-    percentOfTotalValue?: (value: number) => number,
+  sortedProcesses: ProcessInfo[],
+  displayValue?: (value: number) => string,
+  percentOfTotalValue?: (value: number) => number,
 }
 
 
 export default class ProcessBox extends React.Component<PropTypes, {}> {
 
-    constructor(props: Readonly<PropTypes>) {
-        super(props);
-    }
+  constructor(props: Readonly<PropTypes>) {
+    super(props);
+  }
 
-    render() {
-        return (
-            <div className={"process-box"}>
-                <div className={"process-box-items-container"}>
-                {this.props.sortedProcesses.map((proc) =>
-                    <ProcessItem
-                        name={proc.name}
-                        value={this.getDisplayValue(proc.usage)}
-                        key={proc.name}
-                        percentOfTotal={this.getPercentOfTotal(proc.usage)}
-                    />
-                )}
-                </div>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div className={"process-box"}>
+        <div className={"process-box-items-container"}>
+          {this.props.sortedProcesses.map((proc) =>
+            <ProcessItem
+              name={proc.name}
+              value={this.getDisplayValue(proc.usage)}
+              key={proc.name}
+              percentOfTotal={this.getPercentOfTotal(proc.usage)}
+            />
+          )}
+        </div>
+      </div>
+    )
+  }
 
-    private getDisplayValue(value: number): string {
-        return this.props.displayValue ? this.props.displayValue(value) : value.toFixed(0);
-    }
+  private getDisplayValue(value: number): string {
+    return this.props.displayValue ? this.props.displayValue(value) : value.toFixed(0);
+  }
 
-    private getPercentOfTotal(value: number): number {
-        return this.props.percentOfTotalValue ? this.props.percentOfTotalValue(value) : 1;
-    }
+  private getPercentOfTotal(value: number): number {
+    return this.props.percentOfTotalValue ? this.props.percentOfTotalValue(value) : 1;
+  }
 }

@@ -38,7 +38,7 @@ export default class AnnulusSegment extends React.Component<PropType, {}> {
 
   render() {
     return (
-      <path d={this.getPath()} className={this.props.className} />
+      <path d={this.getPath()} className={this.props.className}/>
     )
   }
 }

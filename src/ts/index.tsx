@@ -22,7 +22,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   const rootElement = document.getElementById("root")
   if (rootElement) {
     ReactDOM.render(
-      <App />,
+      <App/>,
       rootElement
     )
   }

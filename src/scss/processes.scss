@@ -78,7 +78,7 @@
   overflow-y: scroll;
 }
 
-.cpu-process-box,.mem-process-box {
+.cpu-process-box, .mem-process-box {
   flex-grow: 1;
   min-height: 0;
 }

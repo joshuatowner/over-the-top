@@ -6,7 +6,7 @@ import CpuUsageOverall from "./overallLoad";
 const VIEWBOX_WIDTH = 300;
 const VIEWBOX_HEIGHT = 300;
 
-export default class CpuUsageGraph extends React.Component<{}, {}>{
+export default class CpuUsageGraph extends React.Component<{}, {}> {
   render() {
     const r = VIEWBOX_HEIGHT / 2;
     const cx = VIEWBOX_WIDTH / 2;
@@ -27,7 +27,7 @@ export default class CpuUsageGraph extends React.Component<{}, {}>{
             outerRadius: r
           }}
         />
-        <CpuUsageOverall />
+        <CpuUsageOverall/>
       </svg>
     )
   }

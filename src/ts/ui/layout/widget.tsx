@@ -11,7 +11,7 @@ interface WidgetProps {
   title?: string
 }
 
-export default abstract class Widget extends React.Component<WidgetProps, {}>{
+export default abstract class Widget extends React.Component<WidgetProps, {}> {
 
   constructor(props: WidgetProps) {
     super(props);

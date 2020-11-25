@@ -7,21 +7,21 @@ import WebHexagonBadge from "./request";
 import NetworkInterfaceSettingDropdown from "../config/network/interface";
 
 export class NetworkUsageWidget extends Widget {
-    renderContent(pixelSize: Size): React.ReactNode {
-        return (
-          <div className={"network-usage"}>
-              <div className={"network-title widget-title"}>NETWORK USAGE</div>
-              <NetworkUsageGraph size={{
-                  width: pixelSize.width,
-                  height: pixelSize.height - 35
-              }} />
-          </div>
-        );
-    }
+  renderContent(pixelSize: Size): React.ReactNode {
+    return (
+      <div className={"network-usage"}>
+        <div className={"network-title widget-title"}>NETWORK USAGE</div>
+        <NetworkUsageGraph size={{
+          width: pixelSize.width,
+          height: pixelSize.height - 35
+        }}/>
+      </div>
+    );
+  }
 
-    renderSettings(): React.ReactNode | null {
-      return <NetworkInterfaceSettingDropdown />
-    }
+  renderSettings(): React.ReactNode | null {
+    return <NetworkInterfaceSettingDropdown/>
+  }
 }
 
 export class PingWidget extends Widget {
@@ -32,7 +32,7 @@ export class PingWidget extends Widget {
           <div>PING</div>
           <div className={"network-subtitle"}>8.8.8.8</div>
         </div>
-        <div className={"hexagon-container"}><PingHexagonBadge /></div>
+        <div className={"hexagon-container"}><PingHexagonBadge/></div>
       </div>
     );
   }
@@ -46,7 +46,7 @@ export class WebRequestWidget extends Widget {
           <div>WEB</div>
           <div className={"network-subtitle"}>google.com</div>
         </div>
-        <div className={"hexagon-container"}><WebHexagonBadge /></div>
+        <div className={"hexagon-container"}><WebHexagonBadge/></div>
       </div>
     );
   }

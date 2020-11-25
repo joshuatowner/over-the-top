@@ -9,7 +9,7 @@ export class CpuProcessesWidget extends Widget {
     return (
       <div className={"flex-col"}>
         <div className={"cpu-proc-title widget-title"}>PROCESSES BY CPU</div>
-        <CpuProcesses />
+        <CpuProcesses/>
       </div>
     );
   }
@@ -21,7 +21,7 @@ export class MemoryProcessesWidget extends Widget {
     return (
       <div className={"flex-col"}>
         <div className={"mem-proc-title widget-title"}>PROCESSES BY MEMORY</div>
-        <MemoryProcesses />
+        <MemoryProcesses/>
       </div>
     );
   }

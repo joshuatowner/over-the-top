@@ -1,8 +1,8 @@
 export interface CpuInfo {
-    cores: number,
+  cores: number,
 }
 
 export interface CpuUsageUpdate {
-    overallUsage: number,
-    coreUsages: number[],
+  overallUsage: number,
+  coreUsages: number[],
 }

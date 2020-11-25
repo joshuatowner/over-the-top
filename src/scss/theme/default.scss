@@ -1,90 +1,90 @@
 .default-theme {
-    background-color: #242424;
-    width: 100%;
-    height: 100%;
-    color: #FFFFFF;
+  background-color: #242424;
+  width: 100%;
+  height: 100%;
+  color: #FFFFFF;
 }
 
 text {
-    fill: #FFFFFF;
+  fill: #FFFFFF;
 }
 
 .background-primary {
-    background-color: #242424;
+  background-color: #242424;
 }
 
 .background-secondary {
-    background-color: #444444;
+  background-color: #444444;
 }
 
 .background-primary-fill {
-    fill: #242424;
+  fill: #242424;
 }
 
 .background-secondary-fill {
-    fill: #444444;
+  fill: #444444;
 }
 
 .background-primary-stroke {
-    stroke: #242424;
+  stroke: #242424;
 }
 
 .background-secondary-stroke {
-    stroke: #444444;
+  stroke: #444444;
 }
 
 .cpu-primary-fill {
-    fill: #699CC2
+  fill: #699CC2
 }
 
 .memory-primary-fill, .memory-usage-graph .linear-graph-bar {
-    fill: #9e69c2;
+  fill: #9e69c2;
 }
 
 .swap-primary-fill, .swap-usage-graph .linear-graph-bar {
-    fill: #c269b9;
+  fill: #c269b9;
 }
 
 .network-primary-fill, .network-usage-graph .linear-graph-bar {
-    fill: #C29769;
+  fill: #C29769;
 }
 
 .error-fill {
-    fill: #ff2424;
+  fill: #ff2424;
 }
 
 .cpu-cores-frame-segment {
-    fill: transparent;
-    stroke-width: 4px;
+  fill: transparent;
+  stroke-width: 4px;
 }
 
 .background-dot {
-    fill: #444444;
+  fill: #444444;
 }
 
 .widget {
-    border-top: 2px solid #999999;
-    border-bottom: 2px solid #999999;
-    box-sizing: border-box;
-    padding: 10px;
+  border-top: 2px solid #999999;
+  border-bottom: 2px solid #999999;
+  box-sizing: border-box;
+  padding: 10px;
 }
 
 .widget-title {
-    margin-bottom: 10px;
-    font-size: 14pt;
-    text-align: center;
+  margin-bottom: 10px;
+  font-size: 14pt;
+  text-align: center;
 }
 
 .cpu-cores-bar {
-    transform-origin: center;
-    transition: transform 250ms ease-in-out;
+  transform-origin: center;
+  transition: transform 250ms ease-in-out;
 }
 
 .cpu-history-bar {
-    stroke-width: 1px;
-    font-size: 14pt;
+  stroke-width: 1px;
+  font-size: 14pt;
 }
 
 .graph-mid-line {
-    stroke: #FFFFFF;
+  stroke: #FFFFFF;
 }

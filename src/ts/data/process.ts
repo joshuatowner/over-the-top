@@ -1,9 +1,9 @@
 export interface ProcessInfo {
-    name: string,
-    usage: number,
+  name: string,
+  usage: number,
 }
 
 export interface AllProcessesInfo {
-    memoryProcs: ProcessInfo[],
-    cpuProcs: ProcessInfo[],
+  memoryProcs: ProcessInfo[],
+  cpuProcs: ProcessInfo[],
 }

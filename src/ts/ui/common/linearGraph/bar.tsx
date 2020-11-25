@@ -1,7 +1,7 @@
 import {Size, Vec2} from "../../../util/vec2";
 import * as React from "react";
-import {BarValue} from "../../util/bar";
 import {CSSProperties} from "react";
+import {BarValue} from "../../util/bar";
 
 interface PropType {
   topLeft: Vec2;
@@ -11,7 +11,7 @@ interface PropType {
   inverted?: boolean;
 }
 
-export default class LinearGraphBar extends React.Component<PropType, {}>{
+export default class LinearGraphBar extends React.Component<PropType, {}> {
 
   inverted = () => !!(this.props.inverted);
 

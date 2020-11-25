@@ -1,4 +1,3 @@
-
 console.log(getStartAngle(0, 4), getEndAngle(0, 4));
 
 export function getStartAngle(index: number, total: number) {

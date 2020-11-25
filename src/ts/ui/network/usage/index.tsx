@@ -1,11 +1,9 @@
 import * as React from "react";
 import LinearGraphBackground from "../../common/linearGraph/background";
 import LinearGraphBars from "../../common/linearGraph/bars";
-import {MemoryUsageUpdate} from "../../../data/memory";
-import {memoryUsage} from "../../../backend/memory";
 import LinearGraph from "../../common/linearGraph/graph";
 import ValueLabel from "../../common/valueLabel";
-import {formatBinaryBytes, formatBytes, normalizeLog} from "../../util/data";
+import {formatBytes, normalizeLog} from "../../util/data";
 import {NetworkTransferUpdate} from "../../../data/network";
 import {networkUsage} from "../../../backend/network";
 

@@ -7,7 +7,7 @@ interface PropType {
   position: AnnulusPosition;
 }
 
-export default class CpuCoreUsageGraphBackground extends React.Component<PropType, {}>{
+export default class CpuCoreUsageGraphBackground extends React.Component<PropType, {}> {
   render() {
     const backgrounds = [];
     for (let i = 0; i < this.props.numCores; i++) {

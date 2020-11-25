@@ -1,12 +1,10 @@
 import {Size} from "../../../util/vec2";
 import * as React from "react";
 import {numPointsX, numPointsY} from "../points";
-import DotBackground from "../dotBackground";
 import CpuUsageWidget from "../../cpu";
 import {CpuProcessesWidget, MemoryProcessesWidget} from "../../process";
 import MemoryUsageWidget, {SwapUsageWidget} from "../../memory";
 import {NetworkUsageWidget, PingWidget, WebRequestWidget} from "../../network";
-import {mem} from "systeminformation";
 
 interface PropType {
   windowSize: Size;
@@ -57,26 +55,26 @@ export default class ResponsiveLayoutEngine extends React.Component<PropType, {}
           windowSize={this.props.windowSize}
         />
         {swapHeight !== 0 && <SwapUsageWidget
-          topLeft={{x: fullCpuWidth + fullProcessWidth, y: memoryHeight}}
-          size={{width: memoryNetworkWidth, height: swapHeight}}
-          windowSize={this.props.windowSize}
+            topLeft={{x: fullCpuWidth + fullProcessWidth, y: memoryHeight}}
+            size={{width: memoryNetworkWidth, height: swapHeight}}
+            windowSize={this.props.windowSize}
         />}
         {networkHeight !== 0 && <NetworkUsageWidget
-          topLeft={{x: fullCpuWidth + fullProcessWidth, y: memoryHeight + swapHeight}}
-          size={{width: memoryNetworkWidth, height: networkHeight}}
-          windowSize={this.props.windowSize}
+            topLeft={{x: fullCpuWidth + fullProcessWidth, y: memoryHeight + swapHeight}}
+            size={{width: memoryNetworkWidth, height: networkHeight}}
+            windowSize={this.props.windowSize}
         />}
         {pingHeight !== 0 && <>
-          <PingWidget
-            topLeft={{x: fullCpuWidth + fullProcessWidth, y: memoryHeight + swapHeight + networkHeight}}
-            size={{width: 3, height: pingHeight}}
-            windowSize={this.props.windowSize}
-          />
-          <WebRequestWidget
-            topLeft={{x: fullCpuWidth + fullProcessWidth + 4, y: memoryHeight + swapHeight + networkHeight}}
-            size={{width: 3, height: pingHeight}}
-            windowSize={this.props.windowSize}
-          />
+            <PingWidget
+                topLeft={{x: fullCpuWidth + fullProcessWidth, y: memoryHeight + swapHeight + networkHeight}}
+                size={{width: 3, height: pingHeight}}
+                windowSize={this.props.windowSize}
+            />
+            <WebRequestWidget
+                topLeft={{x: fullCpuWidth + fullProcessWidth + 4, y: memoryHeight + swapHeight + networkHeight}}
+                size={{width: 3, height: pingHeight}}
+                windowSize={this.props.windowSize}
+            />
         </>}
       </>
     );

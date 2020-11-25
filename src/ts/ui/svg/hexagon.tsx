@@ -1,6 +1,6 @@
 import * as React from "react";
-import {Vec2} from "../../util/vec2";
 import {CSSProperties} from "react";
+import {Vec2} from "../../util/vec2";
 
 interface PropType {
   className?: string;
@@ -9,7 +9,7 @@ interface PropType {
   height: number;
 }
 
-export default class Hexagon extends React.Component<PropType, {}>{
+export default class Hexagon extends React.Component<PropType, {}> {
 
   radius = () => this.props.height / 2;
   angle = Math.PI * 2 / 6;

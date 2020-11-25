@@ -16,7 +16,7 @@ export default class Annulus extends React.Component<PropType, {}> {
       A ${outerRadius} ${outerRadius} 0 1 0 ${cx} ${cy + outerRadius}
       A ${outerRadius} ${outerRadius} 0 1 0 ${cx} ${cy - outerRadius}
       Z
-      M ${cx} ${cy-innerRadius}
+      M ${cx} ${cy - innerRadius}
       A ${innerRadius} ${innerRadius} 0 1 1 ${cx} ${cy + innerRadius}
       A ${innerRadius} ${innerRadius} 0 1 1 ${cx} ${cy - innerRadius}
       Z
@@ -25,7 +25,7 @@ export default class Annulus extends React.Component<PropType, {}> {
 
   render() {
     return (
-      <path d={this.getPath()} className={this.props.className} />
+      <path d={this.getPath()} className={this.props.className}/>
     )
   }
 }

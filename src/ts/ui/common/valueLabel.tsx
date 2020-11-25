@@ -14,7 +14,7 @@ interface StateType {
   value: string;
 }
 
-export default class ValueLabel<T> extends React.Component<PropType<T>, StateType>{
+export default class ValueLabel<T> extends React.Component<PropType<T>, StateType> {
   constructor(props: Readonly<PropType<T>>) {
     super(props);
     this.state = {value: ""};

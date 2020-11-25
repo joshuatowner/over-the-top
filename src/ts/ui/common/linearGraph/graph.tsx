@@ -8,7 +8,7 @@ interface PropType {
   size: Size;
 }
 
-export default class LinearGraph extends React.Component<PropType, {}>{
+export default class LinearGraph extends React.Component<PropType, {}> {
 
   dashWidth = DASH_WIDTH;
   dashSpace = DASH_SPACE;

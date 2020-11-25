@@ -12,8 +12,8 @@ export default class CpuHistoryGraph extends React.Component<PropType, {}> {
   render() {
     return (
       <g>
-        <CpuHistoryGraphBackground position={this.props.position} />
-        <CpuHistoryGraphBars position={this.props.position} numBars={100} />
+        <CpuHistoryGraphBackground position={this.props.position}/>
+        <CpuHistoryGraphBars position={this.props.position} numBars={100}/>
       </g>
     );
   }

@@ -12,7 +12,7 @@ export default class MemoryUsageWidget extends Widget {
         <MemoryUsageGraph size={{
           width: pixelSize.width,
           height: pixelSize.height - 35
-        }} />
+        }}/>
       </div>
     );
   }
@@ -27,7 +27,7 @@ export class SwapUsageWidget extends Widget {
         <SwapUsageGraph size={{
           width: pixelSize.width,
           height: pixelSize.height - 35
-        }} />
+        }}/>
       </div>
     );
   }

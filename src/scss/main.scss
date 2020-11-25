@@ -6,100 +6,104 @@
 @use "settings";
 
 html {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 body {
-    font-family: 'Exo', sans-serif;
-    margin: 0;
-    height: 100%;
-    width: 100%;
+  font-family: 'Exo', sans-serif;
+  margin: 0;
+  height: 100%;
+  width: 100%;
 }
 
 #root {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 p {
-    margin: 0;
+  margin: 0;
 }
 
 .main {
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }
 
 .full {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .background {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .flex-col {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
 }
 
 .flex-row {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .cpu-usage, .memory-usage, .swap-usage, .network-ping {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
 }
 
 .cpu-fade-out, .fade-out {
-    animation: fadeOut 5s forwards;
+  animation: fadeOut 5s forwards;
 }
 
 @keyframes fadeOut {
-    0% {opacity: 1;}
-    100% {opacity: 0;}
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 .linear-graph-legend-label {
-    font-size: 12px;
-    font-weight: bold;
-    text-anchor: end;
-    alignment-baseline: hanging;
+  font-size: 12px;
+  font-weight: bold;
+  text-anchor: end;
+  alignment-baseline: hanging;
 }
 
 .linear-graph-inverted {
-    .linear-graph-legend-label {
-        alignment-baseline: baseline;
-    }
+  .linear-graph-legend-label {
+    alignment-baseline: baseline;
+  }
 }
 
 .value-label, .value-value {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 
 .value-label {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .hex-label {
-    font-size: 20px;
-    dominant-baseline: middle;
-    text-anchor: middle;
+  font-size: 20px;
+  dominant-baseline: middle;
+  text-anchor: middle;
 }
 
 .widget {
-    position: relative;
+  position: relative;
 }

@@ -13,7 +13,7 @@ export default class PieSegment extends React.Component<PropType, {}> {
   private getPath(): string {
     const {cx, cy, r, startAngle, endAngle}
       = this.props.position;
-    const point1 = { x: cx, y: cy };
+    const point1 = {x: cx, y: cy};
     const point2 = {
       x: r * Math.cos(startAngle) + cx,
       y: r * Math.sin(startAngle) + cy

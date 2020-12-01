@@ -3,6 +3,7 @@ const common = require('./webpack.common.config')
 
 module.exports = {
     ...common,
+    devtool: "source-map",
     optimization: {
         minimizer: [
             `...`,

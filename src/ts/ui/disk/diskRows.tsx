@@ -23,7 +23,10 @@ export default class DiskRows extends React.Component<{}, StateType>{
     this.state = {
       partitions: []
     };
-    this.load();
+  }
+
+  async componentDidMount() {
+    await this.load();
   }
 
   async load() {

@@ -27,6 +27,10 @@ export async function memoryUsageUpdate(): Promise<MemoryUsageUpdate> {
   }
 }
 
+const UNKNOWN_MEMORY_TYPE_WINDOWS = "Unknown";
+
+const filterType = (type: string) => type === UNKNOWN_MEMORY_TYPE_WINDOWS ? undefined : type;
+
 export async function getMemorySystemInformation(): Promise<MemorySystemInformation> {
   const info = await si.memLayout();
   return {

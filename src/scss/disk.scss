@@ -1,0 +1,55 @@
+.disk-rows-container {
+  display: grid;
+  grid-template-columns: min-content 1fr min-content;
+  row-gap: 10px;
+  overflow: hidden;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.disk-rows-container:hover {
+  overflow-y: auto;
+}
+
+.partition-row-label {
+  padding: 20px;
+  font-size: 30px;
+}
+
+.partition-row-metrics-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 10px;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.partition-row-metric-title {
+  font-weight: bold;
+  text-align: right;
+}
+
+.partition-row-metric-value {
+  font-size: 15px;
+}
+
+.partition-usage-bar-container {
+  position: relative;
+  width: 32px;
+  height: 100%;
+}
+
+.partition-usage-bar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.partition-usage-label {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+}

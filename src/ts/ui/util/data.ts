@@ -10,29 +10,33 @@ import {
   ONE_MEGABYTE
 } from "../constants/data";
 
+function formatNumber(input: number, places: number): number {
+  return parseFloat(input.toPrecision(places));
+}
+
 export function formatBytes(bytes: number, places = 3): string {
   const bits = bytes * ONE_BYTE;
   if (bits < ONE_KILOBYTE) {
-    return (bits / ONE_BYTE).toPrecision(places) + " B";
+    return formatNumber(bits / ONE_BYTE, places) + " B";
   } else if (bits < ONE_MEGABYTE) {
-    return (bits / ONE_KILOBYTE).toPrecision(places) + " kB";
+    return formatNumber(bits / ONE_KILOBYTE, places) + " kB";
   } else if (bits < ONE_GIGABYTE) {
-    return (bits / ONE_MEGABYTE).toPrecision(places) + " MB";
+    return formatNumber(bits / ONE_MEGABYTE, places) + " MB";
   } else {
-    return (bits / ONE_GIGABYTE).toPrecision(places) + " GB";
+    return formatNumber(bits / ONE_GIGABYTE, places) + " GB";
   }
 }
 
 export function formatBinaryBytes(bytes: number, places = 3): string {
   const bits = bytes * ONE_BYTE;
   if (bits < ONE_KIBIBYTE) {
-    return (bits / ONE_BYTE).toPrecision(places) + " B";
+    return formatNumber(bits / ONE_BYTE, places) + " B";
   } else if (bits < ONE_MEBIBYTE) {
-    return (bits / ONE_KIBIBYTE).toPrecision(places) + " KiB";
+    return formatNumber(bits / ONE_KIBIBYTE, places) + " KiB";
   } else if (bits < ONE_GIBIBYTE) {
-    return (bits / ONE_MEBIBYTE).toPrecision(places) + " MiB";
+    return formatNumber(bits / ONE_MEBIBYTE, places) + " MiB";
   } else {
-    return (bits / ONE_GIBIBYTE).toPrecision(places) + " GiB";
+    return formatNumber(bits / ONE_GIBIBYTE, places) + " GiB";
   }
 }
 

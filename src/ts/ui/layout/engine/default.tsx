@@ -5,6 +5,8 @@ import CpuUsageWidget from "../../cpu";
 import {CpuProcessesWidget, MemoryProcessesWidget} from "../../process";
 import MemoryUsageWidget, {SwapUsageWidget} from "../../memory";
 import {NetworkUsageWidget, PingWidget, WebRequestWidget} from "../../network";
+import PartitionWidget from "../../disk";
+import DetailsWidget from "../../details";
 
 interface PropType {
   windowSize: Size;
@@ -17,17 +19,21 @@ export default class ResponsiveLayoutEngine extends React.Component<PropType, {}
     const totalHeight = numPointsY(this.props.windowSize) - 1;
     const cpuWidth = 8;
     const fullCpuWidth = cpuWidth + 1;
-    const memoryNetworkWidth = 10;
-    let fullProcessWidth = totalWidth - (fullCpuWidth + memoryNetworkWidth);
+    const memoryNetworkWidth = 11;
+    const minProcessWidth = 6;
+    const detailsWidth = totalWidth - (fullCpuWidth + memoryNetworkWidth + minProcessWidth) >= 6 ? 6 : 0;
+    const fullMemoryNetworkWidth = memoryNetworkWidth + (detailsWidth === 0 ? 0 : 1);
+    let fullProcessWidth = totalWidth - (fullCpuWidth + fullMemoryNetworkWidth + detailsWidth);
     let processWidth = fullProcessWidth - 1;
-    if (processWidth < 6) {
+    if (processWidth < minProcessWidth) {
       fullProcessWidth = 0;
       processWidth = 0;
     }
     const memoryHeight = 4;
-    const networkHeight = (totalHeight - memoryHeight >= 6) ? 6 : 0;
+    let networkHeight = (totalHeight - memoryHeight >= 6) ? 6 : 0;
     const pingHeight = (totalHeight - (networkHeight + memoryHeight)) >= 4 ? 4 : 0;
     const swapHeight = (totalHeight - (memoryHeight + networkHeight + pingHeight)) >= 4 ? 4 : 0;
+    networkHeight = networkHeight === 0 ? 0 : totalHeight - (pingHeight + swapHeight + memoryHeight);
     return (
       <>
         <CpuUsageWidget
@@ -76,6 +82,16 @@ export default class ResponsiveLayoutEngine extends React.Component<PropType, {}
                 windowSize={this.props.windowSize}
             />
         </>}
+        <PartitionWidget
+          topLeft={{x: 0, y: 9}}
+          size={{width: cpuWidth, height: totalHeight - 9}}
+          windowSize={this.props.windowSize}
+        />
+        {detailsWidth !== 0 && <DetailsWidget
+          topLeft={{x: fullCpuWidth + fullProcessWidth + fullMemoryNetworkWidth, y: 0}}
+          size={{width: detailsWidth, height: totalHeight}}
+          windowSize={this.props.windowSize}
+        />}
       </>
     );
   }

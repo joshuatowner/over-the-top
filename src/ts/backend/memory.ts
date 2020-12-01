@@ -3,6 +3,7 @@ import * as si from "systeminformation";
 import {isMac} from "../util/os";
 import IntervalObservable from "../data/intervalObservable";
 import {getConfig} from "../config";
+import {MemorySystemInformation} from "../data/system";
 
 
 export async function memoryInfo(): Promise<MemoryInfo> {
@@ -23,6 +24,18 @@ export async function memoryUsageUpdate(): Promise<MemoryUsageUpdate> {
     swapUsage: siMemoryInfo.swapused / siMemoryInfo.swaptotal,
     swapUsageBytes: siMemoryInfo.swapused,
     swapCapacity: siMemoryInfo.swaptotal,
+  }
+}
+
+export async function getMemorySystemInformation(): Promise<MemorySystemInformation> {
+  const info = await si.memLayout();
+  return {
+    sticks: info.map(item => ({
+      type: item.type,
+      formFactor: item.formFactor,
+      clockSpeed: item.clockSpeed,
+      voltage: item.voltageConfigured,
+    }))
   }
 }
 

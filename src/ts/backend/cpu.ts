@@ -2,6 +2,7 @@ import {CpuInfo, CpuUsageUpdate} from "../data/cpu";
 import * as si from "systeminformation";
 import IntervalObservable from "../data/intervalObservable";
 import {getConfig} from "../config";
+import {CPUSystemInformation} from "../data/system";
 
 export async function cpuInfo(): Promise<CpuInfo> {
   const siCpuInfo = await si.cpu();
@@ -17,6 +18,18 @@ export async function cpuUsageUpdate(): Promise<CpuUsageUpdate> {
   return {
     overallUsage,
     coreUsages,
+  }
+}
+
+export async function getCPUInfo(): Promise<CPUSystemInformation> {
+  const info = await si.cpu();
+  return {
+    manufacturer: info.manufacturer,
+    model: info.brand,
+    speedMHz: info.speed,
+    cores: info.cores,
+    physicalCores: info.physicalCores,
+    processors: info.processors,
   }
 }
 

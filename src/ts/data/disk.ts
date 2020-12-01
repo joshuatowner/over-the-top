@@ -1,6 +1,13 @@
-export interface DiskInfo {
-  usage: number,
-  capacity: number,
+export enum DiskType {
+  hdd = "HDD"
+}
+
+export interface PartitionInfo {
+  label: string,
+  fsType: string,
+  capacity?: number,
+  usage?: number,
+  usagePercent?: number
 }
 
 export interface DiskTransferUpdate {
@@ -8,6 +15,7 @@ export interface DiskTransferUpdate {
   read: number,
 }
 
-export interface DiskUsageUpdate {
+export interface PartitionUsageUpdate {
+  capacity: number,
   usage: number,
 }

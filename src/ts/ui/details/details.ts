@@ -89,10 +89,10 @@ async function getMemoryDetails(): Promise<DetailGroup | undefined> {
     details.push({name: "Type", value: toCSV(types)});
   }
   if (clockSpeeds.length > 0) {
-    details.push({name: "Clock Speed", value: toCSV(clockSpeeds)});
+    details.push({name: "Clock Spd", value: toCSV(clockSpeeds)});
   }
   if (formFactors.length > 0) {
-    details.push({name: "Form Factor", value: toCSV(formFactors)});
+    details.push({name: "Form Fctr", value: toCSV(formFactors)});
   }
   if (voltage.length > 0) {
     details.push({name: "Voltage", value: toCSV(voltage)});

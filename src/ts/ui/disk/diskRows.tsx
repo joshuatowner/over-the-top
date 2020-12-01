@@ -7,6 +7,15 @@ interface StateType {
   partitions: PartitionInfo[]
 }
 
+const sortDisks = (disk1: PartitionInfo, disk2: PartitionInfo) => {
+  const capacityCompare = (disk2.capacity || 0) - (disk1.capacity || 0);
+  if (capacityCompare !== 0) {
+    return capacityCompare;
+  } else {
+    return (disk2.usage || 0) - (disk1.usage || 0);
+  }
+}
+
 export default class DiskRows extends React.Component<{}, StateType>{
 
   constructor(props: Readonly<{}>) {
@@ -18,8 +27,12 @@ export default class DiskRows extends React.Component<{}, StateType>{
   }
 
   async load() {
+    let partitions = await partitionInfo();
+    partitions = partitions
+      .filter(partition => partition.fsType || partition.usage)
+      .sort(sortDisks);
     this.setState({
-      partitions: await partitionInfo()
+      partitions
     });
   }
 

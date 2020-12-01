@@ -12,7 +12,7 @@ export default class PartitionRow extends React.Component<PropType, {}>{
   render() {
     const {fsType, capacity, usage, usagePercent} = this.props.partition;
     return <>
-      <div className={"partition-row-label background-secondary"}>{this.props.partition.label}</div>
+      <div className={"partition-row-label disk-primary-background"}>{this.props.partition.label}</div>
       <div className={"partition-row-metrics-container"}>
         <DiskMetric label={"FILESYSTEM"} metric={fsType} />
         {capacity && <DiskMetric label={"CAPACITY"} metric={formatBytes(capacity)} />}

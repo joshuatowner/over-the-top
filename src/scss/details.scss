@@ -33,3 +33,13 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+.detail-groups {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.detail-groups:hover {
+  overflow-y: auto;
+}

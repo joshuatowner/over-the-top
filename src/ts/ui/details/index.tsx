@@ -25,11 +25,11 @@ export class Details extends React.Component<{}, StateType> {
   }
 
   render() {
-    return <>
+    return <div className={"detail-groups"}>
       {this.state.detailGroups.map((group, index) =>
       (<DetailGroupComponent detailGroup={group} key={index} />))}
       <div className={"detail-divider"} />
-    </>
+    </div>
   }
 }
 

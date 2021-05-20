@@ -58,18 +58,20 @@ export default class CpuHistoryGraphBars extends React.Component<PropType, State
   }
 
   render() {
+    const padding = 3; // TODO constant
+    const anglePadding = 0.005;
     return (
       <g>
         {
           this.state.barValues.map((barValue, index) => {
-            const startAngle = getStartAngle(index, this.props.numBars);
-            const endAngle = getEndAngle(index, this.props.numBars);
+            const startAngle = getStartAngle(index, this.props.numBars) + anglePadding;
+            const endAngle = getEndAngle(index, this.props.numBars) - anglePadding;
             return (
               <CpuHistoryGraphBar
                 position={{
                   ...this.props.position,
-                  innerRadius: this.props.position.innerRadius + 1,
-                  outerRadius: this.props.position.outerRadius - 1,
+                  innerRadius: this.props.position.innerRadius + padding,
+                  outerRadius: this.props.position.outerRadius - padding,
                   startAngle, endAngle
                 }}
                 percent={barValue.percent}

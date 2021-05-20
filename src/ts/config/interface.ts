@@ -18,6 +18,8 @@ export interface Config {
   cpu: {
     timing: {
       updateInterval: number,
+      speedInterval: number,
+      tempInterval: number,
     },
     ui: {
       sizing: {

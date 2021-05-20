@@ -37,7 +37,11 @@ export default class CpuCoreUsageGraph extends React.Component<PropType, StateTy
       nodes.push(<CpuCoreUsageGraphBar
         coreId={i}
         numCores={numCores}
-        position={this.props.position}
+        position={{
+          ...this.props.position,
+          innerRadius: this.props.position.innerRadius + 2,
+          outerRadius: this.props.position.outerRadius - 2,
+        }}
         key={i}
       />);
     }

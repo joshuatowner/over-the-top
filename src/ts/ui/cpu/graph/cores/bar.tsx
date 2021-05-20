@@ -41,7 +41,7 @@ export default class CpuCoreUsageGraphBar extends React.Component<PropType, Stat
 
   getScaleSize(): number {
     const percent = this.state.coreUsage;
-    const {innerRadius, outerRadius} = this.props.position;
+    let {innerRadius, outerRadius} = this.props.position;
     return (innerRadius + (outerRadius - innerRadius) * percent) / outerRadius;
   }
 
@@ -63,7 +63,7 @@ export default class CpuCoreUsageGraphBar extends React.Component<PropType, Stat
           r: this.props.position.outerRadius,
           startAngle, endAngle
         }}
-        className={'cpu-cores-bar cpu-primary-fill'}
+        className={'cpu-cores-bar'}
         style={this.getScaleStyle()}
       />
     );

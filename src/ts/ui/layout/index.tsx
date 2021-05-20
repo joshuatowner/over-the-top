@@ -1,7 +1,7 @@
 import * as React from "react";
 import DotBackground from "./dotBackground";
 import {Size} from "../../util/vec2";
-import "../../../scss/theme/default.scss";
+import "../../../scss/theme/modern/main.scss";
 import ResponsiveLayoutEngine from "./engine/default";
 
 interface LayoutState {

@@ -20,19 +20,33 @@ export default class CpuCoreUsageGraphFrame extends React.Component<PropType, {}
           ...this.props.position,
           startAngle, endAngle
         }}
-        className={"cpu-cores-frame-segment background-primary-stroke"}
+        className={"cpu-cores-frame-segment"}
         key={i}
       />);
     }
     frames.push(<circle
       cx={this.props.position.cx} cy={this.props.position.cy}
       r={this.props.position.innerRadius}
-      className={"cpu-cores-frame-center background-primary-fill"}
+      className={"cpu-cores-frame-center"}
       key={this.props.numCores}
     />);
     return (
       <g>
-        {frames}
+        <g>
+          {frames}
+        </g>
+        <circle
+          cx={this.props.position.cx}
+          cy={this.props.position.cy}
+          r={this.props.position.innerRadius}
+          className={"cpu-cores-background-inner"}
+        />
+        <circle
+          cx={this.props.position.cx}
+          cy={this.props.position.cy}
+          r={this.props.position.outerRadius}
+          className={"cpu-cores-background-outer"}
+        />
       </g>
     );
   }

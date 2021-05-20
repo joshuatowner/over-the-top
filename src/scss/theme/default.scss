@@ -57,11 +57,6 @@ text {
   fill: #ff2424;
 }
 
-.cpu-cores-frame-segment {
-  fill: transparent;
-  stroke-width: 4px;
-}
-
 .background-dot {
   fill: #444444;
 }
@@ -80,8 +75,6 @@ text {
 }
 
 .cpu-cores-bar {
-  transform-origin: center;
-  transition: transform 250ms ease-in-out;
 }
 
 .cpu-history-bar {

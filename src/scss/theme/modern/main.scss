@@ -31,6 +31,10 @@ body {
   fill: transparent;
 }
 
+.fill-primary {
+  fill: $primary;
+}
+
 .cpu-history-background {
   @extend .display-none;
 }
@@ -52,7 +56,7 @@ body {
 }
 
 .cpu-history-bar {
-  fill: $primary;
+  @extend .fill-primary;
 }
 
 .cpu-history-background-compass-guide {
@@ -92,6 +96,14 @@ body {
   @extend .guide-secondary;
 }
 
+.dotflow-guide-primary {
+  @extend .guide-primary;
+}
+
+.dotflow-guide {
+  @extend .guide-secondary;
+}
+
 .cpu-overall {
   fill: $primary;
   font-weight: 300;
@@ -99,7 +111,7 @@ body {
 }
 
 .cpu-temperature-dot {
-  fill: $primary;
+
 }
 
 .cpu-cores-frame-segment {
@@ -107,3 +119,22 @@ body {
   stroke-width: 4px;
   stroke: $background;
 }
+
+.network-interface {
+  font-size: 20px;
+  fill: $primary;
+}
+
+.network-ping {
+  fill: transparent;
+  stroke: #46b94a;
+}
+
+.network-ping-label {
+  font-weight: bold;
+}
+
+.network-ping-text {
+  fill: $primary;
+}
+

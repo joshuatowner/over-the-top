@@ -15,6 +15,10 @@ export default class CpuHistoryGraphBar extends React.Component<PropType, {}> {
     return `cpu-history-bar ${fadingClass}`
   }
 
+  shouldComponentUpdate(nextProps: Readonly<PropType>, nextState: Readonly<{}>, nextContext: any): boolean {
+    return this.props.percent !== nextProps.percent || this.props.fading !== nextProps.fading;
+  }
+
   render() {
     const {innerRadius, outerRadius} = this.props.position;
     const percent = this.props.percent;

@@ -58,7 +58,7 @@ p {
   flex-direction: row;
 }
 
-.cpu-usage, .memory-usage, .swap-usage, .network-ping, .widget-content {
+.cpu-usage, .memory-usage, .swap-usage, .network-usage, .widget-content {
   display: flex;
   flex-direction: column;
   align-items: center;

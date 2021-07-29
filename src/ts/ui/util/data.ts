@@ -48,3 +48,11 @@ export function normalizeLog(bytes: number, min = ONE_KILOBIT, max = ONE_GIGABIT
   const amount = (Math.log(bytes * ONE_BYTE) - Math.log(min)) / denom;
   return Math.max(Math.min(amount, 1), 0);
 }
+
+export function normalize(bytes: number, min = ONE_KILOBIT, max = ONE_GIGABIT) {
+  if (bytes <= 0) {
+    return 0;
+  }
+  const amount = (bytes * ONE_BYTE - min) / (max - min);
+  return Math.max(Math.min(amount, 1), 0);
+}

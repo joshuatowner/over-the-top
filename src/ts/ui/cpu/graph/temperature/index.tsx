@@ -2,6 +2,7 @@ import * as React from "react";
 import {AnnulusPosition} from "../../../../util/vec2";
 import {cpuTemp} from "../../../../backend/cpu";
 import {CpuTemperatureUpdate} from "../../../../data/cpu";
+import {getColorForPercentage, WHITE_RED_GRADIENT} from "../../../util/gradient";
 
 
 interface PropType {
@@ -14,6 +15,9 @@ interface StateType {
   temperatures: number[];
   shouldFade: boolean[];
 }
+
+const MIN_TEMP_RED = 80;
+const MAX_TEMP_RED = 100;
 
 export default class CpuTemperatureGraph extends React.Component<PropType, StateType> {
 
@@ -35,7 +39,7 @@ export default class CpuTemperatureGraph extends React.Component<PropType, State
     };
   }
 
-  updateUsage = (update: CpuTemperatureUpdate) => {
+  updateUsage = (update: CpuTemperatureUpdate): void => {
     const newTemps = [...this.state.temperatures];
     const newFades = [...this.state.shouldFade];
     newTemps[this.state.currentIndex] = update.temperature;
@@ -48,22 +52,25 @@ export default class CpuTemperatureGraph extends React.Component<PropType, State
     });
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     cpuTemp.watch(this.updateUsage);
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     cpuTemp.remove(this.updateUsage);
   }
 
   render() {
     return this.state.temperatures.map((temp, index) => {
       const radius = (this.props.position.innerRadius + this.props.position.outerRadius) / 2;
-      const props = {
+      let percentage = (temp - MIN_TEMP_RED) / (MAX_TEMP_RED - MIN_TEMP_RED);
+      percentage = Math.min(Math.max(percentage, 0), 1);
+      const props: React.SVGProps<SVGCircleElement> = {
         cx: radius * Math.cos(Math.PI * 2 * (index / this.numDots)) + this.props.position.cx,
         cy: radius * Math.sin(Math.PI * 2 * (index / this.numDots)) + this.props.position.cy,
         r: 2, key: index,
-        className: "cpu-temperature-dot" + (this.state.shouldFade[index] ? " fade-out" : "")
+        className: "cpu-temperature-dot" + (this.state.shouldFade[index] ? " fade-out" : ""),
+        fill: getColorForPercentage(percentage, WHITE_RED_GRADIENT)
       }
       return (
         <circle {...props} />

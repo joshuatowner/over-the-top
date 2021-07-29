@@ -1,6 +1,6 @@
 import {CpuInfo, CpuSpeedUpdate, CpuTemperatureUpdate, CpuUsageUpdate} from "../data/cpu";
 import * as si from "systeminformation";
-import IntervalObservable from "../data/intervalObservable";
+import IntervalObservable from "../data/observable/intervalObservable";
 import {getConfig} from "../config";
 import {CPUSystemInformation} from "../data/system";
 

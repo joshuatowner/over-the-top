@@ -1,26 +1,17 @@
-import {setIntervalImmediate} from "../util/timing";
+import {setIntervalImmediate} from "../../util/timing";
+import {BaseObservable, Observable} from "./observable";
+export type Source<T> = () => T | Promise<T>;
 
-type Observer<T> = (value: T) => unknown;
-type Source<T> = () => T | Promise<T>;
-
-export default class IntervalObservable<T> {
+export default class IntervalObservable<T> extends BaseObservable<T> implements Observable<T> {
   private readonly source: Source<T>;
-  private observers: Observer<T>[];
   public readonly interval: number;
 
   constructor(source: Source<T>, interval: number) {
+    super();
     this.source = source;
     this.observers = [];
     this.interval = interval;
     setIntervalImmediate(this.update, interval);
-  }
-
-  watch(observer: Observer<T>) {
-    this.observers.push(observer);
-  }
-
-  remove(observer: Observer<T>) {
-    this.observers = this.observers.filter(obs => obs !== observer);
   }
 
   update = async () => {

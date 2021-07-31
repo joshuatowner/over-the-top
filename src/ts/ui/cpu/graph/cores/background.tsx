@@ -18,12 +18,22 @@ export default class CpuCoreUsageGraphBackground extends React.Component<PropTyp
           ...this.props.position,
           startAngle, endAngle
         }}
-        className={"cpu-cores-background background-secondary-fill"}
+        className={"cpu-cores-background"}
         key={i}
       />);
     }
     return (
-      <g>{backgrounds}</g>
+      <g>
+        <g>{backgrounds}</g>
+        <g>
+          <circle
+            cx={this.props.position.cx}
+            cy={this.props.position.cy}
+            r={(this.props.position.outerRadius + this.props.position.innerRadius) / 2}
+            className={"cpu-cores-background-guide"}
+          />
+        </g>
+      </g>
     );
   }
 }

@@ -8,3 +8,20 @@
 .network-subtitle {
   font-size: 15px;
 }
+
+.network-usage-dot {
+  fill: #FFFFFF;
+}
+
+.network-side-label {
+  dominant-baseline: hanging;
+  text-anchor: middle;
+  font-weight: lighter;
+  font-size: 30px;
+  letter-spacing: -8px;
+}
+
+.network-side-label-right {
+  @extend .network-side-label;
+  dominant-baseline: alphabetic;
+}

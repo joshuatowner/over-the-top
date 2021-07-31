@@ -12,7 +12,11 @@ export default class CpuHistoryGraphBar extends React.Component<PropType, {}> {
 
   getClass(): string {
     const fadingClass = this.props.fading ? 'cpu-fade-out' : ''
-    return `cpu-history-bar cpu-primary-fill background-secondary-stroke ${fadingClass}`
+    return `cpu-history-bar ${fadingClass}`
+  }
+
+  shouldComponentUpdate(nextProps: Readonly<PropType>, nextState: Readonly<{}>, nextContext: any): boolean {
+    return this.props.percent !== nextProps.percent || this.props.fading !== nextProps.fading;
   }
 
   render() {

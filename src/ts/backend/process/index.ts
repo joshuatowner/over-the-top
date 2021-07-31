@@ -1,5 +1,5 @@
 //import {sendProcessRequest} from "../../worker/boss";
-import IntervalObservable from "../../data/intervalObservable";
+import IntervalObservable from "../../data/observable/intervalObservable";
 import {getConfig} from "../../config";
 import {getAllProcessInfo} from "./process";
 

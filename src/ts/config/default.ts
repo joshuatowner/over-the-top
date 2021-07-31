@@ -38,6 +38,8 @@ const DEFAULT_CONFIG: Config = {
   cpu: {
     timing: {
       updateInterval: 250,
+      speedInterval: 500,
+      tempInterval: 1000
     },
     ui: {
       sizing: {

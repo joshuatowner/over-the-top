@@ -5,16 +5,14 @@ import NetworkUsageGraph from "./usage";
 import PingHexagonBadge from "./ping";
 import WebHexagonBadge from "./request";
 import NetworkInterfaceSettingDropdown from "../config/network/interface";
+import NetworkUsageDotflowGraph from "./usage/dotflow";
 
 export class NetworkUsageWidget extends Widget {
   renderContent(pixelSize: Size): React.ReactNode {
     return (
       <div className={"network-usage"}>
         <div className={"network-title widget-title"}>NETWORK USAGE</div>
-        <NetworkUsageGraph size={{
-          width: pixelSize.width,
-          height: pixelSize.height - 35
-        }}/>
+        <NetworkUsageDotflowGraph />
       </div>
     );
   }

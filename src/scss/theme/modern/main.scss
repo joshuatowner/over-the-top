@@ -1,0 +1,157 @@
+@use "sass:color";
+
+$background: #242424;
+$secondary: #444444;
+$primary: #FFFFFF;
+$ok: #46b94a;
+$error: #c40606;
+$warning: #ffbb1c;
+
+body {
+  background-color: $background;
+  fill: $background;
+  width: 100%;
+  height: 100%;
+  color: #FFFFFF;
+}
+
+.display-none {
+  display: none;
+}
+
+.cpu-divider {
+  stroke: color.adjust($primary, $lightness: -50%);
+  fill: transparent;
+}
+
+.guide-primary {
+  stroke: color.adjust($primary, $lightness: -70%);
+  fill: transparent;
+}
+
+.guide-secondary {
+  stroke: color.adjust($primary, $lightness: -80%);
+  fill: transparent;
+}
+
+.fill-primary {
+  fill: $primary;
+}
+
+.cpu-history-background {
+  @extend .display-none;
+}
+
+.cpu-history-background-outer {
+  @extend .display-none;
+}
+
+.cpu-history-background-inner {
+  @extend .cpu-divider;
+}
+
+.cpu-history-background-guide {
+  @extend .guide-secondary;
+}
+
+.cpu-history-background-guide-primary {
+  @extend .guide-secondary;
+}
+
+.cpu-history-bar {
+  @extend .fill-primary;
+}
+
+.cpu-history-background-compass-guide {
+  @extend .guide-secondary;
+}
+
+.cpu-history-background-compass-guide-primary {
+  @extend .guide-primary;
+}
+
+.cpu-speed-bar {
+  @extend .guide-primary;
+}
+
+.cpu-speed-bar-active {
+  stroke: $primary;
+}
+
+.cpu-cores-bar {
+  fill: $primary;
+  stroke: none;
+}
+
+.cpu-cores-background {
+  @extend .display-none;
+}
+
+.cpu-cores-background-outer {
+  @extend .guide-primary;
+}
+
+.cpu-cores-background-inner {
+  @extend .guide-secondary;
+}
+
+.cpu-cores-background-guide {
+  @extend .guide-secondary;
+}
+
+.dotflow-guide-primary {
+  @extend .guide-primary;
+}
+
+.dotflow-guide {
+  @extend .guide-secondary;
+}
+
+.cpu-overall {
+  fill: $primary;
+  font-weight: 300;
+  font-size: 30px;
+}
+
+.cpu-temperature-dot {
+
+}
+
+.cpu-cores-frame-segment {
+  fill: transparent;
+  stroke-width: 4px;
+  stroke: $background;
+}
+
+.network-interface {
+  font-size: 20px;
+  fill: $primary;
+}
+
+.badge {
+  fill: transparent;
+  stroke: $ok;
+}
+
+.badge-error {
+  @extend .badge;
+  stroke: $error;
+  fill: $error;
+}
+
+.badge-unknown {
+  @extend .badge;
+  stroke: $secondary;
+}
+
+.badge-label {
+  font-weight: bold;
+}
+
+.badge-text {
+  fill: $primary;
+}
+
+.network-usage-badge .badge {
+  stroke: $primary;
+}

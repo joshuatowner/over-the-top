@@ -1,6 +1,7 @@
 import * as React from "react";
 import {CSSProperties} from "react";
 import {PieSegmentPosition} from "../../util/vec2";
+import deepEqual from "deep-equal";
 
 interface PropType {
   position: PieSegmentPosition
@@ -8,7 +9,7 @@ interface PropType {
   style?: CSSProperties
 }
 
-export default class PieSegment extends React.Component<PropType, {}> {
+export default class PieSegment extends React.Component<PropType> {
 
   private getPath(): string {
     const {cx, cy, r, startAngle, endAngle}
@@ -38,5 +39,9 @@ export default class PieSegment extends React.Component<PropType, {}> {
         style={this.props.style}
       />
     )
+  }
+
+  shouldComponentUpdate(nextProps: Readonly<PropType>, nextState: Readonly<{}>, nextContext: any): boolean {
+    return !deepEqual(this.props, nextProps);
   }
 }

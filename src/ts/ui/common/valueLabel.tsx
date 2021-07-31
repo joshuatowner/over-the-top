@@ -1,4 +1,4 @@
-import IntervalObservable from "../../data/intervalObservable";
+import IntervalObservable from "../../data/observable/intervalObservable";
 import * as React from "react";
 
 interface PropType<T> {

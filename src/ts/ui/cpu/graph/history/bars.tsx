@@ -18,18 +18,25 @@ interface StateType {
 export default class CpuHistoryGraphBars extends React.Component<PropType, StateType> {
 
   currentIndex: number;
+  startAngles: number[];
+  endAngles: number[];
+  anglePadding = 0.005;
 
   constructor(props: Readonly<PropType>) {
     super(props);
     this.currentIndex = 0;
     const barValues = [];
+    this.startAngles = [];
+    this.endAngles = [];
     for (let i = 0; i < this.props.numBars; i++) {
       barValues.push({
         percent: 0,
         fading: true
       });
+      this.startAngles.push(getStartAngle(i, this.props.numBars) + this.anglePadding)
+      this.endAngles.push(getEndAngle(i, this.props.numBars) - this.anglePadding)
     }
-    this.state = {barValues}
+    this.state = {barValues};
   }
 
   updateUsage = (update: CpuUsageUpdate) => {
@@ -58,18 +65,19 @@ export default class CpuHistoryGraphBars extends React.Component<PropType, State
   }
 
   render() {
+    const padding = 3; // TODO constant
     return (
       <g>
         {
           this.state.barValues.map((barValue, index) => {
-            const startAngle = getStartAngle(index, this.props.numBars);
-            const endAngle = getEndAngle(index, this.props.numBars);
+            const startAngle = this.startAngles[index];
+            const endAngle = this.endAngles[index];
             return (
               <CpuHistoryGraphBar
                 position={{
                   ...this.props.position,
-                  innerRadius: this.props.position.innerRadius + 1,
-                  outerRadius: this.props.position.outerRadius - 1,
+                  innerRadius: this.props.position.innerRadius + padding,
+                  outerRadius: this.props.position.outerRadius - padding,
                   startAngle, endAngle
                 }}
                 percent={barValue.percent}

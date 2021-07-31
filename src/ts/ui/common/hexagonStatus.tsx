@@ -1,7 +1,7 @@
 import * as React from "react";
 import {CSSProperties} from "react";
 import Hexagon from "../svg/hexagon";
-import IntervalObservable from "../../data/intervalObservable";
+import IntervalObservable from "../../data/observable/intervalObservable";
 
 const WIDTH = 100;
 const HEIGHT = 100;

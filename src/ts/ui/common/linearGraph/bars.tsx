@@ -1,7 +1,7 @@
 import {Size, Vec2} from "../../../util/vec2";
 import * as React from "react";
 import {BarValue} from "../../util/bar";
-import IntervalObservable from "../../../data/intervalObservable";
+import IntervalObservable from "../../../data/observable/intervalObservable";
 import LinearGraphBar from "./bar";
 
 interface PropType<T> {

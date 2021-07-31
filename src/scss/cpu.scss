@@ -5,9 +5,15 @@
 
 .cpu-cores-bar {
   transform-origin: center;
+  transition: transform 250ms ease-in-out;
 }
 
 .cpu-overall {
-  dominant-baseline: middle;
+  dominant-baseline: central;
   text-anchor: middle;
+}
+
+.cpu-cores-frame-segment {
+  fill: transparent;
+  stroke-width: 4px;
 }

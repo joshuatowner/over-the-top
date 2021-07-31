@@ -18,11 +18,16 @@ interface StateType {
 
 export default class CpuCoreUsageGraphBar extends React.Component<PropType, StateType> {
 
+  startAngle: number;
+  endAngle: number;
+
   constructor(props: Readonly<PropType>) {
     super(props);
     this.state = {
       coreUsage: 0
     }
+    this.startAngle = getStartAngle(this.props.coreId, this.props.numCores);
+    this.endAngle = getEndAngle(this.props.coreId, this.props.numCores);
   }
 
   updateCoreUsage = (update: CpuUsageUpdate) => {
@@ -41,29 +46,27 @@ export default class CpuCoreUsageGraphBar extends React.Component<PropType, Stat
 
   getScaleSize(): number {
     const percent = this.state.coreUsage;
-    const {innerRadius, outerRadius} = this.props.position;
+    let {innerRadius, outerRadius} = this.props.position;
     return (innerRadius + (outerRadius - innerRadius) * percent) / outerRadius;
   }
 
   getScaleStyle(): CSSProperties {
-    const {cx, cy} = this.props.position;
     return {
       transform: `scale(${this.getScaleSize()})`
     }
   }
 
   render() {
-    const startAngle = getStartAngle(this.props.coreId, this.props.numCores);
-    const endAngle = getEndAngle(this.props.coreId, this.props.numCores);
     return (
       <PieSegment
         position={{
           cx: this.props.position.cx,
           cy: this.props.position.cy,
           r: this.props.position.outerRadius,
-          startAngle, endAngle
+          startAngle: this.startAngle,
+          endAngle: this.endAngle
         }}
-        className={'cpu-cores-bar cpu-primary-fill'}
+        className={'cpu-cores-bar'}
         style={this.getScaleStyle()}
       />
     );

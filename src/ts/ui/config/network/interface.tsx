@@ -3,14 +3,18 @@ import {ChangeEvent, ReactNode} from "react";
 import {getAllInterfaces, getDefaultInterface} from "../../../backend/network";
 import {getConfig, updateConfig} from "../../../config";
 
+interface PropType {
+  showLabel?: boolean;
+}
+
 interface StateType {
   defaultInterface?: string;
   possibleInterfaces: string[];
 }
 
-export default class NetworkInterfaceSettingDropdown extends React.Component<{}, StateType> {
+export default class NetworkInterfaceSettingDropdown extends React.Component<PropType, StateType> {
 
-  constructor(props: Readonly<{}>) {
+  constructor(props: Readonly<PropType>) {
     super(props);
     this.state = {
       defaultInterface: undefined,
@@ -28,7 +32,7 @@ export default class NetworkInterfaceSettingDropdown extends React.Component<{},
     if (this.state.defaultInterface) {
       options.push(
         <option value={this.state.defaultInterface} key={-1}>
-          default ({this.state.defaultInterface})
+          {this.state.defaultInterface}
         </option>
       )
     }
@@ -50,7 +54,7 @@ export default class NetworkInterfaceSettingDropdown extends React.Component<{},
 
   render() {
     return <>
-      <p>Network Interface: </p>
+      {this.props.showLabel && <p>Network Interface: </p>}
       <select onChange={this.onChange}>
         {this.getOptions()}
       </select>

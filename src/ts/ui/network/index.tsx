@@ -12,7 +12,7 @@ export class NetworkUsageWidget extends Widget {
     return (
       <div className={"network-usage"}>
         <div className={"network-title widget-title"}>NETWORK USAGE</div>
-        <NetworkUsageDotflowGraph />
+        <NetworkUsageDotflowGraph size={pixelSize} />
       </div>
     );
   }

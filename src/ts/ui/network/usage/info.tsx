@@ -6,6 +6,7 @@ import RequestBadge from "../request/badge";
 import AppliedObservable from "../../../data/observable/appliedObservable";
 import {formatBinaryBytes, formatBytes} from "../../util/data";
 import NetworkUsageBadge from "./badge";
+import NetworkInterfaceSettingDropdown from "../../config/network/interface";
 
 interface PropType {
   position: Vec2;

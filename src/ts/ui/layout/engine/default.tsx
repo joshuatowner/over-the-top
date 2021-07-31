@@ -43,7 +43,7 @@ export default class ResponsiveLayoutEngine extends React.Component<PropType, {}
         />
         <NetworkUsageWidget
           topLeft={{x: 0, y: 8}}
-          size={{width: 12, height: 6}}
+          size={{width: 14, height: 6}}
           windowSize={this.props.windowSize}
         />
         {/*{processWidth !== 0 && (*/}

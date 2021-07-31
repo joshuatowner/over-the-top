@@ -109,3 +109,8 @@ p {
 .widget {
   position: relative;
 }
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}

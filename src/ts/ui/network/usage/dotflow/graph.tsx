@@ -96,11 +96,11 @@ export default class DotflowGraph extends React.Component<PropType, StateType> {
       <DotflowGraphLegend
         position={{x: position.x, y: position.y + (reverse ? size.height - 10 : 0)}}
         size={{width: size.width, height: 10}}
-        lines={41}
+        lines={40}
         major={4}
         reverse={reverse || false}
       />
-      {result}
+      <g>{result}</g>
       <line x1={position.x} x2={position.x + size.width}
             y1={position.y + (reverse ? 0 : size.height)} y2={position.y + (reverse ? 0 : size.height)}
             className={"dotflow-guide-primary"} />
@@ -108,7 +108,8 @@ export default class DotflowGraph extends React.Component<PropType, StateType> {
         x={position.x - this.dotRadius * 2.5} y={position.y + (reverse ? 0 : 10)}
         height={size.height - 10} width={this.dotRadius * 2.5 + 1} />
       <rect
-        x={position.x + size.width - 1} y={position.y + (reverse ? 0 : 10)}
+        x={position.x + size.width - 1} y={position.y + (reverse ? 0 : 10
+      )}
         height={size.height - 10} width={this.dotRadius * 2.5 + 1} />
     </>;
   }

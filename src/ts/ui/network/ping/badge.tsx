@@ -2,6 +2,7 @@ import React from "react";
 import {Size, Vec2} from "../../../util/vec2";
 import {ping, pingUpdate} from "../../../backend/network";
 import {PingUpdate} from "../../../data/network";
+import BadgeStatus from "../../common/BadgeStatus";
 
 interface PropType {
   position: Vec2;
@@ -24,8 +25,8 @@ export default class PingBadge extends React.Component<PropType, StateType> {
   }
 
   onUpdate = (update: PingUpdate) => {
-    const value = update.latency && update.latency >= 0 ? update.latency.toFixed(0) : "ERR";
     const error = !update.latency || update.latency < 0;
+    const value = update.latency && update.latency >= 0 ? update.latency.toFixed(0) : "ERR";
     this.setState({ value, error })
   }
 
@@ -38,14 +39,6 @@ export default class PingBadge extends React.Component<PropType, StateType> {
   }
 
   render() {
-    const { position, size } = this.props;
-    return <g>
-      <rect x={position.x} y={position.y} width={size.width} height={size.height} />
-      <text x={position.x + size.width / 2} y={position.y + size.height / 2}
-            className={"network-ping-text"} dominantBaseline={"central"} textAnchor={"middle"}>
-        <tspan className={"network-ping-label"}>Ping: </tspan>
-        {this.state.error ? "ERROR" : this.state.value}
-      </text>
-    </g>
+    return <BadgeStatus {...this.state} {...this.props} label={"PING"} />
   }
 }

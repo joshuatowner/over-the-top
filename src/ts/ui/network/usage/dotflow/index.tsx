@@ -5,6 +5,7 @@ import {normalizeLog} from "../../../util/data";
 import LinearInterpolatedObservable from "../../../../data/observable/linearInterpolatedObservable";
 import AppliedObservable from "../../../../data/observable/appliedObservable";
 import NetworkInterfaceInfo from "../info";
+import DotflowGraphSideLabel from "./sideLabel";
 
 const interval = networkUsage.interval / 2;
 const upUsage = new LinearInterpolatedObservable(
@@ -15,7 +16,7 @@ const downUsage = new LinearInterpolatedObservable(
 const VIEWBOX_WIDTH = 602;
 const VIEWBOX_HEIGHT = 250;
 
-const SIDE_SIZE = 80;
+const SIDE_SIZE = 40;
 
 export default class NetworkUsageDotflowGraph extends React.Component<{}, {}> {
 
@@ -34,6 +35,14 @@ export default class NetworkUsageDotflowGraph extends React.Component<{}, {}> {
       <NetworkInterfaceInfo
         position={{x: SIDE_SIZE, y: VIEWBOX_HEIGHT / 2 - 20}}
         size={{width: VIEWBOX_WIDTH - SIDE_SIZE * 2, height: 40}}
+      />
+      <DotflowGraphSideLabel
+        centerRight={{x: SIDE_SIZE, y: VIEWBOX_HEIGHT / 2}}
+        label={"LOCAL"} height={VIEWBOX_HEIGHT}
+      />
+      <DotflowGraphSideLabel
+        centerRight={{x: VIEWBOX_WIDTH - SIDE_SIZE, y: VIEWBOX_HEIGHT / 2}}
+        label={"INTERNET"} reverse={true} height={VIEWBOX_HEIGHT}
       />
     </svg>;
   }

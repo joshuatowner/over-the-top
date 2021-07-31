@@ -3,6 +3,9 @@
 $background: #242424;
 $secondary: #444444;
 $primary: #FFFFFF;
+$ok: #46b94a;
+$error: #c40606;
+$warning: #ffbb1c;
 
 body {
   background-color: $background;
@@ -125,16 +128,30 @@ body {
   fill: $primary;
 }
 
-.network-ping {
+.badge {
   fill: transparent;
-  stroke: #46b94a;
+  stroke: $ok;
 }
 
-.network-ping-label {
+.badge-error {
+  @extend .badge;
+  stroke: $error;
+  fill: $error;
+}
+
+.badge-unknown {
+  @extend .badge;
+  stroke: $secondary;
+}
+
+.badge-label {
   font-weight: bold;
 }
 
-.network-ping-text {
+.badge-text {
   fill: $primary;
 }
 
+.network-usage-badge .badge {
+  stroke: $primary;
+}

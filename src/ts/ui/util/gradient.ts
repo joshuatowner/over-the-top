@@ -24,6 +24,11 @@ export const WHITE_RED_GRADIENT = [
   {pct: 1.0, color: {r: 255, g: 0, b: 0}},
 ]
 
+export const GREY_WHITE_GRADIENT = [
+  {pct: 0.0, color: {r: 60, g: 60, b: 60}},
+  {pct: 1.0, color: {r: 255, g: 255, b: 255}},
+]
+
 export function darkerLighterGradient(color: Color, ratio = 0.4): GradientEntry[] {
   const lighter = color.lighten(ratio);
   const darker = color.darken(ratio);

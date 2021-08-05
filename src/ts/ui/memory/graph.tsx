@@ -8,7 +8,7 @@ interface PropType {
   size: Size;
 }
 
-const memoryPercent = new AppliedObservable(memoryUsage, memoryUsage => memoryUsage.memoryUsage / memoryUsage.memCapacity);
+const memoryPercent = new AppliedObservable(memoryUsage, memoryUsage => memoryUsage.memoryUsage);
 
 export default class MemoryUsageGraph extends React.Component<PropType, {}> {
 

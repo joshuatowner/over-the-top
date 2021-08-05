@@ -7,7 +7,7 @@ interface PropType {
   size: Size;
 }
 
-export default class UsageGridItem extends React.PureComponent<PropType> {
+export default class UsageGridItem extends React.Component<PropType> {
 
   shouldComponentUpdate(nextProps: Readonly<PropType>, nextState: Readonly<{}>, nextContext: any): boolean {
     return this.props.value !== nextProps.value;
@@ -15,10 +15,9 @@ export default class UsageGridItem extends React.PureComponent<PropType> {
 
   render() {
     return <><rect
-      x={this.props.position.x - this.props.size.width / 2}
-      y={this.props.position.y - this.props.size.height / 2}
-      width={this.props.size.width}
-      height={this.props.size.height}
+      className={"usage-grid-item"}
+      {...this.props.size}
+      {...this.props.position}
     /></>
   }
 }

@@ -60,11 +60,11 @@ export default class ResponsiveLayoutEngine extends React.Component<PropType, {}
         {/*    />*/}
         {/*  </>*/}
         {/*)}*/}
-        {/*<MemoryUsageWidget*/}
-        {/*  topLeft={{x: fullCpuWidth + fullProcessWidth, y: 0}}*/}
-        {/*  size={{width: memoryNetworkWidth, height: 4}}*/}
-        {/*  windowSize={this.props.windowSize}*/}
-        {/*/>*/}
+        <MemoryUsageWidget
+          topLeft={{x: fullCpuWidth, y: 0}}
+          size={{width: memoryNetworkWidth, height: 4}}
+          windowSize={this.props.windowSize}
+        />
         {/*{swapHeight !== 0 && <SwapUsageWidget*/}
         {/*    topLeft={{x: fullCpuWidth + fullProcessWidth, y: memoryHeight}}*/}
         {/*    size={{width: memoryNetworkWidth, height: swapHeight}}*/}

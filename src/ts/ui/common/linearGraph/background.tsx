@@ -32,7 +32,7 @@ export default class LinearGraphBackground extends React.Component<PropType, {}>
           y={this.baseHeight()}
         />
         <line
-          className={"memory-usage-graph-legend-line background-secondary-stroke"}
+          className={"memory-usage-lineargraph-legend-line background-secondary-stroke"}
           x1={topLeft.x} y1={this.maxHeight()}
           x2={topLeft.x + size.width} y2={this.maxHeight()}
         />
@@ -43,7 +43,7 @@ export default class LinearGraphBackground extends React.Component<PropType, {}>
           {this.props.topLabel || "100%"}
         </text>
         <line
-          className={"memory-usage-graph-legend-line background-secondary-stroke"}
+          className={"memory-usage-lineargraph-legend-line background-secondary-stroke"}
           x1={topLeft.x} y1={this.midHeight()}
           x2={topLeft.x + size.width} y2={this.midHeight()}
         />

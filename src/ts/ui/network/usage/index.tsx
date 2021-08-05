@@ -19,7 +19,7 @@ export default class NetworkUsageGraph extends LinearGraph {
     const height = this.viewboxHeight();
     const numBars = this.numBars();
     return (
-      <div className={'network-usage-graph-container'}>
+      <div className={'network-usage-lineargraph-container'}>
         <svg
           viewBox={`0 0 ${width} ${height}`}
           className={'network-usage-graph full'} preserveAspectRatio="xMidYMid meet">

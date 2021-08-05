@@ -1,18 +1,17 @@
 import * as React from "react";
 import Widget from "../layout/widget";
 import {Size} from "../../util/vec2";
-import MemoryUsageGraph from "./graph";
 import SwapUsageGraph from "./swap/graph";
+import MemoryUsageGraph from "./graph";
 
 export default class MemoryUsageWidget extends Widget {
   renderContent(pixelSize: Size): React.ReactNode {
     return (
       <div className={"memory-usage"}>
         <div className={"memory-title widget-title"}>MEMORY USAGE</div>
-        <MemoryUsageGraph size={{
-          width: pixelSize.width,
-          height: pixelSize.height - 35
-        }}/>
+        <MemoryUsageGraph
+          size={{ width: pixelSize.width, height: pixelSize.height }}
+        />
       </div>
     );
   }

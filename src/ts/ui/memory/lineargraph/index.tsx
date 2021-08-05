@@ -11,7 +11,7 @@ const getGraphValue = (update: MemoryUsageUpdate) => update.memoryUsage;
 const getCapacityValue = (update: MemoryUsageUpdate) => formatBinaryBytes(update.memCapacity);
 const getUsageValue = (update: MemoryUsageUpdate) => formatBinaryBytes(update.memoryUsageBytes);
 
-export default class MemoryUsageGraph extends LinearGraph {
+export default class MemoryLinearUsageGraph extends LinearGraph {
 
   render() {
     const width = this.viewboxWidth();

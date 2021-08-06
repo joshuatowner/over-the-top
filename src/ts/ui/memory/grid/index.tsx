@@ -5,7 +5,7 @@ import UsageGridItem from "./item";
 import {shuffleArray} from "../../util/list";
 
 interface PropType {
-  observable: Observable<number>;
+  observable: Observable<Map<number, number>>;
   position: Vec2;
   size: Size;
   gridSize: number;
@@ -16,6 +16,7 @@ interface StateType {
   values: number[];
 }
 
+const arrayFill = <T extends unknown>(length: number, value: T): T[] => new Array(length).fill(value);
 
 export default class UsageGrid extends React.Component<PropType, StateType> {
 
@@ -42,12 +43,14 @@ export default class UsageGrid extends React.Component<PropType, StateType> {
     };
   }
 
-  onUpdate = (value: number) => {
-    const oneLength = Math.round(value * this.rows * this.columns);
-    const newValues: number[] = new Array(oneLength).fill(1)
-      .concat(Array(this.rows * this.columns - oneLength).fill(0));
+  onUpdate = (pcts: Map<number, number>) => {
+    let values: number[] = [];
+    for (const key of pcts.keys()) {
+      values = values.concat(arrayFill(Math.round(this.rows * this.columns * (pcts.get(key) || 0)), key));
+    }
+    values = values.concat(arrayFill(this.rows * this.columns - values.length, 0));
     this.setState({
-      values: newValues
+      values
     });
   }
 

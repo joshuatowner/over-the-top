@@ -7,9 +7,9 @@ import LinearGraph from "../../common/linearGraph/graph";
 import ValueLabel from "../../common/valueLabel";
 import {formatBinaryBytes} from "../../util/data";
 
-const getGraphValue = (update: MemoryUsageUpdate) => update.memoryUsage;
+const getGraphValue = (update: MemoryUsageUpdate) => update.memoryActiveUsage;
 const getCapacityValue = (update: MemoryUsageUpdate) => formatBinaryBytes(update.memCapacity);
-const getUsageValue = (update: MemoryUsageUpdate) => formatBinaryBytes(update.memoryUsageBytes);
+const getUsageValue = (update: MemoryUsageUpdate) => formatBinaryBytes(update.memoryActiveUsageBytes);
 
 export default class MemoryLinearUsageGraph extends LinearGraph {
 

@@ -10,7 +10,7 @@ export interface Observable<T> {
 export abstract class BaseObservable<T> implements Observable<T> {
   protected observers: Observer<T>[];
 
-  protected constructor() {
+  public constructor() {
     this.observers = [];
   }
 

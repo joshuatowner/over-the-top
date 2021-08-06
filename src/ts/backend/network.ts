@@ -3,6 +3,7 @@ import {DEFAULT_NETWORK_ADAPTER} from "../config/const";
 import * as si from "systeminformation";
 import {NetworkTransferUpdate, PingUpdate, WebUpdate} from "../data/network";
 import IntervalObservable from "../data/observable/intervalObservable";
+import TriggeredObservable from "../data/observable/triggeredObservable";
 
 let defaultNetworkInterface: string | undefined;
 
@@ -31,11 +32,9 @@ export async function webUpdate(): Promise<WebUpdate> {
 
 async function getNetworkAdapter(): Promise<string> {
   const configAdapter = getConfig().network.interface;
-  if (configAdapter === DEFAULT_NETWORK_ADAPTER) {
-    return getDefaultInterface();
-  } else {
-    return configAdapter;
-  }
+  const adapter = configAdapter === DEFAULT_NETWORK_ADAPTER ? await getDefaultInterface() : configAdapter;
+  networkAdapter.pushUpdate(adapter);
+  return adapter;
 }
 
 export async function getDefaultInterface() {
@@ -61,3 +60,4 @@ function getWebUrl() {
 export const networkUsage = new IntervalObservable(networkTransferUpdate, getConfig().network.timing.bandwidthUpdateInterval);
 export const ping = new IntervalObservable(pingUpdate, getConfig().network.timing.pingUpdateInterval);
 export const webRequest = new IntervalObservable(webUpdate, getConfig().network.timing.webUpdateInterval);
+export const networkAdapter = new TriggeredObservable<string>(true);

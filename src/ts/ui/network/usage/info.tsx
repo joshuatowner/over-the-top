@@ -1,5 +1,5 @@
 import React from "react";
-import {getDefaultInterface, networkUsage} from "../../../backend/network";
+import {getDefaultInterface, networkAdapter, networkUsage} from "../../../backend/network";
 import {Size, Vec2} from "../../../util/vec2";
 import PingBadge from "../ping/badge";
 import RequestBadge from "../request/badge";
@@ -29,6 +29,20 @@ export default class NetworkInterfaceInfo extends React.Component<PropType, Stat
     super(props);
     this.state = {};
     getDefaultInterface().then((name => this.setState({name})));
+  }
+
+  onUpdate = (networkAdapter: string) => {
+    this.setState({
+      name: networkAdapter
+    });
+  }
+
+  componentDidMount() {
+    networkAdapter.watch(this.onUpdate);
+  }
+
+  componentWillUnmount() {
+    networkAdapter.remove(this.onUpdate);
   }
 
   render() {

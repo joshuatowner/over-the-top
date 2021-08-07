@@ -1,5 +1,5 @@
 import {fromUrl, parseDomain} from "parse-domain";
-import {getConfig} from "../../config";
+import {getConfig} from "../../backend/config";
 
 export function getDomain(): string {
   const url = getConfig().network.webUrl;

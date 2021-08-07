@@ -1,12 +1,16 @@
 import * as React from "react";
-import {cpuUsage} from "../../../backend/cpu";
 import {CpuUsageUpdate} from "../../../data/cpu";
+import {cpuUsage} from "../../observer/cpu";
+import {BackendContext} from "../../backendContext";
 
 interface StateType {
   percent: number;
 }
 
 export default class CpuUsageOverall extends React.Component<{}, StateType> {
+
+  static contextType = BackendContext;
+  context!: React.ContextType<typeof BackendContext>;
 
   skip: number = 0
 
@@ -35,10 +39,10 @@ export default class CpuUsageOverall extends React.Component<{}, StateType> {
   }
 
   componentDidMount() {
-    cpuUsage.watch(this.updateUsage)
+    cpuUsage(this.context).watch(this.updateUsage)
   }
 
   componentWillUnmount() {
-    cpuUsage.remove(this.updateUsage);
+    cpuUsage(this.context).remove(this.updateUsage);
   }
 }

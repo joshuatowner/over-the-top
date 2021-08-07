@@ -1,9 +1,8 @@
-// All of the Node.ts APIs are available in the preload process.
-// It has the same sandbox as a Chrome extension.
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import App from "./ui";
-import {loadConfig} from "./config";
+import {getConfig, loadConfig} from "./backend/config";
+import NodeBackend from "./backend";
 
 window.addEventListener("DOMContentLoaded", async () => {
   const replaceText = (selector: string, text: string) => {
@@ -18,11 +17,12 @@ window.addEventListener("DOMContentLoaded", async () => {
   }
 
   await loadConfig();
+  window.config = getConfig();
 
   const rootElement = document.getElementById("root")
   if (rootElement) {
     ReactDOM.render(
-      <App/>,
+      <App backend={new NodeBackend()}/>,
       rootElement
     )
   }

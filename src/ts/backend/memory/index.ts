@@ -2,7 +2,7 @@ import {MemoryInfo, MemoryUsageUpdate} from "../../data/memory";
 import * as si from "systeminformation";
 import {isMac} from "../../util/os";
 import IntervalObservable from "../../data/observable/intervalObservable";
-import {getConfig} from "../../config";
+import {getConfig} from "../config";
 import {MemorySystemInformation} from "../../data/system";
 import {macMem} from "./mac";
 
@@ -45,4 +45,3 @@ export async function getMemorySystemInformation(): Promise<MemorySystemInformat
   }
 }
 
-export const memoryUsage = new IntervalObservable(memoryUsageUpdate, getConfig().memory.timing.updateInterval);

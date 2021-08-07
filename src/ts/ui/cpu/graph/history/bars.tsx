@@ -2,9 +2,10 @@ import * as React from "react";
 import {AnnulusPosition} from "../../../../util/vec2";
 import CpuHistoryGraphBar from "./bar";
 import {getEndAngle, getStartAngle} from "../../../util/angle";
-import {cpuUsage} from "../../../../backend/cpu";
 import {CpuUsageUpdate} from "../../../../data/cpu";
 import {BarValue} from "../../../util/bar";
+import {cpuUsage} from "../../../observer/cpu";
+import {BackendContext} from "../../../backendContext";
 
 interface PropType {
   position: AnnulusPosition;
@@ -16,6 +17,9 @@ interface StateType {
 }
 
 export default class CpuHistoryGraphBars extends React.Component<PropType, StateType> {
+
+  static contextType = BackendContext;
+  context!: React.ContextType<typeof BackendContext>;
 
   currentIndex: number;
   startAngles: number[];
@@ -57,11 +61,11 @@ export default class CpuHistoryGraphBars extends React.Component<PropType, State
   }
 
   componentDidMount() {
-    cpuUsage.watch(this.updateUsage)
+    cpuUsage(this.context).watch(this.updateUsage)
   }
 
   componentWillUnmount() {
-    cpuUsage.remove(this.updateUsage);
+    cpuUsage(this.context).remove(this.updateUsage);
   }
 
   render() {

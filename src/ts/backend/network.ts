@@ -1,14 +1,12 @@
-import {getConfig} from "../config";
-import {DEFAULT_NETWORK_ADAPTER} from "../config/const";
+import {getConfig} from "./config";
+import {DEFAULT_NETWORK_ADAPTER} from "./config/const";
 import * as si from "systeminformation";
 import {NetworkTransferUpdate, PingUpdate, WebUpdate} from "../data/network";
-import IntervalObservable from "../data/observable/intervalObservable";
-import TriggeredObservable from "../data/observable/triggeredObservable";
 
 let defaultNetworkInterface: string | undefined;
 
 export async function networkTransferUpdate(): Promise<NetworkTransferUpdate> {
-  const siNetworkStats = await si.networkStats(await getNetworkAdapter());
+  const siNetworkStats = await si.networkStats(await networkAdapter());
   return {
     up: siNetworkStats[0].tx_sec,
     down: siNetworkStats[0].rx_sec,
@@ -30,11 +28,9 @@ export async function webUpdate(): Promise<WebUpdate> {
   }
 }
 
-async function getNetworkAdapter(): Promise<string> {
+export async function networkAdapter(): Promise<string> {
   const configAdapter = getConfig().network.interface;
-  const adapter = configAdapter === DEFAULT_NETWORK_ADAPTER ? await getDefaultInterface() : configAdapter;
-  networkAdapter.pushUpdate(adapter);
-  return adapter;
+  return configAdapter === DEFAULT_NETWORK_ADAPTER ? await getDefaultInterface() : configAdapter;
 }
 
 export async function getDefaultInterface() {
@@ -56,8 +52,3 @@ function getPingIp() {
 function getWebUrl() {
   return getConfig().network.webUrl;
 }
-
-export const networkUsage = new IntervalObservable(networkTransferUpdate, getConfig().network.timing.bandwidthUpdateInterval);
-export const ping = new IntervalObservable(pingUpdate, getConfig().network.timing.pingUpdateInterval);
-export const webRequest = new IntervalObservable(webUpdate, getConfig().network.timing.webUpdateInterval);
-export const networkAdapter = new TriggeredObservable<string>(true);

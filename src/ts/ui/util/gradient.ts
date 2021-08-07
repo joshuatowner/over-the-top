@@ -25,7 +25,7 @@ export const WHITE_RED_GRADIENT = [
 ]
 
 export const GREY_WHITE_GRADIENT = [
-  {pct: 0.0, color: {r: 40, g: 40, b: 40}},
+  {pct: 0.0, color: {r: 50, g: 50, b: 50}},
   {pct: 1.0, color: {r: 255, g: 255, b: 255}},
 ]
 

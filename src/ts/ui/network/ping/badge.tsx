@@ -1,8 +1,9 @@
 import React from "react";
 import {Size, Vec2} from "../../../util/vec2";
-import {ping, pingUpdate} from "../../../backend/network";
 import {PingUpdate} from "../../../data/network";
 import BadgeStatus from "../../common/BadgeStatus";
+import {ping} from "../../observer/network";
+import {BackendContext} from "../../backendContext";
 
 interface PropType {
   position: Vec2;
@@ -15,6 +16,8 @@ interface StateType {
 }
 
 export default class PingBadge extends React.Component<PropType, StateType> {
+  static contextType = BackendContext;
+  context!: React.ContextType<typeof BackendContext>;
 
   constructor(props: Readonly<PropType>) {
     super(props);
@@ -31,11 +34,11 @@ export default class PingBadge extends React.Component<PropType, StateType> {
   }
 
   componentDidMount() {
-    ping.watch(this.onUpdate);
+    ping(this.context).watch(this.onUpdate);
   }
 
   componentWillUnmount() {
-    ping.remove(this.onUpdate);
+    ping(this.context).remove(this.onUpdate);
   }
 
   render() {

@@ -4,7 +4,8 @@ import PieSegment from "../../../svg/pieSegment";
 import {getEndAngle, getStartAngle} from "../../../util/angle";
 import {AnnulusPosition} from "../../../../util/vec2";
 import {CpuUsageUpdate} from "../../../../data/cpu";
-import {cpuUsage} from "../../../../backend/cpu";
+import {cpuUsage} from "../../../observer/cpu";
+import {BackendContext} from "../../../backendContext";
 
 interface PropType {
   coreId: number;
@@ -17,6 +18,8 @@ interface StateType {
 }
 
 export default class CpuCoreUsageGraphBar extends React.Component<PropType, StateType> {
+  static contextType = BackendContext;
+  context!: React.ContextType<typeof BackendContext>;
 
   startAngle: number;
   endAngle: number;
@@ -37,11 +40,11 @@ export default class CpuCoreUsageGraphBar extends React.Component<PropType, Stat
   }
 
   componentDidMount() {
-    cpuUsage.watch(this.updateCoreUsage)
+    cpuUsage(this.context).watch(this.updateCoreUsage)
   }
 
   componentWillUnmount() {
-    cpuUsage.remove(this.updateCoreUsage);
+    cpuUsage(this.context).remove(this.updateCoreUsage);
   }
 
   getScaleSize(): number {

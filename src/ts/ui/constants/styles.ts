@@ -1,5 +1,5 @@
 import Color = require("color");
-import {getConfig} from "../../config";
+import {getConfig} from "../../backend/config";
 
 export const BACKGROUND_COLOR = Color(getConfig().color.background);
 export const FEATURE_BACKGROUND_COLOR = Color(getConfig().color.featureBackground);

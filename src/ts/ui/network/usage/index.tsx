@@ -5,7 +5,7 @@ import LinearGraph from "../../common/linearGraph/graph";
 import ValueLabel from "../../common/valueLabel";
 import {formatBytes, normalizeLog} from "../../util/data";
 import {NetworkTransferUpdate} from "../../../data/network";
-import {networkUsage} from "../../../backend/network";
+import {networkUsage} from "../../observer/network";
 
 const getDownGraphValue = (update: NetworkTransferUpdate) => normalizeLog(update.down);
 const getUpGraphValue = (update: NetworkTransferUpdate) => normalizeLog(update.up);
@@ -18,6 +18,7 @@ export default class NetworkUsageGraph extends LinearGraph {
     const width = this.viewboxWidth();
     const height = this.viewboxHeight();
     const numBars = this.numBars();
+    const networkUsageObservable = networkUsage(this.context);
     return (
       <div className={'network-usage-lineargraph-container'}>
         <svg
@@ -25,7 +26,7 @@ export default class NetworkUsageGraph extends LinearGraph {
           className={'network-usage-graph full'} preserveAspectRatio="xMidYMid meet">
           <ValueLabel
             label={"DOWN"} x={0} x2={58} y={15}
-            observable={networkUsage} getValue={getDownLabelValue}
+            observable={networkUsageObservable} getValue={getDownLabelValue}
           />
           <LinearGraphBackground
             numBars={numBars} dashWidth={this.dashWidth} dashSpace={this.dashSpace}
@@ -43,17 +44,17 @@ export default class NetworkUsageGraph extends LinearGraph {
             numBars={numBars} dashWidth={this.dashWidth} dashSpace={this.dashSpace}
             topLeft={{x: 0, y: 24}}
             size={{height: (height - 48) / 2 - this.dashSpace, width: width}}
-            observable={networkUsage} getValue={getDownGraphValue}
+            observable={networkUsageObservable} getValue={getDownGraphValue}
           />
           <LinearGraphBars
             numBars={numBars} dashWidth={this.dashWidth} dashSpace={this.dashSpace}
             topLeft={{x: 0, y: 24 + (height - 48) / 2 + this.dashSpace}}
             size={{height: (height - 48) / 2 - this.dashSpace, width: width}}
-            observable={networkUsage} getValue={getUpGraphValue} inverted={true}
+            observable={networkUsageObservable} getValue={getUpGraphValue} inverted={true}
           />
           <ValueLabel
             label={"UP"} x={0} x2={34} y={height - 6}
-            observable={networkUsage} getValue={getUpLabelValue}
+            observable={networkUsageObservable} getValue={getUpLabelValue}
           />
         </svg>
       </div>

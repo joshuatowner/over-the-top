@@ -1,8 +1,9 @@
 import * as React from "react";
 import {AnnulusPosition} from "../../../../util/vec2";
-import {cpuTemp} from "../../../../backend/cpu";
 import {CpuTemperatureUpdate} from "../../../../data/cpu";
 import {getColorForPercentage, WHITE_RED_GRADIENT} from "../../../util/gradient";
+import {cpuTemp} from "../../../observer/cpu";
+import {BackendContext} from "../../../backendContext";
 
 
 interface PropType {
@@ -20,6 +21,9 @@ const MIN_TEMP_RED = 80;
 const MAX_TEMP_RED = 100;
 
 export default class CpuTemperatureGraph extends React.Component<PropType, StateType> {
+
+  static contextType = BackendContext;
+  context!: React.ContextType<typeof BackendContext>;
 
   numDots: number;
 
@@ -53,11 +57,11 @@ export default class CpuTemperatureGraph extends React.Component<PropType, State
   }
 
   componentDidMount(): void {
-    cpuTemp.watch(this.updateUsage);
+    cpuTemp(this.context).watch(this.updateUsage);
   }
 
   componentWillUnmount(): void {
-    cpuTemp.remove(this.updateUsage);
+    cpuTemp(this.context).remove(this.updateUsage);
   }
 
   render() {

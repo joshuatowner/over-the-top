@@ -1,11 +1,9 @@
 import * as React from "react";
 import IntervalObservable from "../../../../data/observable/intervalObservable";
-import {NetworkTransferUpdate} from "../../../../data/network";
-import {networkUsage} from "../../../../backend/network";
 import {v4 as uuidv4} from 'uuid';
 import DotflowGraphDotColumn from "./dotColumn";
 import {Size, Vec2} from "../../../../util/vec2";
-import styled, {Keyframes, keyframes, StyledComponent} from "styled-components";
+import styled, {keyframes, StyledComponent} from "styled-components";
 import DotflowGraphLegend from "./legend";
 
 interface PropType {

@@ -1,8 +1,9 @@
 import React from "react";
 import {Size, Vec2} from "../../../util/vec2";
-import {ping, webRequest} from "../../../backend/network";
-import {PingUpdate, WebUpdate} from "../../../data/network";
+import {WebUpdate} from "../../../data/network";
 import BadgeStatus from "../../common/BadgeStatus";
+import {webRequest} from "../../observer/network";
+import {BackendContext} from "../../backendContext";
 
 interface PropType {
   position: Vec2;
@@ -15,6 +16,8 @@ interface StateType {
 }
 
 export default class RequestBadge extends React.Component<PropType, StateType> {
+  static contextType = BackendContext;
+  context!: React.ContextType<typeof BackendContext>;
 
   constructor(props: Readonly<PropType>) {
     super(props);
@@ -33,11 +36,11 @@ export default class RequestBadge extends React.Component<PropType, StateType> {
   }
 
   componentDidMount() {
-    webRequest.watch(this.onUpdate);
+    webRequest(this.context).watch(this.onUpdate);
   }
 
   componentWillUnmount() {
-    webRequest.remove(this.onUpdate);
+    webRequest(this.context).remove(this.onUpdate);
   }
 
   render() {

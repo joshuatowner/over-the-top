@@ -1,8 +1,9 @@
 import * as React from "react";
 import {AnnulusPosition, AnnulusSegmentPosition} from "../../../../util/vec2";
-import {cpuInfo, cpuSpeed, cpuSpeedUpdate, getCPUInfo} from "../../../../backend/cpu";
 import {SpeedBar} from "./bar";
 import {CpuSpeedUpdate} from "../../../../data/cpu";
+import {cpuSpeed} from "../../../observer/cpu";
+import {BackendContext} from "../../../backendContext";
 
 // TODO refactor file
 
@@ -22,6 +23,9 @@ const LINEAR_STEPS = 10;
 
 export default class CpuSpeedGraph extends React.Component<PropType, StateType> {
 
+  static contextType = BackendContext;
+  context!: React.ContextType<typeof BackendContext>;
+
   constructor(props: Readonly<PropType>) {
     super(props);
     this.state = {};
@@ -34,19 +38,19 @@ export default class CpuSpeedGraph extends React.Component<PropType, StateType> 
         this.setState({
           currentSpeed: oldSpeed + (update.speed - oldSpeed) * (i / LINEAR_STEPS)
         })
-      }, (i / LINEAR_STEPS) * cpuSpeed.interval)
+      }, (i / LINEAR_STEPS) * cpuSpeed(this.context).interval)
     }
   }
 
   componentDidMount() {
-    cpuInfo().then(info => this.setState({
+    this.context.cpuInfo().then(info => this.setState({
       maxSpeed: info.maxSpeed || 0
     }));
-    cpuSpeed.watch(this.updateUsage);
+    cpuSpeed(this.context).watch(this.updateUsage);
   }
 
   componentWillUnmount() {
-    cpuSpeed.remove(this.updateUsage);
+    cpuSpeed(this.context).remove(this.updateUsage);
   }
 
   render() {

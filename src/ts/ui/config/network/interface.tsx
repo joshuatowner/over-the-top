@@ -1,7 +1,7 @@
 import * as React from "react";
 import {ChangeEvent, ReactNode} from "react";
 import {getAllInterfaces, getDefaultInterface} from "../../../backend/network";
-import {getConfig, updateConfig} from "../../../config";
+import {getConfig, updateConfig} from "../../../backend/config";
 
 interface PropType {
   showLabel?: boolean;

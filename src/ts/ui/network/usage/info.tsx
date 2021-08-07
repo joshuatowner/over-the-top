@@ -1,5 +1,4 @@
 import React from "react";
-import {getDefaultInterface, networkAdapter, networkUsage} from "../../../backend/network";
 import {Size, Vec2} from "../../../util/vec2";
 import PingBadge from "../ping/badge";
 import RequestBadge from "../request/badge";
@@ -7,6 +6,10 @@ import AppliedObservable from "../../../data/observable/appliedObservable";
 import {formatBinaryBytes, formatBytes} from "../../util/data";
 import NetworkUsageBadge from "./badge";
 import NetworkInterfaceSettingDropdown from "../../config/network/interface";
+import {networkAdapter, networkUsage} from "../../observer/network";
+import {Observable} from "../../../data/observable/observable";
+import {BackendContext} from "../../backendContext";
+import {Backend} from "../../../data/backend";
 
 interface PropType {
   position: Vec2;
@@ -20,15 +23,22 @@ interface StateType {
 const BADGE_WIDTH = 105;
 const BADGE_PADDING = 6;
 
-const upObservable = new AppliedObservable(networkUsage, networkUsage => `${formatBytes(networkUsage.up)}/s`);
-const downObservable = new AppliedObservable(networkUsage, networkUsage => `${formatBytes(networkUsage.down)}/s`);
 
 export default class NetworkInterfaceInfo extends React.Component<PropType, StateType> {
 
-  constructor(props: Readonly<PropType>) {
+  static contextType = BackendContext;
+  context!: React.ContextType<typeof BackendContext>;
+
+  upObservable: Observable<string>;
+  downObservable: Observable<string>;
+
+  constructor(props: Readonly<PropType>, context: Backend) {
     super(props);
     this.state = {};
-    getDefaultInterface().then((name => this.setState({name})));
+    this.upObservable = new AppliedObservable(networkUsage(context),
+        networkUsage => `${formatBytes(networkUsage.up)}/s`);
+    this.downObservable = new AppliedObservable(networkUsage(context),
+        networkUsage => `${formatBytes(networkUsage.down)}/s`);
   }
 
   onUpdate = (networkAdapter: string) => {
@@ -38,11 +48,11 @@ export default class NetworkInterfaceInfo extends React.Component<PropType, Stat
   }
 
   componentDidMount() {
-    networkAdapter.watch(this.onUpdate);
+    networkAdapter(this.context).watch(this.onUpdate);
   }
 
   componentWillUnmount() {
-    networkAdapter.remove(this.onUpdate);
+    networkAdapter(this.context).remove(this.onUpdate);
   }
 
   render() {
@@ -63,12 +73,12 @@ export default class NetworkInterfaceInfo extends React.Component<PropType, Stat
         size={{width: BADGE_WIDTH, height: size.height - 2*BADGE_PADDING}}
       />
       <NetworkUsageBadge
-        observable={downObservable} label={"DN"}
+        observable={this.downObservable} label={"DN"}
         position={{x: position.x + size.width - 3*(BADGE_WIDTH + BADGE_PADDING), y: position.y + BADGE_PADDING}}
         size={{width: BADGE_WIDTH, height: size.height - 2*BADGE_PADDING}}
       />
       <NetworkUsageBadge
-        observable={upObservable} label={"UP"}
+        observable={this.upObservable} label={"UP"}
         position={{x: position.x + size.width - 4*(BADGE_WIDTH + BADGE_PADDING), y: position.y + BADGE_PADDING}}
         size={{width: BADGE_WIDTH, height: size.height - 2*BADGE_PADDING}}
       />

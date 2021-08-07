@@ -1,6 +1,6 @@
 //import {sendProcessRequest} from "../../worker/boss";
 import IntervalObservable from "../../data/observable/intervalObservable";
-import {getConfig} from "../../config";
+import {getConfig} from "../config";
 import {getAllProcessInfo} from "./process";
 
 //export const getAllProcessInfoWorker = sendProcessRequest;

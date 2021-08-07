@@ -1,7 +1,7 @@
 import {CpuInfo, CpuSpeedUpdate, CpuTemperatureUpdate, CpuUsageUpdate} from "../data/cpu";
 import * as si from "systeminformation";
 import IntervalObservable from "../data/observable/intervalObservable";
-import {getConfig} from "../config";
+import {getConfig} from "./config";
 import {CPUSystemInformation} from "../data/system";
 
 export async function cpuInfo(): Promise<CpuInfo> {
@@ -48,7 +48,3 @@ export async function cpuTemperatureUpdate(): Promise<CpuTemperatureUpdate> {
     temperature: siTempUpdate.main,
   }
 }
-
-export const cpuUsage = new IntervalObservable(cpuUsageUpdate, getConfig().cpu.timing.updateInterval);
-export const cpuSpeed = new IntervalObservable(cpuSpeedUpdate, getConfig().cpu.timing.speedInterval);
-export const cpuTemp = new IntervalObservable(cpuTemperatureUpdate, getConfig().cpu.timing.tempInterval);

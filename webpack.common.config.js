@@ -2,7 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-    entry: './src/ts/index.tsx',
+    entry: './src/ts/index.ts',
     module: {
         rules: [
             {
@@ -19,20 +19,39 @@ module.exports = {
             {
                 test: /\.s[ac]ss$/i,
                 use: [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'resolve-url-loader',
-                    'sass-loader',
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            esModule: false
+                        }
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            esModule: false
+                        }
+                    },
+                    {
+                        loader: 'resolve-url-loader',
+                        options: {
+                            esModule: false
+                        }
+                    },
+                    'sass-loader'
                 ],
             },
             {
+                test: /\.html$/,
+                type: 'asset/resource',
+                generator: {
+                    filename: '[name][ext]',
+                },
+            },
+            {
                 test: /\.(ttf|eot|woff|woff2|svg)$/,
-                use: {
-                    loader: 'file-loader',
-                    options: {
-                        name: '[name].[ext]',
-                        outputPath: 'fonts/'
-                    },
+                type: "asset/resource",
+                generator: {
+                    filename: 'fonts/[name][ext]'
                 },
             },
         ],
@@ -41,10 +60,10 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name].css',
             chunkFilename: '[id].css',
-        }),
+        })
     ],
     resolve: {
-        extensions: [ '.tsx', '.ts', '.js' ],
+        extensions: ['.tsx', '.ts', '.js'],
     },
     mode: "development",
     target: "electron-main",

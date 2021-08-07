@@ -1,8 +1,9 @@
 import IntervalObservable from "../../data/observable/intervalObservable";
 import * as React from "react";
+import {Observable} from "../../data/observable/observable";
 
 interface PropType<T> {
-  observable: IntervalObservable<T>;
+  observable: Observable<T>;
   getValue: (update: T) => string;
   x: number;
   y: number;

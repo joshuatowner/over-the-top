@@ -18,7 +18,7 @@ export default class NetworkUsageGraph extends LinearGraph {
     const width = this.viewboxWidth();
     const height = this.viewboxHeight();
     const numBars = this.numBars();
-    const networkUsageObservable = networkUsage(this.context);
+    const networkUsageObservable = networkUsage(this.context as any);
     return (
       <div className={'network-usage-lineargraph-container'}>
         <svg

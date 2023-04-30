@@ -8,7 +8,11 @@ export default class MemoryUsageWidget extends Widget {
   renderContent(pixelSize: Size): React.ReactNode {
     return (
       <div className={"memory-usage"}>
-        <div className={"memory-title widget-title"}>MEMORY USAGE</div>
+        <div className={"memory-info"}>
+          <div className={"memory-title"}>MEMORY</div>
+          <div style={{flexGrow: 1}} />
+          <div>3.00 GB / 20.00 GB</div>
+        </div>
         <MemoryUsageGraph
           size={{ width: pixelSize.width, height: pixelSize.height }}
         />

@@ -38,11 +38,20 @@ export default class NetworkUsageBadge extends React.Component<PropType, StateTy
   }
 
   render() {
-    return <BadgeStatus
-      className={"network-usage-badge"}
-      value={this.state.value} error={false}
-      {...this.props}
-    />
+    const { position, size } = this.props;
+    return <>
+      <line
+          x1={position.x}
+          x2={position.x}
+          y1={position.y} y2={position.y + size.height}
+          className={"dotflow-guide-primary"}
+      />
+      <BadgeStatus
+        className={"network-usage-badge"}
+        value={this.state.value} error={false}
+        {...this.props}
+      />
+    </>
   }
 
 }

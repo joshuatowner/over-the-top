@@ -18,7 +18,7 @@ export default class PingHexagonBadge extends React.Component<{}, {}> {
       observable={ping(this.context)}
       getValue={this.getValue}
       isError={this.isError}
-      className={"network-primary-fill"}
+      className={"network-hexagon-normal"}
     />
   }
 }

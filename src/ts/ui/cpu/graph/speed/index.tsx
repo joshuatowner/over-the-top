@@ -1,9 +1,13 @@
 import * as React from "react";
 import {AnnulusPosition, AnnulusSegmentPosition} from "../../../../util/vec2";
 import {SpeedBar} from "./bar";
-import {CpuSpeedUpdate} from "../../../../data/cpu";
 import {cpuSpeed} from "../../../observer/cpu";
 import {BackendContext} from "../../../backendContext";
+import {SpeedLabel} from "./label";
+import LinearInterpolatedObservable from "../../../../data/observable/linearInterpolatedObservable";
+import AppliedObservable from "../../../../data/observable/appliedObservable";
+import IntervalObservable from "../../../../data/observable/intervalObservable";
+import {CpuSpeedUpdate} from "../../../../data/cpu";
 
 // TODO refactor file
 
@@ -13,49 +17,54 @@ interface PropType {
 }
 
 interface StateType {
+  currentSpeedLinear?: number;
   currentSpeed?: number;
   maxSpeed?: number;
 }
 
 const START_ANGLE = Math.PI * (3/4);
 const END_ANGLE = Math.PI * (9/4);
-const LINEAR_STEPS = 10;
 
 export default class CpuSpeedGraph extends React.Component<PropType, StateType> {
 
   static contextType = BackendContext;
   context!: React.ContextType<typeof BackendContext>;
 
-  constructor(props: Readonly<PropType>) {
-    super(props);
+  speed: IntervalObservable<CpuSpeedUpdate>;
+  speedLinear: IntervalObservable<number>;
+
+  constructor(props: Readonly<PropType>, context: any) {
+    super(props, context);
     this.state = {};
+    console.log(this.context);
+    this.speed = cpuSpeed(this.context);
+    this.speedLinear = new LinearInterpolatedObservable(
+      new AppliedObservable(this.speed, update => update.speed), 50);
   }
 
   updateUsage = (update: CpuSpeedUpdate) => {
-    const oldSpeed = this.state.currentSpeed || 0;
-    for (let i = 0; i < 10; i++) {
-      setTimeout(() => {
-        this.setState({
-          currentSpeed: oldSpeed + (update.speed - oldSpeed) * (i / LINEAR_STEPS)
-        })
-      }, (i / LINEAR_STEPS) * cpuSpeed(this.context).interval)
-    }
+    this.setState({ currentSpeed: update.speed});
+  }
+
+  updateLinearUsage = (update: number) => {
+    this.setState({ currentSpeedLinear: update });
   }
 
   componentDidMount() {
-    this.context.cpuInfo().then(info => this.setState({
-      maxSpeed: info.maxSpeed || 0
-    }));
-    cpuSpeed(this.context).watch(this.updateUsage);
+    this.context.cpuInfo().then(info => this.setState({ maxSpeed: info.maxSpeed || 0 }));
+    this.speed.watch(this.updateUsage);
+    this.speedLinear.watch(this.updateLinearUsage);
+
   }
 
   componentWillUnmount() {
-    cpuSpeed(this.context).remove(this.updateUsage);
+    this.speed.remove(this.updateUsage);
+    this.speedLinear.remove(this.updateLinearUsage);
   }
 
   render() {
     const numSegments = this.props.numSegments || 75;
-    if (!this.state.currentSpeed || !this.state.maxSpeed) {
+    if (!this.state.currentSpeed || !this.state.currentSpeedLinear || !this.state.maxSpeed) {
       return null;
     }
     const graphPosition: AnnulusSegmentPosition = {
@@ -63,7 +72,7 @@ export default class CpuSpeedGraph extends React.Component<PropType, StateType> 
       startAngle: START_ANGLE,
       endAngle: END_ANGLE
     }
-    const percentSpeed = this.state.currentSpeed / this.state.maxSpeed;
+    const percentSpeed = this.state.currentSpeedLinear / this.state.maxSpeed;
     const list = [];
     for (let i = 0; i <= numSegments; i++) {
       const percent = i / numSegments;
@@ -77,6 +86,12 @@ export default class CpuSpeedGraph extends React.Component<PropType, StateType> 
     return (
       <g>
         {list}
+        <SpeedLabel
+          center={{x: graphPosition.cx, y: graphPosition.cy}}
+          radius={(graphPosition.innerRadius + graphPosition.outerRadius) / 2}
+          currentSpeed={this.state.currentSpeed}
+          maxSpeed={this.state.maxSpeed}
+        />
       </g>
     );
   }

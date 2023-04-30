@@ -111,6 +111,22 @@ body {
   fill: $primary;
   font-weight: 300;
   font-size: 30px;
+  dominant-baseline: central;
+  text-anchor: middle;
+}
+
+.cpu-title {
+  @extend .cpu-overall;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.cpu-speed-label {
+  text-anchor: middle;
+  dominant-baseline: central;
+  font-size: 12px;
+  font-weight: normal;
+  fill: $primary;
 }
 
 .cpu-temperature-dot {
@@ -123,25 +139,25 @@ body {
   stroke: $background;
 }
 
-.network-interface {
-  font-size: 20px;
+.memory-info {
+  display: flex;
+  width: calc(100% - 12px);
+  margin-left: 6px;
+  margin-right: 6px;
+}
+
+.memory-title {
+  font-weight: bold;
   fill: $primary;
 }
 
-.badge {
-  fill: transparent;
-  stroke: $ok;
+.network-interface {
+  font-weight: normal;
 }
 
-.badge-error {
-  @extend .badge;
-  stroke: $error;
-  fill: $error;
-}
-
-.badge-unknown {
-  @extend .badge;
-  stroke: $secondary;
+.network-dotflow-title {
+  font-weight: bold;
+  fill: $primary;
 }
 
 .badge-label {
@@ -159,3 +175,20 @@ body {
 .usage-grid-item {
   stroke: none;
 }
+
+.network-hexagon-normal {
+  fill: $primary;
+}
+
+.network-hexagon-error {
+  fill: $error;
+}
+
+.network-hexagon-label {
+  fill: $primary;
+  text-anchor: middle;
+  dominant-baseline: central;
+  font-size: 20px;
+}
+
+

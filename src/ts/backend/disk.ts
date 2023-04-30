@@ -14,7 +14,7 @@ export async function partitionInfo(): Promise<PartitionInfo[]> {
       const matchingUsage = usages.find(usage => usage.mount === info.mount);
       return ({
         label: filterName(info.name),
-        fsType: info.fstype,
+        fsType: info.fsType,
         capacity: matchingUsage?.size,
         usage: matchingUsage?.used,
         usagePercent: matchingUsage?.use

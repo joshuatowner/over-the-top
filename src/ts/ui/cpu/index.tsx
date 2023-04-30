@@ -7,7 +7,6 @@ export default class CpuUsageWidget extends Widget {
   renderContent(pixelSize: Size): React.ReactNode {
     return (
       <div className={"cpu-usage"}>
-        <div className={"cpu-title widget-title"}>CPU USAGE</div>
         <CpuUsageGraph/>
       </div>
     );

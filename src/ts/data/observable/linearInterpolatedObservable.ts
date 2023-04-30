@@ -21,7 +21,10 @@ export default class LinearInterpolatedObservable
       && this.oldValue !== undefined
       && this.newTime !== undefined
       && this.newValue !== undefined) {
-      const currentTime = new Date().getTime() - (this.newTime - this.oldTime);
+      let currentTime = new Date().getTime() - (this.newTime - this.oldTime);
+      if (currentTime > this.newTime) {
+        currentTime = this.newTime;
+      }
       const percent = (currentTime - this.oldTime) / (this.newTime - this.oldTime);
       return this.oldValue + (this.newValue - this.oldValue) * percent;
     } else if (this.oldValue !== undefined) {

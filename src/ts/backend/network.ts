@@ -42,7 +42,8 @@ export async function getDefaultInterface() {
 
 export async function getAllInterfaces(): Promise<string[]> {
   const response = await si.networkInterfaces();
-  return response.map(int => int.iface);
+  const responseList = Array.isArray(response) ? response : [response];
+  return responseList.map(int => int.iface);
 }
 
 function getPingIp() {

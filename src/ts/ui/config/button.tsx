@@ -1,15 +1,20 @@
 import * as React from "react";
 import {MdSettings} from "react-icons/md";
 import SettingsDialog from "./dialog";
+import {ReactNode} from "react";
 
 interface StateType {
   showDialog: boolean;
 }
 
+interface PropsType {
+  children: ReactNode;
+}
 
-export default class SettingsButton extends React.Component<{}, StateType> {
 
-  constructor(props: Readonly<{}>) {
+export default class SettingsButton extends React.Component<PropsType, StateType> {
+
+  constructor(props: Readonly<PropsType>) {
     super(props);
     this.state = {
       showDialog: false

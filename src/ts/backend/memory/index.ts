@@ -39,8 +39,8 @@ export async function getMemorySystemInformation(): Promise<MemorySystemInformat
     sticks: info.map(item => ({
       type: item.type,
       formFactor: item.formFactor,
-      clockSpeed: item.clockSpeed,
-      voltage: item.voltageConfigured,
+      clockSpeed: item.clockSpeed ?? undefined,
+      voltage: item.voltageConfigured ?? undefined,
     }))
   }
 }

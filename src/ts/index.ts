@@ -10,7 +10,6 @@ async function createWindow(): Promise<void> {
     height: 1000,
     width: 1800,
     webPreferences: {
-      nativeWindowOpen: true,
       nodeIntegrationInWorker: true,
       nodeIntegration: true,
       contextIsolation: false

@@ -6,7 +6,7 @@ import {CPUSystemInformation} from "../data/system";
 
 export async function cpuInfo(): Promise<CpuInfo> {
   const siCpuInfo = await si.cpu();
-  const speed = Number(siCpuInfo.speedmax);
+  const speed = Number(siCpuInfo.speedMax);
   return {
     cores: siCpuInfo.cores,
     maxSpeed: isNaN(speed) ? null : speed
@@ -16,7 +16,7 @@ export async function cpuInfo(): Promise<CpuInfo> {
 export async function cpuUsageUpdate(): Promise<CpuUsageUpdate> {
   const siCpuUpdate = await si.currentLoad();
   const coreUsages = siCpuUpdate.cpus.map(coreUsage => coreUsage.load / 100);
-  const overallUsage = siCpuUpdate.currentload / 100;
+  const overallUsage = siCpuUpdate.currentLoad / 100;
   return {
     overallUsage,
     coreUsages,
@@ -36,7 +36,7 @@ export async function getCPUInfo(): Promise<CPUSystemInformation> {
 }
 
 export async function cpuSpeedUpdate(): Promise<CpuSpeedUpdate> {
-  const siSpeedUpdate = await si.cpuCurrentspeed();
+  const siSpeedUpdate = await si.cpuCurrentSpeed();
   return {
     speed: siSpeedUpdate.avg,
   }

@@ -20,7 +20,7 @@ interface StateType {
   name?: string;
 }
 
-const BADGE_WIDTH = 105;
+const BADGE_WIDTH = 115;
 const BADGE_PADDING = 6;
 
 
@@ -59,27 +59,27 @@ export default class NetworkInterfaceInfo extends React.Component<PropType, Stat
     const {position, size} = this.props;
     return <g>
       <text
-        className={"network-interface"} dominantBaseline={"central"}
+        className={"network-dotflow-title"} dominantBaseline={"central"}
         x={position.x + 10} y={position.y + size.height / 2}
       >
-        {this.state.name}
+        NETWORK <tspan className={"network-interface"}>{this.state.name}</tspan>
       </text>
-      <RequestBadge
-        position={{x: position.x + size.width - (BADGE_WIDTH + BADGE_PADDING), y: position.y + BADGE_PADDING}}
-        size={{width: BADGE_WIDTH, height: size.height - 2*BADGE_PADDING}}
-      />
-      <PingBadge
-        position={{x: position.x + size.width - 2*(BADGE_WIDTH + BADGE_PADDING), y: position.y + BADGE_PADDING}}
-        size={{width: BADGE_WIDTH, height: size.height - 2*BADGE_PADDING}}
-      />
+      {/*<RequestBadge*/}
+      {/*  position={{x: position.x + size.width - (BADGE_WIDTH + BADGE_PADDING), y: position.y + BADGE_PADDING}}*/}
+      {/*  size={{width: BADGE_WIDTH, height: size.height - 2*BADGE_PADDING}}*/}
+      {/*/>*/}
+      {/*<PingBadge*/}
+      {/*  position={{x: position.x + size.width - 2*(BADGE_WIDTH + BADGE_PADDING), y: position.y + BADGE_PADDING}}*/}
+      {/*  size={{width: BADGE_WIDTH, height: size.height - 2*BADGE_PADDING}}*/}
+      {/*/>*/}
       <NetworkUsageBadge
         observable={this.downObservable} label={"DN"}
-        position={{x: position.x + size.width - 3*(BADGE_WIDTH + BADGE_PADDING), y: position.y + BADGE_PADDING}}
+        position={{x: position.x + size.width - (BADGE_WIDTH), y: position.y + BADGE_PADDING}}
         size={{width: BADGE_WIDTH, height: size.height - 2*BADGE_PADDING}}
       />
       <NetworkUsageBadge
         observable={this.upObservable} label={"UP"}
-        position={{x: position.x + size.width - 4*(BADGE_WIDTH + BADGE_PADDING), y: position.y + BADGE_PADDING}}
+        position={{x: position.x + size.width - 2*(BADGE_WIDTH), y: position.y + BADGE_PADDING}}
         size={{width: BADGE_WIDTH, height: size.height - 2*BADGE_PADDING}}
       />
     </g>

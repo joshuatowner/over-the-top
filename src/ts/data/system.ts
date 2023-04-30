@@ -12,7 +12,7 @@ export interface OSInformation {
 export interface CPUSystemInformation {
   manufacturer: string;
   model: string;
-  speedMHz: string;
+  speedMHz: number;
   cores: number;
   physicalCores: number;
   processors: number;

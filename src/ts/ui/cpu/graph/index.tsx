@@ -41,7 +41,9 @@ export default class CpuUsageGraph extends React.Component<{}, {}> {
             outerRadius: r * 0.2
           }}
         />
-        <CpuUsageOverall/>
+        <CpuUsageOverall
+          position={{x: cx, y: cy}}
+        />
       </svg>
     )
   }

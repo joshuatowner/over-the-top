@@ -2,19 +2,25 @@ import * as React from "react";
 import {CpuUsageUpdate} from "../../../data/cpu";
 import {cpuUsage} from "../../observer/cpu";
 import {BackendContext} from "../../backendContext";
+import {Vec2} from "../../../util/vec2";
 
 interface StateType {
   percent: number;
 }
 
-export default class CpuUsageOverall extends React.Component<{}, StateType> {
+
+interface PropType {
+  position: Vec2;
+}
+
+export default class CpuUsageOverall extends React.Component<PropType, StateType> {
 
   static contextType = BackendContext;
   context!: React.ContextType<typeof BackendContext>;
 
   skip: number = 0
 
-  constructor(props: Readonly<{}>) {
+  constructor(props: Readonly<PropType>) {
     super(props);
     this.state = {
       percent: 0
@@ -22,11 +28,15 @@ export default class CpuUsageOverall extends React.Component<{}, StateType> {
   }
 
   render() {
-    return (
-      <text x="50%" y="50%" className={"cpu-overall"}>
+    const { x, y } = this.props.position;
+    return <>
+      <text x={x} y={y - 5} className={"cpu-overall"}>
         {(this.state.percent * 100).toFixed(0)}
       </text>
-    )
+      <text x={x} y={y + 20} className={"cpu-title"}>
+        CPU
+      </text>
+    </>
   }
 
   updateUsage = (update: CpuUsageUpdate) => {

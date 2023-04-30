@@ -11,7 +11,6 @@ export class NetworkUsageWidget extends Widget {
   renderContent(pixelSize: Size): React.ReactNode {
     return (
       <div className={"network-usage"}>
-        <div className={"network-title widget-title"}>NETWORK USAGE</div>
         <NetworkUsageDotflowGraph size={pixelSize} />
       </div>
     );
@@ -26,9 +25,9 @@ export class PingWidget extends Widget {
   renderContent(pixelSize: Size): React.ReactNode {
     return (
       <div className={"network-ping flex-col"}>
-        <div className={"network-title widget-title"}>
-          <div>PING</div>
-          <div className={"network-subtitle"}>8.8.8.8</div>
+        <div className={"widget-title"}>
+          <div className={"network-hex-title"}>PING</div>
+          <div className={"network--hex-subtitle"}>8.8.8.8</div>
         </div>
         <div className={"hexagon-container"}><PingHexagonBadge/></div>
       </div>
@@ -41,8 +40,8 @@ export class WebRequestWidget extends Widget {
     return (
       <div className={"network-ping flex-col"}>
         <div className={"network-title widget-title"}>
-          <div>WEB</div>
-          <div className={"network-subtitle"}>google.com</div>
+          <div className={"network-hex-title"}>WEB</div>
+          <div className={"network-hex-subtitle"}>google.com</div>
         </div>
         <div className={"hexagon-container"}><WebHexagonBadge/></div>
       </div>

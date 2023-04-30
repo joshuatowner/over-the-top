@@ -37,10 +37,10 @@ function reduceByName(data: ProcessesProcessData[]): ProcessUsageInfo[] {
     const name = process.name;
     if (name === SYSTEM_IDLE) continue;
     const current = nameMap.get(name);
-    const mem = process.mem_rss * (ONE_KIBIBYTE / ONE_BYTE);
+    const mem = process.memRss * (ONE_KIBIBYTE / ONE_BYTE);
     const newEntry = {
       name,
-      cpu: process.pcpu + (current?.cpu || 0),
+      cpu: process.cpu + (current?.cpu || 0),
       mem: mem + (current?.mem || 0),
     }
     nameMap.set(name, newEntry);

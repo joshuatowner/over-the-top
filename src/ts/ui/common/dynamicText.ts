@@ -27,7 +27,7 @@ export default class DynamicText {
     this.group = group;
     this.text = new Two.Text(initialValue, center.x, center.y);
     this.styleText(color, fontSize, family);
-    this.group.add(this.text);
+    // this.group.add(this.text);
   }
 
   private styleText(color: Color, fontSize: number, family: string) {

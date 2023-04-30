@@ -114,3 +114,18 @@ p {
   writing-mode: vertical-rl;
   text-orientation: upright;
 }
+
+.network-ping, .network-usage {
+  align-items: center;
+  text-align: center;
+}
+
+.network-hex-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.network-hex-subtitle {
+  font-weight: normal;
+  font-size: 15px;
+}

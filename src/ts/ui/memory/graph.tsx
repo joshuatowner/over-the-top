@@ -15,7 +15,7 @@ interface PropType {
 const getGridValues = (memUsage: MemoryUsageUpdate): Map<number, number> => {
   const map = new Map<number, number>();
   map.set(1, memUsage.memoryActiveUsage);
-  map.set(0.3, memUsage.memoryCacheUsage);
+  // map.set(0.3, memUsage.memoryCacheUsage);
   return map;
 }
 

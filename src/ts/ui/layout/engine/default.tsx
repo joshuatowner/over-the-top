@@ -75,18 +75,16 @@ export default class ResponsiveLayoutEngine extends React.Component<PropType, {}
         {/*    size={{width: memoryNetworkWidth, height: networkHeight}}*/}
         {/*    windowSize={this.props.windowSize}*/}
         {/*/>}*/}
-        {/*{pingHeight !== 0 && <>*/}
-        {/*    <PingWidget*/}
-        {/*        topLeft={{x: fullCpuWidth + fullProcessWidth, y: memoryHeight + swapHeight + networkHeight}}*/}
-        {/*        size={{width: 3, height: pingHeight}}*/}
-        {/*        windowSize={this.props.windowSize}*/}
-        {/*    />*/}
-        {/*    <WebRequestWidget*/}
-        {/*        topLeft={{x: fullCpuWidth + fullProcessWidth + 4, y: memoryHeight + swapHeight + networkHeight}}*/}
-        {/*        size={{width: 3, height: pingHeight}}*/}
-        {/*        windowSize={this.props.windowSize}*/}
-        {/*    />*/}
-        {/*</>}*/}
+        <PingWidget
+            topLeft={{x: 14, y: 8}}
+            size={{width: 3, height: pingHeight}}
+            windowSize={this.props.windowSize}
+        />
+        <WebRequestWidget
+            topLeft={{x: 17, y: 8}}
+            size={{width: 3, height: pingHeight}}
+            windowSize={this.props.windowSize}
+        />
         {/*<PartitionWidget*/}
         {/*  topLeft={{x: 0, y: 9}}*/}
         {/*  size={{width: cpuWidth, height: totalHeight - 9}}*/}

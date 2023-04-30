@@ -21,7 +21,7 @@ interface StateType {
 
 export default class HexagonBadge<T> extends React.Component<PropType<T>, StateType> {
 
-  fadeTimeout?: number;
+  fadeTimeout?: NodeJS.Timeout;
 
   constructor(props: Readonly<PropType<T>>) {
     super(props);
@@ -66,14 +66,14 @@ export default class HexagonBadge<T> extends React.Component<PropType<T>, StateT
         center={{x: WIDTH / 2, y: HEIGHT / 2}}
         height={Math.min(WIDTH, HEIGHT)}
         style={this.getStyle()}
-        className={this.state.error ? "error-fill" : this.props.className}
+        className={this.state.error ? "network-hexagon-error" : this.props.className}
       />
       <Hexagon
         center={{x: WIDTH / 2, y: HEIGHT / 2}}
         height={Math.min(WIDTH, HEIGHT) * .7}
         className={"background-primary-fill"}
       />
-      <text x={WIDTH / 2} y={HEIGHT / 2} className={"hex-label"}>
+      <text x={WIDTH / 2} y={HEIGHT / 2} className={"network-hexagon-label"}>
         {this.state.value}
       </text>
     </svg>

@@ -1,4 +1,4 @@
-import {AllProcessesInfo} from "../../data/process";
+import {ProcessUsageInfo} from "../../data/process";
 import * as si from "systeminformation";
 import {Systeminformation} from "systeminformation";
 import {ONE_BYTE, ONE_KIBIBYTE} from "../../ui/constants/data";
@@ -6,29 +6,9 @@ import ProcessesProcessData = Systeminformation.ProcessesProcessData;
 
 const SYSTEM_IDLE = "System Idle Process";
 
-interface ProcessUsageInfo {
-  name: string,
-  cpu: number,
-  mem: number,
-}
-
-export async function getAllProcessInfo(numCpu: number, numMem: number): Promise<AllProcessesInfo> {
+export async function getAllProcessInfo(): Promise<ProcessUsageInfo[]> {
   const processInfo = await si.processes();
-  const allProcesses = reduceByName(processInfo.list);
-  const byCpu = Array.from(allProcesses)
-    .filter(item => item.cpu > 0)
-    .sort((first, second) => second.cpu - first.cpu)
-    .slice(0, numCpu)
-    .map(proc => ({name: proc.name, usage: proc.cpu}));
-  const byMem = Array.from(allProcesses)
-    .filter(item => item.mem > 0)
-    .sort((first, second) => second.mem - first.mem)
-    .slice(0, numMem)
-    .map(proc => ({name: proc.name, usage: proc.mem}));
-  return {
-    cpuProcs: byCpu,
-    memoryProcs: byMem,
-  }
+  return reduceByName(processInfo.list);
 }
 
 function reduceByName(data: ProcessesProcessData[]): ProcessUsageInfo[] {

@@ -55,8 +55,6 @@ const DEFAULT_CONFIG: Config = {
     },
   },
   process: {
-    memNumber: 30,
-    cpuNumber: 30,
     timing: {
       updateInterval: 3000,
     }

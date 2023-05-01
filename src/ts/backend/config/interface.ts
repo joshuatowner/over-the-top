@@ -53,8 +53,6 @@ export interface Config {
     }
   },
   process: {
-    memNumber: number,
-    cpuNumber: number,
     timing: {
       updateInterval: number,
     }

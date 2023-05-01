@@ -84,7 +84,6 @@ async function getMemoryDetails(): Promise<DetailGroup | undefined> {
     .filter(onlyUnique)
     .map(number => number?.toFixed(0));
   const details: Detail[] = [];
-  console.log(types);
   if (types.length > 0) {
     details.push({name: "Type", value: toCSV(types)});
   }

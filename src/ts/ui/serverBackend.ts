@@ -15,12 +15,15 @@ export class ServerBackend implements Backend {
   cpuTemperatureUpdate = async () => JSON.parse(await this.connection(ROUTES.CPU_TEMPERATURE));
   cpuUsageUpdate = async () => JSON.parse(await this.connection(ROUTES.CPU_USAGE));
 
+  memoryInfo = async () => JSON.parse(await this.connection(ROUTES.MEMORY_INFO));
   memoryUsageUpdate = async () => JSON.parse(await this.connection(ROUTES.MEMORY_USAGE));
 
   networkAdapter = async () => JSON.parse(await this.connection(ROUTES.NETWORK_ADAPTER));
   networkTransferUpdate = async () => JSON.parse(await this.connection(ROUTES.NETWORK_USAGE));
   pingUpdate = async () => JSON.parse(await this.connection(ROUTES.NETWORK_PING));
   webUpdate = async () => JSON.parse(await this.connection(ROUTES.NETWORK_WEB));
+
+  processInfo = async () => JSON.parse(await this.connection(ROUTES.PROCESS_INFO));
 
   partitionInfo = async () => JSON.parse(await this.connection(ROUTES.DISK_PARTITION_INFO));
   getConfig = async () => JSON.parse(await this.connection(ROUTES.CONFIG));

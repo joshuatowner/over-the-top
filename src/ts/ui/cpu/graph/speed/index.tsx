@@ -36,7 +36,6 @@ export default class CpuSpeedGraph extends React.Component<PropType, StateType> 
   constructor(props: Readonly<PropType>, context: any) {
     super(props, context);
     this.state = {};
-    console.log(this.context);
     this.speed = cpuSpeed(this.context);
     this.speedLinear = new LinearInterpolatedObservable(
       new AppliedObservable(this.speed, update => update.speed), 50);
@@ -54,7 +53,6 @@ export default class CpuSpeedGraph extends React.Component<PropType, StateType> 
     this.context.cpuInfo().then(info => this.setState({ maxSpeed: info.maxSpeed || 0 }));
     this.speed.watch(this.updateUsage);
     this.speedLinear.watch(this.updateLinearUsage);
-
   }
 
   componentWillUnmount() {

@@ -1,9 +1,10 @@
 import {Backend} from "../data/backend";
-import {cpuInfo, cpuSpeedUpdate, cpuTemperatureUpdate, cpuUsageUpdate, getCPUInfo} from "./cpu";
-import {memoryUsageUpdate} from "./memory";
+import {cpuInfo, cpuSpeedUpdate, cpuTemperatureUpdate, cpuUsageUpdate} from "./cpu";
+import {memoryInfo, memoryUsageUpdate} from "./memory";
 import {networkAdapter, networkTransferUpdate, pingUpdate, webUpdate} from "./network";
 import {partitionInfo} from "./disk";
 import {getConfig} from "./config";
+import {getAllProcessInfo} from "./process/process";
 
 export default class NodeBackend implements Backend {
 
@@ -12,6 +13,7 @@ export default class NodeBackend implements Backend {
   cpuUsageUpdate = cpuUsageUpdate;
   cpuInfo = cpuInfo;
 
+  memoryInfo = memoryInfo;
   memoryUsageUpdate = memoryUsageUpdate;
 
   networkAdapter = networkAdapter;
@@ -20,5 +22,8 @@ export default class NodeBackend implements Backend {
   webUpdate = webUpdate;
 
   partitionInfo = partitionInfo;
+
+  processInfo = getAllProcessInfo;
+
   getConfig = async () => getConfig();
 }

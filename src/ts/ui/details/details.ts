@@ -1,6 +1,5 @@
 import {getModelInformation, getOSInformation} from "../../backend/system";
 import {getCPUInfo} from "../../backend/cpu";
-import {cpu, mem} from "systeminformation";
 import {getMemorySystemInformation} from "../../backend/memory";
 import {toCSV} from "../util/list";
 import {notUndefined, onlyUnique} from "../../util/array";

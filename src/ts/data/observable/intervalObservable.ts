@@ -1,5 +1,6 @@
 import {setIntervalImmediate} from "../../util/timing";
 import {BaseObservable, Observable} from "./observable";
+
 export type Source<T> = () => T | Promise<T>;
 
 export default class IntervalObservable<T> extends BaseObservable<T> implements Observable<T> {

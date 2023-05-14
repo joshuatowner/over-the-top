@@ -1,7 +1,6 @@
 import * as React from "react";
 import Widget from "../layout/widget";
 import {Size} from "../../util/vec2";
-import NetworkUsageGraph from "./usage";
 import PingHexagonBadge from "./ping";
 import WebHexagonBadge from "./request";
 import NetworkInterfaceSettingDropdown from "../config/network/interface";

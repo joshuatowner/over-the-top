@@ -5,6 +5,7 @@ import DotflowGraphDotColumn from "./dotColumn";
 import {Size, Vec2} from "../../../../util/vec2";
 import styled, {keyframes, StyledComponent} from "styled-components";
 import DotflowGraphLegend from "./legend";
+import DotflowGraphGuides from "./guides";
 
 interface PropType {
   observable: IntervalObservable<number>;
@@ -25,7 +26,7 @@ interface StateType {
 
 export default class DotflowGraph extends React.Component<PropType, StateType> {
 
-  dotClass: StyledComponent<"circle", any>;
+  groupClass: StyledComponent<"g", any>;
   dotRadius: number;
   lanes: number;
   duration: number;
@@ -44,7 +45,7 @@ export default class DotflowGraph extends React.Component<PropType, StateType> {
       this.lanes,
       this.dotRadius
     );
-    this.dotClass = this.getClass(
+    this.groupClass = this.getClass(
       this.props.size.width,
       this.dotRadius,
       this.duration,
@@ -87,10 +88,17 @@ export default class DotflowGraph extends React.Component<PropType, StateType> {
         position={{x: position.x, y: position.y + (reverse ? 0 : 10)}}
         lanes={this.lanes}
         dotRadius={this.dotRadius}
-        dotClass={this.dotClass}
+        groupClass={this.groupClass}
       />);
     }
-    return <>
+    return <g>
+      <DotflowGraphGuides
+        position={{x: position.x, y: position.y + (reverse ? 0 : 10)}}
+        size={{width: size.width, height: size.height - 10}}
+        lanes={this.lanes}
+        lines={40}
+        major={4}
+        />
       <DotflowGraphLegend
         position={{x: position.x, y: position.y + (reverse ? size.height - 10 : 0)}}
         size={{width: size.width, height: 10}}
@@ -109,7 +117,7 @@ export default class DotflowGraph extends React.Component<PropType, StateType> {
         x={position.x + size.width - 1} y={position.y + (reverse ? 0 : 10
       )}
         height={size.height - 10} width={this.dotRadius * 2.5 + 1} />
-    </>;
+    </g>;
   }
 
   getClass = (width: number, radius: number, duration: number, reverse: boolean) => {
@@ -128,7 +136,7 @@ export default class DotflowGraph extends React.Component<PropType, StateType> {
         transform: translateX(${end}px);
       }
     `;
-    return styled.circle`
+    return styled.g`
     animation: ${keyframe} ${duration}ms forwards linear;
   `
   }

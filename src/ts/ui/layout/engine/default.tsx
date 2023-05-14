@@ -3,12 +3,8 @@ import * as React from "react";
 import {numPointsX, numPointsY} from "../points";
 import CpuUsageWidget from "../../cpu";
 import {ProcessesInfoWidget} from "../../process";
-import MemoryUsageWidget, {SwapUsageWidget} from "../../memory";
+import MemoryUsageWidget from "../../memory";
 import {NetworkUsageWidget, PingWidget, WebRequestWidget} from "../../network";
-import PartitionWidget from "../../disk";
-import DetailsWidget from "../../details";
-import cp from "child_process";
-import {cpu, mem} from "systeminformation";
 
 interface PropType {
   windowSize: Size;
@@ -25,7 +21,7 @@ export default class ResponsiveLayoutEngine extends React.Component<PropType, {}
     const pingWebWidth = 6;
     const memoryWidth = totalWidth - (pingWebWidth + fullCpuSize + padding * 2);
     const networkFlowWidth = 14;
-    const processesWidth = totalWidth - (networkFlowWidth + padding);
+    const processesWidth = totalWidth - (networkFlowWidth + padding*2);
     let processesHeight = totalHeight - fullCpuSize;
     if (processesHeight < 3) {
       processesHeight = 0;
@@ -59,7 +55,7 @@ export default class ResponsiveLayoutEngine extends React.Component<PropType, {}
           windowSize={this.props.windowSize}
         />}
         {processesHeight > 0 && <NetworkUsageWidget
-          topLeft={{x: processesWidth + padding, y: fullCpuSize}}
+          topLeft={{x: processesWidth + padding*2, y: fullCpuSize}}
           size={{width: networkFlowWidth, height: processesHeight}}
           windowSize={this.props.windowSize}
         />}

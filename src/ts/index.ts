@@ -1,4 +1,4 @@
-import {app, BrowserWindow, ipcMain, ipcRenderer} from "electron";
+import {app, BrowserWindow, ipcMain} from "electron";
 import path from "path";
 import index from "../html/index.html";
 import registerIpc from "./backend/server/ipc";

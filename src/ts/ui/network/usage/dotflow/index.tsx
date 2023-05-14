@@ -6,7 +6,6 @@ import AppliedObservable from "../../../../data/observable/appliedObservable";
 import NetworkInterfaceInfo from "../info";
 import DotflowGraphSideLabel from "./sideLabel";
 import {Size} from "../../../../util/vec2";
-import {Observable} from "../../../../data/observable/observable";
 import {networkUsage} from "../../../observer/network";
 import IntervalObservable from "../../../../data/observable/intervalObservable";
 import {BackendContext} from "../../../backendContext";
@@ -28,7 +27,7 @@ export default class NetworkUsageDotflowGraph extends React.Component<PropType, 
 
   constructor(props: PropType, context: any) {
     super(props, context);
-    const interval = networkUsage(this.context).interval / 2;
+    const interval = networkUsage(this.context).interval / 3;
     this.upUsage = new LinearInterpolatedObservable(
       new AppliedObservable(networkUsage(this.context), update => normalizeLog(update.up)), interval);
     this.downUsage = new LinearInterpolatedObservable(

@@ -4,7 +4,6 @@ import "../../scss/main.scss";
 import 'overlayscrollbars/overlayscrollbars.css';
 import {Backend} from "../data/backend";
 import {Config} from "../backend/config/interface";
-import DEFAULT_CONFIG from "../backend/config/default";
 import {BackendContext} from "./backendContext";
 
 declare global {

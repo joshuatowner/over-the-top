@@ -13,7 +13,7 @@ export default class DotflowGraphLegend extends React.PureComponent<PropType> {
   render() {
     const {position, size, lines, major} = this.props;
     const components = [];
-    for (let i = 0; i < lines; i++) {
+    for (let i = 1; i < lines; i++) {
       const primary = i % major == 0;
       const x = position.x + size.width * (i / lines);
       let y1 = position.y + (primary ? 0 : size.height / 2);

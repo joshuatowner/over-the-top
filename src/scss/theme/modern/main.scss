@@ -34,6 +34,11 @@ body {
   fill: transparent;
 }
 
+.guide-tertiary {
+  stroke: color.adjust($primary, $lightness: -83%);
+  fill: transparent;
+}
+
 .fill-primary {
   fill: $primary;
 }

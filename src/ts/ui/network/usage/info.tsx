@@ -1,11 +1,8 @@
 import React from "react";
 import {Size, Vec2} from "../../../util/vec2";
-import PingBadge from "../ping/badge";
-import RequestBadge from "../request/badge";
 import AppliedObservable from "../../../data/observable/appliedObservable";
-import {formatBinaryBytes, formatBytes} from "../../util/data";
+import {formatBytes} from "../../util/data";
 import NetworkUsageBadge from "./badge";
-import NetworkInterfaceSettingDropdown from "../../config/network/interface";
 import {networkAdapter, networkUsage} from "../../observer/network";
 import {Observable} from "../../../data/observable/observable";
 import {BackendContext} from "../../backendContext";
@@ -33,7 +30,7 @@ export default class NetworkInterfaceInfo extends React.Component<PropType, Stat
   downObservable: Observable<string>;
 
   constructor(props: Readonly<PropType>, context: Backend) {
-    super(props);
+    super(props, context);
     this.state = {};
     this.upObservable = new AppliedObservable(networkUsage(context),
         networkUsage => `${formatBytes(networkUsage.up)}/s`);
@@ -64,14 +61,6 @@ export default class NetworkInterfaceInfo extends React.Component<PropType, Stat
       >
         NETWORK <tspan className={"network-interface"}>{this.state.name}</tspan>
       </text>
-      {/*<RequestBadge*/}
-      {/*  position={{x: position.x + size.width - (BADGE_WIDTH + BADGE_PADDING), y: position.y + BADGE_PADDING}}*/}
-      {/*  size={{width: BADGE_WIDTH, height: size.height - 2*BADGE_PADDING}}*/}
-      {/*/>*/}
-      {/*<PingBadge*/}
-      {/*  position={{x: position.x + size.width - 2*(BADGE_WIDTH + BADGE_PADDING), y: position.y + BADGE_PADDING}}*/}
-      {/*  size={{width: BADGE_WIDTH, height: size.height - 2*BADGE_PADDING}}*/}
-      {/*/>*/}
       <NetworkUsageBadge
         observable={this.downObservable} label={"DN"}
         position={{x: position.x + size.width - (BADGE_WIDTH), y: position.y + BADGE_PADDING}}

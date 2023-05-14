@@ -1,5 +1,3 @@
-import AppliedObservable from "./appliedObservable";
-
 export type Observer<T> = (value: T) => unknown;
 
 export interface Observable<T> {

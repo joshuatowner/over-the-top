@@ -1,7 +1,7 @@
 import * as React from "react";
+import {ReactNode} from "react";
 import {MdSettings} from "react-icons/md";
 import SettingsDialog from "./dialog";
-import {ReactNode} from "react";
 
 interface StateType {
   showDialog: boolean;

@@ -1,4 +1,3 @@
-import IntervalObservable from "../../data/observable/intervalObservable";
 import * as React from "react";
 import {Observable} from "../../data/observable/observable";
 

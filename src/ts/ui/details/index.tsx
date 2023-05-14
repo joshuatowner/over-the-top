@@ -1,7 +1,6 @@
 import * as React from "react";
 import Widget from "../layout/widget";
 import {Size} from "../../util/vec2";
-import DiskRows from "../disk/diskRows";
 import {DetailGroup, getDetails} from "./details";
 import DetailGroupComponent from "./group";
 

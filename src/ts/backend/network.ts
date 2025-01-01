@@ -2,6 +2,7 @@ import {getConfig} from "./config";
 import {DEFAULT_NETWORK_ADAPTER} from "./config/const";
 import * as si from "systeminformation";
 import {NetworkTransferUpdate, PingUpdate, WebUpdate} from "../data/network";
+import {normalize, normalizeLog, normalizePower} from "../ui/util/data";
 
 let defaultNetworkInterface: string | undefined;
 

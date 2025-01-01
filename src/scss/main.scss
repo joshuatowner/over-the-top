@@ -123,9 +123,21 @@ p {
   text-orientation: upright;
 }
 
-.network-ping, .network-usage {
+.network-ping, .network-usage, .network-web {
   align-items: center;
   text-align: center;
+}
+
+.network-ping {
+  padding-right: 40px;
+}
+
+.network-web {
+  padding-left: 40px;
+}
+
+.network-status {
+  height: 100%;
 }
 
 .network-hex-title {

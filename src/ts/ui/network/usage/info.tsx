@@ -17,7 +17,7 @@ interface StateType {
   name?: string;
 }
 
-const BADGE_WIDTH = 115;
+const BADGE_WIDTH = 140;
 const BADGE_PADDING = 6;
 
 
@@ -62,12 +62,12 @@ export default class NetworkInterfaceInfo extends React.Component<PropType, Stat
         NETWORK <tspan className={"network-interface"}>{this.state.name}</tspan>
       </text>
       <NetworkUsageBadge
-        observable={this.downObservable} label={"DN"}
+        observable={this.downObservable} label={"DN"} iconName={'keyboard_arrow_down'}
         position={{x: position.x + size.width - (BADGE_WIDTH), y: position.y + BADGE_PADDING}}
         size={{width: BADGE_WIDTH, height: size.height - 2*BADGE_PADDING}}
       />
       <NetworkUsageBadge
-        observable={this.upObservable} label={"UP"}
+        observable={this.upObservable} label={"UP"} iconName={'keyboard_arrow_up'}
         position={{x: position.x + size.width - 2*(BADGE_WIDTH), y: position.y + BADGE_PADDING}}
         size={{width: BADGE_WIDTH, height: size.height - 2*BADGE_PADDING}}
       />

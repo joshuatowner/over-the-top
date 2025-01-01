@@ -7,6 +7,7 @@ import {Backend} from "../../data/backend";
 import {Observable} from "../../data/observable/observable";
 import {memoryUsage} from "../observer/memory";
 import {BackendContext} from "../backendContext";
+import MemoryLinearUsageGraph from "./lineargraph";
 
 interface PropType {
   size: Size;

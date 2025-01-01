@@ -24,7 +24,7 @@ const DEFAULT_CONFIG: Config = {
     pingIp: '8.8.8.8',
     webUrl: 'https://www.google.com/',
     timing: {
-      bandwidthUpdateInterval: 750,
+      bandwidthUpdateInterval: 2000,
       pingUpdateInterval: 2500,
       webUpdateInterval: 10000,
     },

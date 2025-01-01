@@ -112,6 +112,15 @@ body {
   @extend .guide-secondary;
 }
 
+
+.network-ping {
+  border-right: 1px solid color.adjust($primary, $lightness: -70%);
+}
+
+.network-ping > .widget-title,.network-web > .widget-title {
+  padding-top: 15px;
+}
+
 .cpu-overall {
   fill: $primary;
   font-weight: 300;
@@ -171,6 +180,12 @@ body {
 
 .badge-text {
   fill: $primary;
+}
+
+.icon {
+  font-family: 'Material Icons', serif;
+  font-size: 24px;
+  padding-left: -5px;
 }
 
 .network-usage-badge .badge {
@@ -251,4 +266,65 @@ body {
 
 .process-legend-icon {
   height: 12px;
+}
+
+.disk-usage-label {
+  fill: $primary;
+  text-anchor: middle;
+  dominant-baseline: central;
+  font-size: 18px;
+}
+
+.disk-usage-bar {
+  fill: $primary;
+  stroke: none;
+}
+
+.disk-usage-inner {
+  fill: $background;
+  stroke: none;
+}
+
+.disk-entry {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom: 1px solid #444444;
+  align-items: center;
+  padding: 8px 5px;
+}
+
+.disk-legend {
+  font-weight: bold;
+}
+
+.disk-list-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.disk-list-usage {
+  width: 80px;
+}
+
+.disk-list-value {
+  width: 120px;
+  flex-grow: 0;
+}
+
+.disk-list-name {
+  flex-grow: 1;
+  font-size: 20px;
+  padding-left: 40px;
+}
+
+.disk-legend .disk-list-name {
+  font-size: 16px;
+}
+
+.disk-legend .disk-list-usage {
+  text-align: center;
 }

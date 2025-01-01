@@ -19,5 +19,6 @@ export async function partitionInfo(): Promise<PartitionInfo[]> {
         usage: matchingUsage?.used,
         usagePercent: matchingUsage?.use
       })
-    });
+    })
+    .filter(info => info.usage);
 }

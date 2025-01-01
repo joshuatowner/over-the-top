@@ -33,3 +33,12 @@
   font-display: swap;
   src: url(../../resources/fonts/exo/static/Exo-Bold.ttf) format('truetype');
 }
+
+
+/* latin */
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../../resources/fonts/icons/MaterialSymbolsRounded-VariableFont_FILL,GRAD,opsz,wght.ttf) format('truetype');
+}

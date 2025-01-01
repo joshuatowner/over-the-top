@@ -49,6 +49,16 @@ export function normalizeLog(bytes: number, min = ONE_KILOBIT, max = ONE_GIGABIT
   return Math.max(Math.min(amount, 1), 0);
 }
 
+export function normalizePower(bytes: number, power = 4, min = ONE_KILOBIT, max = ONE_GIGABIT) {
+  if (bytes <= 0) {
+    return 0;
+  }
+  const invPower = 1 / power;
+  const denom = Math.pow(max, invPower) - Math.pow(min, invPower);
+  const amount = (Math.pow(bytes * ONE_BYTE, invPower) - Math.pow(min, invPower)) / denom;
+  return Math.max(Math.min(amount, 1), 0);
+}
+
 export function normalize(bytes: number, min = ONE_KILOBIT, max = ONE_GIGABIT) {
   if (bytes <= 0) {
     return 0;

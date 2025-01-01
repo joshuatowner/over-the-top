@@ -3,6 +3,7 @@ import {Observable} from "../../../data/observable/observable";
 import {Size, Vec2} from "../../../util/vec2";
 import UsageGridItem from "./item";
 import {shuffleArray} from "../../util/list";
+import MemoryLinearUsageGraph from "../lineargraph";
 
 interface PropType {
   observable: Observable<Map<number, number>>;
@@ -20,27 +21,45 @@ const arrayFill = <T extends unknown>(length: number, value: T): T[] => new Arra
 
 export default class UsageGrid extends React.Component<PropType, StateType> {
 
-  rows: number;
-  columns: number;
+  rows!: number;
+  columns!: number;
   spacing: number;
   offset: Vec2;
-  accessors: number[];
+  accessors!: number[];
 
   constructor(props: Readonly<PropType>) {
     super(props);
     this.spacing = this.props.spacing || 4;
     this.offset = { x: 0, y: 0 };
+    this.resetGrid();
+    this.state = {
+      values: new Array(this.rows * this.columns).fill(0)
+    };
+  }
+
+  componentDidUpdate(prevProps: PropType) {
+    if (this.resetGrid()) {
+      this.setState({
+        values: new Array(this.rows * this.columns).fill(0),
+      });
+    }
+  }
+
+  resetGrid(): boolean {
     const gridSizePadding = this.props.gridSize + this.spacing;
-    this.rows = Math.floor(this.props.size.height / gridSizePadding);
-    this.columns = Math.floor(this.props.size.width / gridSizePadding);
+    const rows = Math.floor(this.props.size.height / gridSizePadding);
+    const columns = Math.floor(this.props.size.width / gridSizePadding);
+    if (rows == this.rows && columns == this.columns) {
+      return false;
+    }
+    this.rows = rows;
+    this.columns = columns;
     this.offset = {
       x: (this.props.size.width - (this.columns * gridSizePadding - this.spacing)) / 2,
       y: (this.props.size.height - (this.rows * gridSizePadding - this.spacing)) / 2
     }
-    this.accessors = shuffleArray(Array.from(Array(this.rows * this.columns).keys()))
-    this.state = {
-      values: new Array(this.rows * this.columns).fill(0)
-    };
+    this.accessors = shuffleArray(Array.from(Array(this.rows * this.columns).keys()));
+    return true;
   }
 
   onUpdate = (pcts: Map<number, number>) => {

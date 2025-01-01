@@ -2,6 +2,7 @@ import * as React from "react";
 import {partitionInfo} from "../../backend/disk";
 import {PartitionInfo} from "../../data/disk";
 import PartitionRow from "./partitionRow";
+import {OverlayScrollbarsComponent} from "overlayscrollbars-react";
 
 interface StateType {
   partitions: PartitionInfo[]
@@ -40,8 +41,26 @@ export default class DiskRows extends React.Component<{}, StateType>{
   }
 
   render() {
-    return <div className={"disk-rows-container"}>
-      {this.state.partitions.map((partition, index) => <PartitionRow partition={partition} key={index} />)}
+    return <div className={"disk-list-container"}>
+      <div className={"disk-entry disk-legend"}>
+        <div className={"disk-list-usage"}>USAGE</div>
+        <div className={"disk-list-name"}>NAME</div>
+        <div className={"disk-list-value"}>CAPACITY</div>
+        <div className={"disk-list-value"}>USAGE</div>
+        <div className={"disk-list-value"}>FILESYSTEM</div>
+      </div>
+      <OverlayScrollbarsComponent
+        className={"disk-list-container"}
+        options={{
+          scrollbars: {
+            autoHide: 'leave',
+            theme: 'os-theme-light',
+          }
+        }}
+        defer
+      >
+        {this.state.partitions.map((partition, index) => <PartitionRow partition={partition} key={index} />)}
+      </OverlayScrollbarsComponent>
     </div>
   }
 }

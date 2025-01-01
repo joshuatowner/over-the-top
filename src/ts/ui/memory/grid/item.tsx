@@ -10,10 +10,6 @@ interface PropType {
 
 export default class UsageGridItem extends React.Component<PropType> {
 
-  shouldComponentUpdate(nextProps: Readonly<PropType>, nextState: Readonly<{}>, nextContext: any): boolean {
-    return this.props.value !== nextProps.value;
-  }
-
   render() {
     return <><rect
       fill={getColorForPercentage(this.props.value, GREY_WHITE_GRADIENT)}

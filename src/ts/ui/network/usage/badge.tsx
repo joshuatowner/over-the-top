@@ -8,6 +8,7 @@ interface PropType {
   label: string;
   position: Vec2;
   size: Size;
+  iconName?: string;
 }
 
 interface StateType {
@@ -48,7 +49,7 @@ export default class NetworkUsageBadge extends React.Component<PropType, StateTy
       />
       <BadgeStatus
         className={"network-usage-badge"}
-        value={this.state.value} error={false}
+        value={this.state.value + "\u00A0\u00A0"} error={false}
         {...this.props}
       />
     </>

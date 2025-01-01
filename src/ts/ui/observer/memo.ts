@@ -7,6 +7,7 @@ export const memoObservable =
     let savedResult: U | undefined;
     return (backend: Backend) => {
       if (!savedBackend || !savedResult) {
+        savedBackend = backend;
         savedResult = f(backend);
         return savedResult;
       } else if (backend === savedBackend) {

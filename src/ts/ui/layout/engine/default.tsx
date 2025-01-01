@@ -17,7 +17,10 @@ export default class ResponsiveLayoutEngine extends React.Component<PropType, {}
     const totalWidth = numPointsX(this.props.windowSize) - 1;
     const totalHeight = numPointsY(this.props.windowSize) - 1;
     const padding = 1;
-    const cpuSize = Math.min(9, totalHeight, totalWidth);
+    let cpuSize = Math.min(6, totalHeight, totalWidth);
+    if (cpuSize / totalHeight < 0.3) {
+      cpuSize = Math.ceil(totalHeight * 0.3);
+    }
     const fullCpuSize = cpuSize + padding;
 
     const memoryWidth = totalWidth - fullCpuSize;

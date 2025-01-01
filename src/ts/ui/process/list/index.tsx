@@ -42,7 +42,6 @@ export class ProcessList extends React.Component<{}, StateType> {
   componentDidMount() {
     this.context.memoryInfo().then((info) =>
       this.setState({ maxMem: info.memoryCapacity }));
-    this.context.memoryInfo().then(console.log);
     processInfo(this.context).watch(this.update)
   }
 

@@ -18,7 +18,6 @@ export default class PartitionUsageBar extends React.Component<PropType, {}>{
     const outerRadius = Math.min(width, height) / 2;
     const innerRadius = outerRadius - 5;
     const numSegments = this.getNumSegments(this.props.capacity);
-    console.log(numSegments);
     let runningUsage = this.props.percentUsage;
     for (let i = 0; i < numSegments; i++) {
       pieSegments.push(<PieSegment position={{

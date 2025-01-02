@@ -2,10 +2,13 @@ import {Backend} from "../../data/backend";
 import ROUTES from "../../data/routes";
 
 export default function registerBackend(
-  backend: Backend, addRoute: (route: string, result: () => Promise<unknown>) => unknown
+  backend: Backend,
+  addRoute: (route: string, result: () => Promise<unknown>) => unknown,
+  addInputRoute: (route: string, result: (input: unknown) => Promise<unknown>) => unknown,
 ) {
 
   addRoute(ROUTES.CONFIG, backend.getConfig);
+  addInputRoute(ROUTES.UPDATE_CONFIG, backend.updateConfig);
 
   addRoute(ROUTES.CPU_SPEED, backend.cpuSpeedUpdate);
   addRoute(ROUTES.CPU_TEMPERATURE, backend.cpuTemperatureUpdate);

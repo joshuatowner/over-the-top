@@ -25,5 +25,6 @@ export interface Backend {
   partitionInfo(): Promise<PartitionInfo[]>;
 
   getConfig(): Promise<Config>;
+  updateConfig(config: Config): Promise<void>;
 
 }

@@ -1,7 +1,7 @@
 import * as React from "react";
 import {ChangeEvent, ReactNode} from "react";
 import {getAllInterfaces, getDefaultInterface} from "../../../backend/network";
-import {getConfig, updateConfig} from "../../../backend/config";
+import {BackendContext} from "../../backendContext";
 
 interface PropType {
   showLabel?: boolean;
@@ -13,6 +13,9 @@ interface StateType {
 }
 
 export default class NetworkInterfaceSettingDropdown extends React.Component<PropType, StateType> {
+
+  static contextType = BackendContext;
+  context!: React.ContextType<typeof BackendContext>;
 
   constructor(props: Readonly<PropType>) {
     super(props);
@@ -45,10 +48,10 @@ export default class NetworkInterfaceSettingDropdown extends React.Component<Pro
   private onChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const result = event?.target?.value;
     if (result) {
-      const config = getConfig();
+      const config = window.config;
       config.network.interface = result;
-      updateConfig(config)
-        .catch((err) => console.error("Unable to save config!", err));
+      this.context.updateConfig(config)
+        .catch((err: any) => console.error("Unable to save config!", err));
     }
   }
 

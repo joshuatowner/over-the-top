@@ -1,12 +1,13 @@
 import {Backend} from "../data/backend";
 import ROUTES from "../data/routes";
 import {ipcRenderer} from "electron";
+import {Config} from "../backend/config/interface";
 
 export class ServerBackend implements Backend {
 
-  protected connection: (route: string) => Promise<string>;
+  protected connection: (route: string, input?: string) => Promise<string>;
 
-  constructor(connection: (route: string) => Promise<string>) {
+  constructor(connection: (route: string, input?: string) => Promise<string>) {
     this.connection = connection;
   }
 
@@ -27,12 +28,16 @@ export class ServerBackend implements Backend {
 
   partitionInfo = async () => JSON.parse(await this.connection(ROUTES.DISK_PARTITION_INFO));
   getConfig = async () => JSON.parse(await this.connection(ROUTES.CONFIG));
+  updateConfig = async (config: Config) => {
+    await this.connection(ROUTES.UPDATE_CONFIG, JSON.stringify(config));
+    return;
+  }
 
 }
 
 export class IpcBackend extends ServerBackend implements Backend {
   constructor() {
-    const getResult = (route: string) => ipcRenderer.invoke(route);
+    const getResult = (route: string, input?: string) => ipcRenderer.invoke(route, input);
     super(getResult);
   }
 }

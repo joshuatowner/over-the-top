@@ -4,6 +4,7 @@ import index from "../html/index.html";
 import registerIpc from "./backend/server/ipc";
 import NodeBackend from "./backend";
 import startRender from "./renderer";
+import {loadConfig} from "./backend/config";
 
 async function createWindow(): Promise<void> {
   const mainWindow = new BrowserWindow({
@@ -27,6 +28,7 @@ if (process && process.type === 'renderer') {
   startRender().then();
 } else {
   app.on("ready", async () => {
+    await loadConfig();
     registerIpc(new NodeBackend(), ipcMain);
     await createWindow();
   });

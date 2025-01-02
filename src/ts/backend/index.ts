@@ -3,7 +3,7 @@ import {cpuInfo, cpuSpeedUpdate, cpuTemperatureUpdate, cpuUsageUpdate} from "./c
 import {memoryInfo, memoryUsageUpdate} from "./memory";
 import {networkAdapter, networkTransferUpdate, pingUpdate, webUpdate} from "./network";
 import {partitionInfo} from "./disk";
-import {getConfig} from "./config";
+import {getConfig, updateConfig} from "./config";
 import {getAllProcessInfo} from "./process/process";
 
 export default class NodeBackend implements Backend {
@@ -26,4 +26,5 @@ export default class NodeBackend implements Backend {
   processInfo = getAllProcessInfo;
 
   getConfig = async () => getConfig();
+  updateConfig = updateConfig;
 }

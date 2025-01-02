@@ -1,5 +1,6 @@
 const ROUTES = {
   CONFIG: "/config",
+  UPDATE_CONFIG: "/config/update",
   CPU_SPEED: "/cpu/speed",
   CPU_TEMPERATURE: "/cpu/temperature",
   CPU_USAGE: "/cpu/usage",

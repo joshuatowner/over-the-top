@@ -8,5 +8,10 @@ export default function registerIpc(backend: Backend, ipcMain: IpcMain) {
       return JSON.stringify(await f());
     });
   }
-  registerBackend(backend, registerRoute);
+  const registerInputRoute = (route: string, f: (input: unknown) => unknown) => {
+    ipcMain.handle(route, async (_, input) => {
+      return JSON.stringify(await f(JSON.parse(input)));
+    });
+  }
+  registerBackend(backend, registerRoute, registerInputRoute);
 }

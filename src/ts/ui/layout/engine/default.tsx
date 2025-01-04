@@ -6,6 +6,7 @@ import {ProcessesInfoWidget} from "../../process";
 import MemoryUsageWidget from "../../memory";
 import {NetworkStatusWidget, NetworkUsageWidget, PingWidget, WebRequestWidget} from "../../network";
 import PartitionWidget from "../../disk";
+import RowLayoutEngine from "./row";
 
 interface PropType {
   windowSize: Size;
@@ -16,6 +17,10 @@ export default class ResponsiveLayoutEngine extends React.Component<PropType, {}
   render() {
     const totalWidth = numPointsX(this.props.windowSize) - 1;
     const totalHeight = numPointsY(this.props.windowSize) - 1;
+
+    if (totalWidth > totalHeight * 3) {
+      return <RowLayoutEngine windowSize={this.props.windowSize} />
+    }
     const padding = 1;
     let cpuSize = Math.min(6, totalHeight, totalWidth);
     if (cpuSize / totalHeight < 0.3) {

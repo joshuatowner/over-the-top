@@ -10,10 +10,12 @@ async function createWindow(): Promise<void> {
   const mainWindow = new BrowserWindow({
     height: 1000,
     width: 1800,
+    autoHideMenuBar: true,
     webPreferences: {
       nodeIntegrationInWorker: true,
       nodeIntegration: true,
-      contextIsolation: false
+      contextIsolation: false,
+      zoomFactor: 1.0,
     },
   });
 
@@ -21,7 +23,7 @@ async function createWindow(): Promise<void> {
 
   await mainWindow.loadFile(path.join(__dirname, index));
 
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 }
 
 if (process && process.type === 'renderer') {

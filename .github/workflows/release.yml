@@ -25,6 +25,8 @@ jobs:
       run: |
         sudo apt install wine64
         sudo ln -sf /usr/bin/wine64 /usr/bin/wine
+        which wine || true
+        which wine64 || true
 
     - name: Install dependencies
       run: yarn install

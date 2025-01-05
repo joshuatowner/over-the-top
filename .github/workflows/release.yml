@@ -24,7 +24,7 @@ jobs:
     - name: Install wine
       run: |
         sudo apt install wine64
-        sudo ln -sf /usr/bin/wine64 /usr/bin/wine
+        sudo ln -sf /usr/bin/wine /usr/bin/wine64
         which wine || true
         which wine64 || true
 

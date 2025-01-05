@@ -24,8 +24,8 @@ jobs:
     - name: Install wine
       run: |
         sudo apt install wine64
-        which wine64
-        which wine
+        which wine64 || true
+        which wine || true
 
     - name: Install dependencies
       run: yarn install

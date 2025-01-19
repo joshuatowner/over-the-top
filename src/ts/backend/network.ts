@@ -22,10 +22,18 @@ export async function pingUpdate(): Promise<PingUpdate> {
 }
 
 export async function webUpdate(): Promise<WebUpdate> {
-  const siWebStats = await si.inetChecksite(getWebUrl());
-  return {
-    latency: siWebStats.ms,
-    responseCode: siWebStats.status,
+  try {
+    const siWebStats = await si.inetChecksite(getWebUrl());
+    return {
+      latency: siWebStats.ms,
+      responseCode: siWebStats.status,
+    }
+  } catch (e) {
+    console.error("Received unexpected error", e);
+    return {
+      latency: -1,
+      responseCode: 599,
+    }
   }
 }
 

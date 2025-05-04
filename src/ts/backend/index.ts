@@ -5,6 +5,7 @@ import {networkAdapter, networkTransferUpdate, pingUpdate, webUpdate} from "./ne
 import {partitionInfo} from "./disk";
 import {getConfig, updateConfig} from "./config";
 import {getAllProcessInfo} from "./process/process";
+import {gpuUsageUpdate} from "./gpu";
 
 export default class NodeBackend implements Backend {
 
@@ -24,6 +25,8 @@ export default class NodeBackend implements Backend {
   partitionInfo = partitionInfo;
 
   processInfo = getAllProcessInfo;
+
+  gpuUsageUpdate = gpuUsageUpdate;
 
   getConfig = async () => getConfig();
   updateConfig = updateConfig;

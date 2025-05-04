@@ -4,6 +4,7 @@ import {NetworkTransferUpdate, PingUpdate, WebUpdate} from "./network";
 import {MemoryInfo, MemoryUsageUpdate} from "./memory";
 import {Config} from "../backend/config/interface";
 import {ProcessUsageInfo} from "./process";
+import {GpuUsageUpdate} from "./gpu";
 
 export interface Backend {
 
@@ -23,6 +24,8 @@ export interface Backend {
   processInfo(): Promise<ProcessUsageInfo[]>;
 
   partitionInfo(): Promise<PartitionInfo[]>;
+
+  gpuUsageUpdate(): Promise<GpuUsageUpdate>;
 
   getConfig(): Promise<Config>;
   updateConfig(config: Config): Promise<void>;

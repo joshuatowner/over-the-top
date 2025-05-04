@@ -12,7 +12,8 @@ const ROUTES = {
   NETWORK_PING: "/network/ping",
   NETWORK_WEB: "/network/web",
   PROCESS_INFO: "/process/info",
-  DISK_PARTITION_INFO: "/disk/partition/info"
+  DISK_PARTITION_INFO: "/disk/partition/info",
+  GPU_USAGE: "/gpu/usage",
 }
 
 export default ROUTES;

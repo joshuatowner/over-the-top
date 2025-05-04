@@ -5,6 +5,7 @@ import CpuUsageWidget from "../../cpu";
 import {ProcessesInfoWidget} from "../../process";
 import MemoryUsageWidget from "../../memory";
 import {NetworkStatusWidget, NetworkUsageWidget} from "../../network";
+import {GpuUsageWidget} from "../../gpu";
 
 interface PropType {
   windowSize: Size;
@@ -18,6 +19,9 @@ export default class RowLayoutEngine extends React.Component<PropType, {}> {
     const padding = 1;
     let cpuSize = totalHeight;
     const fullCpuSize = cpuSize + padding;
+
+    const gpuEnabled = window.config.gpu?.enabled ?? false;
+    let memoryHeight = gpuEnabled ? totalHeight - padding * 3 : totalHeight;
 
     let networkFlowWidth = 10;
     const networkFlowTotalWidth = networkFlowWidth + padding;
@@ -36,8 +40,13 @@ export default class RowLayoutEngine extends React.Component<PropType, {}> {
         />
         {memoryWidth > 0 && <MemoryUsageWidget
             topLeft={{x: fullCpuSize, y: 0}}
-            size={{width: memoryWidth, height: cpuSize}}
+            size={{width: memoryWidth, height: memoryHeight}}
             windowSize={this.props.windowSize}
+        />}
+        {gpuEnabled && <GpuUsageWidget
+          topLeft={{x: fullCpuSize, y: totalHeight - padding * 2}}
+          size={{width: memoryWidth, height: padding * 2}}
+          windowSize={this.props.windowSize}
         />}
         <NetworkUsageWidget
             topLeft={{x: fullCpuSize + memoryWidth + padding, y: 0}}

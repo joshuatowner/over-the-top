@@ -27,4 +27,6 @@ export default function registerBackend(
 
   addRoute(ROUTES.DISK_PARTITION_INFO, backend.partitionInfo);
 
+  addRoute(ROUTES.GPU_USAGE, backend.gpuUsageUpdate);
+
 }

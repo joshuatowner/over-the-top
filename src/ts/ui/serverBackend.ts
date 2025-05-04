@@ -27,6 +27,9 @@ export class ServerBackend implements Backend {
   processInfo = async () => JSON.parse(await this.connection(ROUTES.PROCESS_INFO));
 
   partitionInfo = async () => JSON.parse(await this.connection(ROUTES.DISK_PARTITION_INFO));
+
+  gpuUsageUpdate = async () => JSON.parse(await this.connection(ROUTES.GPU_USAGE));
+
   getConfig = async () => JSON.parse(await this.connection(ROUTES.CONFIG));
   updateConfig = async (config: Config) => {
     await this.connection(ROUTES.UPDATE_CONFIG, JSON.stringify(config));

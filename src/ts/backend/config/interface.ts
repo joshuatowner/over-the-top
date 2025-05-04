@@ -52,6 +52,12 @@ export interface Config {
       }
     }
   },
+  gpu: {
+    enabled: boolean,
+    timing: {
+      updateInterval: number,
+    },
+  }
   process: {
     timing: {
       updateInterval: number,

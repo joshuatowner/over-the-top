@@ -59,6 +59,12 @@ const DEFAULT_CONFIG: Config = {
       updateInterval: 3000,
     }
   },
+  gpu: {
+    enabled: false,
+    timing: {
+      updateInterval: 4000,
+    },
+  },
   color: {
     background: "#242424",
     featureBackground: "#333333",

@@ -3,6 +3,7 @@ import HexagonBadge from "../../common/hexagonStatus";
 import {WebUpdate} from "../../../data/network";
 import {webRequest} from "../../observer/network";
 import {BackendContext} from "../../backendContext";
+import * as https from "node:https";
 
 
 export default class WebHexagonBadge extends React.Component<{}, {}> {

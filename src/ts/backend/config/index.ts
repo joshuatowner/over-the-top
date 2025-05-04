@@ -3,6 +3,7 @@ import {Config} from "./interface";
 import * as electron from "electron";
 import * as path from "path";
 import * as fs from "fs";
+import {gpuPresent} from "../gpu";
 
 const CONFIG_FILE_NAME = "config.json";
 let config: Config | undefined = undefined;
@@ -19,6 +20,13 @@ export async function loadConfig() {
   } catch {
     console.log("Unable to find or parse config file, using default");
     config = DEFAULT_CONFIG;
+  }
+
+  if (config) {
+    config.gpu = {
+      ...config.gpu,
+      enabled: await gpuPresent(),
+    }
   }
 }
 

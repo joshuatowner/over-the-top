@@ -71,7 +71,7 @@
     "react-icons": "^4.8.0",
     "react-perfect-scrollbar": "^1.5.8",
     "styled-components": "^5.3.10",
-    "systeminformation": "^5",
+    "systeminformation": "^5.26.1",
     "two.js": "0.7.0-stable.1",
     "uuid": "^9.0.0"
   }

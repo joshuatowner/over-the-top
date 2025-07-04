@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import {Observable} from "../../../data/observable/observable";
 import BadgeStatus from "../../common/BadgeStatus";
 import {Size, Vec2} from "../../../util/vec2";

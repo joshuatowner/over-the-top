@@ -1,4 +1,4 @@
-import Color = require("color");
+import Color from "color";
 import {getConfig} from "../../backend/config";
 
 export const BACKGROUND_COLOR = Color(getConfig().color.background);

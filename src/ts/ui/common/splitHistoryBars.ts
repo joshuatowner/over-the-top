@@ -1,17 +1,17 @@
-import Two = require("two.js");
-import Color = require("color");
+import * as Two from "two.js";
+import Color from "color";
 import {FEATURE_BACKGROUND_COLOR} from "../constants/styles";
 import {darkerLighterGradient, getColorForPercentage, GradientEntry} from "../util/gradient";
 import {Vec2} from "../../util/vec2";
 
 interface SplitHistoryBar {
-  rects: Two.Rectangle[],
+  rects: any[];
   start: number,
 }
 
 export default class SplitHistoryBars {
 
-  two: Two;
+  two: any;
   topLeft: Vec2;
   width: number;
   height: number;
@@ -29,13 +29,13 @@ export default class SplitHistoryBars {
   bars: SplitHistoryBar[];
 
   constructor(
-    two: Two,
+    two: any,
     topLeft: Vec2,
     width: number,
     height: number,
     period: number,
-    upperColor: Color,
-    lowerColor: Color,
+    upperColor: any,
+    lowerColor: any,
     numSegments: number, {
       beginFade = 0.8,
       endFade = 1,

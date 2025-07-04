@@ -1,4 +1,4 @@
-import Two = require("two.js");
+import * as Two from "two.js";
 import {Vec2} from "../../util/vec2";
 
 interface OptionalParameters {
@@ -10,14 +10,14 @@ interface OptionalParameters {
 }
 
 export default function getArcSegment(
-  two: Two,
+  two: any,
   innerRadius: number,
   outerRadius: number,
   center: Vec2,
   numSegments: number,
   segmentId: number,
   extras: OptionalParameters,
-): Two.ArcSegment {
+): any {
   const arcSize = ((2 * Math.PI) / numSegments);
   const startAngle = arcSize * segmentId;
   const endAngle = startAngle + arcSize;

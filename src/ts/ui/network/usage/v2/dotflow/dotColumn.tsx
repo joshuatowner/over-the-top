@@ -1,5 +1,5 @@
 import * as React from "react";
-import {StyledComponent} from "styled-components";
+
 import {laneHeight} from "./util";
 import {Vec2} from "../../../../../util/vec2";
 import {shuffleArray} from "../../../../util/list";
@@ -10,7 +10,7 @@ interface PropType {
   lanes: number;
   dotRadius: number;
   position: Vec2;
-  groupClass: StyledComponent<"g", any>;
+  groupClass: any;
 }
 
 export default class DotflowGraphDotColumn extends React.Component<PropType, never> {

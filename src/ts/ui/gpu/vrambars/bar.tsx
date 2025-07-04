@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import * as React from "react";
 import {Size, Vec2} from "../../../util/vec2";
 import {getColorForPercentage, GREY_WHITE_GRADIENT} from "../../util/gradient";
 
@@ -8,7 +8,7 @@ interface PropType {
   size: Size;
 }
 
-export class GpuVramBar extends Component<PropType, {}> {
+export class GpuVramBar extends React.Component<PropType, {}> {
   constructor(props: PropType) {
     super(props);
   }

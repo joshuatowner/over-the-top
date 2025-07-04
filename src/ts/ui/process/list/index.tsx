@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import {ProcessUsageInfo} from "../../../data/process";
 import {ProcessListEntry} from "./entry";
 import {BackendContext} from "../../backendContext";

@@ -1,5 +1,5 @@
-import Two = require("two.js");
-import Color = require("color");
+import Two from "two.js";
+import Color from "color";
 import {DEFAULT_FONT_FAMILY} from "../constants/styles";
 import {Vec2} from "../../util/vec2";
 
@@ -8,8 +8,8 @@ export default class DynamicText {
   two: Two;
   center: Vec2;
   fontSize: number;
-  group: Two.Group;
-  text: Two.Text;
+  group: any;
+  text: any;
 
   constructor(
     two: Two,
@@ -30,7 +30,7 @@ export default class DynamicText {
     // this.group.add(this.text);
   }
 
-  private styleText(color: Color, fontSize: number, family: string) {
+  private styleText(color: any, fontSize: number, family: string) {
     this.text.fill = color.hex();
     this.text.size = fontSize;
     this.text.family = family;

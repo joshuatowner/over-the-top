@@ -1,5 +1,6 @@
-import React, {CSSProperties} from "react";
+import * as React from "react";
 import {ProcessUsageInfo} from "../../../data/process";
+import { CSSProperties } from "react";
 import {formatBinaryBytes} from "../../util/data";
 
 interface PropType extends ProcessUsageInfo {

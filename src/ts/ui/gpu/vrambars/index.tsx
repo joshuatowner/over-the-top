@@ -1,7 +1,7 @@
 import {Observable} from "../../../data/observable/observable";
 import {Size, Vec2} from "../../../util/vec2";
 import {GpuVramBar} from "./bar";
-import React from "react";
+import * as React from "react";
 import {PingUpdate} from "../../../data/network";
 import {ping} from "../../observer/network";
 import {gpuUsage} from "../../observer/gpu";

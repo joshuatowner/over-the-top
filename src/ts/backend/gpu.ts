@@ -26,4 +26,4 @@ export async function gpuPresent(): Promise<boolean> {
   const nvidiaGpus = siGpuUsage.controllers
     .filter(controller => controller.memoryUsed !== undefined);
   return nvidiaGpus.length > 0;
-}
+}1

@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import {Size, Vec2} from "../../../util/vec2";
 import {getColorForPercentage, GREY_WHITE_GRADIENT} from "../../util/gradient";
 

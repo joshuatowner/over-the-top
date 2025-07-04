@@ -1,9 +1,10 @@
-import React from "react";
+import * as React from "react";
 import {Observable} from "../../../data/observable/observable";
 import {Size, Vec2} from "../../../util/vec2";
 import UsageGridItem from "./item";
 import {shuffleArray} from "../../util/list";
 import MemoryLinearUsageGraph from "../lineargraph";
+import {JSX} from "react";
 
 interface PropType {
   observable: Observable<Map<number, number>>;
@@ -98,6 +99,6 @@ export default class UsageGrid extends React.Component<PropType, StateType> {
         )
       }
     }
-    return gridItems;
+    return <g>{gridItems}</g>;
   }
 }

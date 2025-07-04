@@ -1,9 +1,10 @@
+import styled, {keyframes} from "styled-components";
 import * as React from "react";
 import IntervalObservable from "../../../../data/observable/intervalObservable";
 import {v4 as uuidv4} from 'uuid';
 import DotflowGraphDotColumn from "./dotColumn";
 import {Size, Vec2} from "../../../../util/vec2";
-import styled, {keyframes, StyledComponent} from "styled-components";
+
 import DotflowGraphLegend from "./legend";
 import DotflowGraphGuides from "./guides";
 
@@ -26,7 +27,7 @@ interface StateType {
 
 export default class DotflowGraph extends React.Component<PropType, StateType> {
 
-  groupClass: StyledComponent<"g", any>;
+  groupClass: any;
   dotRadius: number;
   lanes: number;
   duration: number;

@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import UsageGrid from "./grid";
 import {Size} from "../../util/vec2";
 import AppliedObservable from "../../data/observable/appliedObservable";

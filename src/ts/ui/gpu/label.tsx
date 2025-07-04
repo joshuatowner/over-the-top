@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import {MemoryUsageUpdate} from "../../data/memory";
 import {memoryUsage} from "../observer/memory";
 import {BackendContext} from "../backendContext";

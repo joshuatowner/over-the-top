@@ -60,3 +60,54 @@
   font-size: 12px;
   font-weight: bold;
 }
+
+/* New styles for Disk List */
+.disk-list-wrapper {
+  height: 100%;
+}
+
+.chart-container {
+}
+
+.disk-table-container {
+  padding: 0 10px;
+  border-right: none;
+}
+
+
+
+.disk-entry {
+  display: grid;
+  grid-template-columns: 1fr 120px 100px 80px;
+  padding: 8px 0;
+  border-bottom: 1px solid #444444;
+  font-size: 15px;
+  color: #FFFFFF;
+}
+
+.disk-legend {
+  display: grid;
+  grid-template-columns: 1fr 120px 100px 80px;
+  font-weight: bold;
+  padding: 8px 0;
+  border-bottom: 1px solid #DDDDDD;
+}
+
+.disk-name {
+  padding: 0 0 0 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.disk-value {
+  padding: 0 10px;
+}
+
+.disk-value-right-aligned {
+  text-align: right;
+}
+
+.disk-entry-hovered {
+  background-color: rgba(255, 255, 255, 0.1);
+}

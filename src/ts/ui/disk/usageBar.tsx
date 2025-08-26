@@ -33,19 +33,6 @@ export default class PartitionUsageBar extends React.Component<PropType, {}>{
     }
     return <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`}>
       {...pieSegments}
-      <circle
-        cx={width / 2}
-        cy={height / 2}
-        r={innerRadius}
-        className={"disk-usage-inner"}
-      />
-      <text
-        className={"disk-usage-label"}
-        x="50%" y="50%"
-        dominantBaseline="middle" textAnchor="middle"
-      >
-        {this.props.percentUsage.toFixed(0)}%
-      </text>
     </svg>
   }
 

@@ -6,6 +6,7 @@ import {ProcessesInfoWidget} from "../../process";
 import MemoryUsageWidget from "../../memory";
 import {NetworkStatusWidget, NetworkUsageWidget, PingWidget, WebRequestWidget} from "../../network";
 import PartitionWidget from "../../disk";
+import UsageBlobsWidget from "../../disk/usageblob/usageBlobsWidget"; // Import the new widget
 import RowLayoutEngine from "./row";
 
 interface PropType {
@@ -78,9 +79,15 @@ export default class ResponsiveLayoutEngine extends React.Component<PropType, {}
           size={{width: processesWidth, height: processesHeight}}
           windowSize={this.props.windowSize}
         />}
-        {diskHeight > 0 && <PartitionWidget
+        {/* Commented out existing PartitionWidget for now */}
+        {/* {diskHeight > 0 && <PartitionWidget
           topLeft={{x: 0, y: fullCpuSize + networkFlowHeight + padding}}
           size={{width: networkFlowWidth + padding + pingWebWidth, height: diskHeight}}
+          windowSize={this.props.windowSize}
+        />}*/}
+        {diskHeight > 0 && <UsageBlobsWidget // Use the new UsageBlobs widget
+          topLeft={{x: 0, y: fullCpuSize + networkFlowHeight + padding}}
+          size={{width: networkFlowWidth + pingWebWidth + padding, height: diskHeight}} // Make it square
           windowSize={this.props.windowSize}
         />}
         {/*{swapHeight !== 0 && <SwapUsageWidget*/}

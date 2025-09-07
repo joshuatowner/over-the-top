@@ -78,6 +78,7 @@ export class ProcessDetail extends React.Component<{}, ProcessDetailState> {
           alert(`An error occurred while trying to kill PID ${pid}.`);
         }
       }
+      this.processDetailObservable.update();
     }
   };
 
@@ -92,7 +93,15 @@ export class ProcessDetail extends React.Component<{}, ProcessDetailState> {
         isLoading: false,
       });
     } else {
-      throw new Error("Unable to find target process");
+      this.setState({
+        process: {
+          name: this.state.processName,
+          cpu: 0,
+          mem: 0,
+          processes: [],
+        },
+        isLoading: false,
+      });
     }
   };
 

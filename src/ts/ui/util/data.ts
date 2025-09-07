@@ -46,7 +46,7 @@ export function normalizeLog(bytes: number, min = ONE_KILOBIT, max = ONE_GIGABIT
   }
   const denom = Math.log(max / min);
   const amount = (Math.log(bytes * ONE_BYTE) - Math.log(min)) / denom;
-  return Math.max(Math.min(amount, 1), 0);
+  return bound(amount);
 }
 
 export function normalizePower(bytes: number, power = 3, min = ONE_KILOBIT, max = ONE_GIGABIT) {
@@ -56,7 +56,7 @@ export function normalizePower(bytes: number, power = 3, min = ONE_KILOBIT, max 
   const invPower = 1 / power;
   const denom = Math.pow(max, invPower) - Math.pow(min, invPower);
   const amount = (Math.pow(bytes * ONE_BYTE, invPower) - Math.pow(min, invPower)) / denom;
-  return Math.max(Math.min(amount, 1), 0);
+  return bound(amount);
 }
 
 export function normalize(bytes: number, min = ONE_KILOBIT, max = ONE_GIGABIT) {
@@ -64,5 +64,9 @@ export function normalize(bytes: number, min = ONE_KILOBIT, max = ONE_GIGABIT) {
     return 0;
   }
   const amount = (bytes * ONE_BYTE - min) / (max - min);
-  return Math.max(Math.min(amount, 1), 0);
+  return bound(amount);
+}
+
+export function bound(num: number, min = 0, max = 1): number {
+  return Math.max(Math.min(num, 1), 0)
 }

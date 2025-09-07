@@ -2,16 +2,16 @@
   "name": "over-the-top",
   "version": "0.8.1",
   "description": "A minimal Electron application written with Typescript",
-  "main": "dist/bundle.js",
+  "main": "dist/main.js",
   "scripts": {
     "build:worker": "tsc src/old/worker/worker.ts --outDir dist",
     "build:prod": "webpack --config webpack.prod.config.js",
     "build:dev": "webpack --config webpack.dev.config.js",
     "build:dev:watch": "webpack --config webpack.dev.config.js --watch",
     "lint": "tslint -c tslint.json -p tsconfig.json",
-    "start": "yarn run build:dev && electron dist/bundle.js",
-    "start:watch": "yarn run build:dev:watch & electron dist/bundle.js",
-    "start:prod": "yarn run build:prod && electron ./dist/bundle.js",
+    "start": "yarn run build:dev && electron dist/main.js",
+    "start:watch": "yarn run build:dev:watch & electron dist/main.js",
+    "start:prod": "yarn run build:prod && electron ./dist/main.js",
     "package-curent": "electron-packager . --out=out",
     "package-linux": "electron-packager . --out=out --platform=linux --arch=x64",
     "package-win": "electron-packager . --out=out --platform=win32 --arch=x64",
@@ -54,7 +54,6 @@
     "sass-loader": "^16.0.5",
     "style-loader": "^4.0.0",
     "ts-loader": "^9.4.2",
-    "ttf-loader": "^1.0.2",
     "typescript": "^5.8.3",
     "webpack": "^5.99.9",
     "webpack-cli": "^6.0.1",
@@ -64,7 +63,7 @@
     "color": "^5.0.0",
     "deep-equal": "^2.2.1",
     "overlayscrollbars": "^2.11.4",
-    "overlayscrollbars-react": "^0.5.0",
+    "overlayscrollbars-react": "^0.5.6",
     "parse-domain": "^8.2.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
@@ -73,6 +72,7 @@
     "styled-components": "^6.1.19",
     "systeminformation": "^5.27.7",
     "two.js": "0.8.19",
-    "uuid": "^11.1.0"
+    "uuid": "^11.1.0",
+    "voronoijs": "^1.0.0"
   }
 }

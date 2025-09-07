@@ -15,7 +15,7 @@ export class ProcessListEntry extends React.Component<PropType, {}> {
   private memPct = () => this.props.mem / this.props.maxMem;
 
   render() {
-    return <div className={"process-entry"}>
+    return <div className={"process-entry"} onClick={() => window.open('detail.html#' + this.props.name, '_blank')}>
       <div className={"process-name"}>{this.props.name}</div>
       <div className={"process-value"} style={this.style(this.cpuPct())}>{this.cpuStr()}</div>
       <div className={"process-value"} style={this.style(this.memPct())}>{this.memStr()}</div>

@@ -1,6 +1,7 @@
 import {CpuInfo, CpuSpeedUpdate, CpuTemperatureUpdate, CpuUsageUpdate} from "../data/cpu";
 import * as si from "systeminformation";
 import {CPUSystemInformation} from "../data/system";
+import {bound} from "../ui/util/data";
 
 export async function cpuInfo(): Promise<CpuInfo> {
   const siCpuInfo = await si.cpu();
@@ -13,8 +14,10 @@ export async function cpuInfo(): Promise<CpuInfo> {
 
 export async function cpuUsageUpdate(): Promise<CpuUsageUpdate> {
   const siCpuUpdate = await si.currentLoad();
-  const coreUsages = siCpuUpdate.cpus.map(coreUsage => coreUsage.load / 100);
-  const overallUsage = siCpuUpdate.currentLoad / 100;
+  const coreUsages = siCpuUpdate.cpus
+    .map(coreUsage => coreUsage.load / 100)
+    .map(usage => bound(usage));
+  const overallUsage = bound(siCpuUpdate.currentLoad / 100);
   return {
     overallUsage,
     coreUsages,

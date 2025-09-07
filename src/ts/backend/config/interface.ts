@@ -61,6 +61,7 @@ export interface Config {
   process: {
     timing: {
       updateInterval: number,
+      processDetailUpdateInterval: number, // New property
     }
   },
   color: {

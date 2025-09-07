@@ -1,19 +1,19 @@
 import * as React from "react";
 import "../../../../scss/process-detail.scss";
-import { ProcessUsageInfo, ProcessDetailInfo } from "../../../data/process";
+import { ProcessUsageInfo, KillProcessInput, KillProcessOutput } from "../../../data/process"; // Updated import
 import { IpcBackend } from "../../serverBackend";
 import { processDetailInfo } from "../../observer/process";
-import { formatBinaryBytes } from "../../util/data";
 import IntervalObservable from "../../../data/observable/intervalObservable";
-import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
-import "overlayscrollbars/styles/overlayscrollbars.css";
-import { KillProcessInput, KillProcessOutput } from '../../../data/process'; // New import
+
+import ProcessDetailHeader from "./processDetailHeader";
+import ProcessPidsTable from "./processPidsTable";
+import ProcessActionButtons from "./processActionButtons";
 
 interface ProcessDetailState {
   processName: string;
   process?: ProcessUsageInfo;
   isLoading: boolean;
-  selectedPid: number | null; // New state for selected PID
+  selectedPid: number | null;
 }
 
 export class ProcessDetail extends React.Component<{}, ProcessDetailState> {
@@ -28,7 +28,7 @@ export class ProcessDetail extends React.Component<{}, ProcessDetailState> {
       processName: processName,
       process: undefined,
       isLoading: true,
-      selectedPid: null, // Initialize selected PID
+      selectedPid: null,
     };
     this.processDetailObservable = processDetailInfo(this.backend);
   }
@@ -123,63 +123,22 @@ export class ProcessDetail extends React.Component<{}, ProcessDetailState> {
           <div className="loading-indicator">Loading process data...</div>
         ) : (
           <>
-            <div className="process-detail-header">
-              <div className="process-detail-title">{processName}</div>
-              <div className="process-detail-usage">
-                <div className="process-usage-item">
-                  <span className="process-usage-label">CPU</span> {process?.cpu.toFixed(2)}%
-                </div>
-                <div className="process-usage-divider" />
-                <div className="process-usage-item">
-                  <span className="process-usage-label">MEM</span> {formatBinaryBytes(process?.mem || 0)}
-                </div>
-              </div>
-            </div>
+            <ProcessDetailHeader
+              processName={processName}
+              cpuUsage={process?.cpu || 0}
+              memUsage={process?.mem || 0}
+            />
 
-            {/* Individual PIDs Table */}
-            <div className="process-pids-container">
-              <table className="process-pids-table process-pids-table-header">
-                <thead>
-                  <tr>
-                    <th>PID</th>
-                    <th>CPU</th>
-                    <th>MEM</th>
-                    <th>CMD</th>
-                  </tr>
-                </thead>
-              </table>
-              <OverlayScrollbarsComponent
-                className="process-pids-table-body-container os-theme-light"
-                options={{ scrollbars: { theme: 'os-theme-light' } }}
-              >
-                <table className="process-pids-table">
-                  <tbody>
-                    {process?.processes.map(p => (
-                      <tr
-                        key={p.pid}
-                        onClick={() => this.handlePidSelect(p.pid)}
-                        className={selectedPid === p.pid ? 'selected-row' : ''}
-                      >
-                        <td>{p.pid}</td>
-                        <td>{p.cpu.toFixed(2)}%</td>
-                        <td>{formatBinaryBytes(p.mem)}</td>
-                        <td className="command-cell">{p.command}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </OverlayScrollbarsComponent>
-            </div>
+            <ProcessPidsTable
+              processes={process?.processes || []}
+              selectedPid={selectedPid}
+              onPidSelect={this.handlePidSelect}
+            />
 
-            {/* Stop and Force Stop Buttons */}
-            <div className="process-action-buttons">
-              <button className="stop-button" onClick={() => this.handleStop(false)}>
-                STOP {selectedPid ? `PID ${selectedPid}` : 'ALL'}
-              </button>
-              <button className="force-stop-button" onClick={() => this.handleStop(true)}>
-                FORCE STOP {selectedPid ? `PID ${selectedPid}` : 'ALL'}
-              </button>
-            </div>
+            <ProcessActionButtons
+              selectedPid={selectedPid}
+              onStop={this.handleStop}
+            />
           </>
         )}
       </div>

@@ -14,6 +14,7 @@ const ROUTES = {
   PROCESS_INFO: "/process/info",
   DISK_PARTITION_INFO: "/disk/partition/info",
   GPU_USAGE: "/gpu/usage",
+  KILL_PROCESS: "/process/kill",
 }
 
 export default ROUTES;

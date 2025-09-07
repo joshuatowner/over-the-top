@@ -5,6 +5,7 @@ import {MemoryInfo, MemoryUsageUpdate} from "./memory";
 import {Config} from "../backend/config/interface";
 import {ProcessUsageInfo} from "./process";
 import {GpuUsageUpdate} from "./gpu";
+import { KillProcessInput, KillProcessOutput } from './process'; // Changed import path
 
 export interface Backend {
 
@@ -29,5 +30,7 @@ export interface Backend {
 
   getConfig(): Promise<Config>;
   updateConfig(config: Config): Promise<void>;
+
+  killProcess(input: KillProcessInput): Promise<KillProcessOutput>;
 
 }

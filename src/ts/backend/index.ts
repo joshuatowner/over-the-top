@@ -6,6 +6,8 @@ import {partitionInfo} from "./disk";
 import {getConfig, updateConfig} from "./config";
 import {getAllProcessInfo} from "./process/process";
 import {gpuUsageUpdate} from "./gpu";
+import { killProcess } from './process/killer'; // Import the killer function
+import { KillProcessInput, KillProcessOutput } from '../data/process';
 
 export default class NodeBackend implements Backend {
 
@@ -30,4 +32,7 @@ export default class NodeBackend implements Backend {
 
   getConfig = async () => getConfig();
   updateConfig = updateConfig;
+
+  killProcess = killProcess;
+
 }

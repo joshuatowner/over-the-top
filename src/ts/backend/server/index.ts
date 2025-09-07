@@ -29,4 +29,6 @@ export default function registerBackend(
 
   addRoute(ROUTES.GPU_USAGE, backend.gpuUsageUpdate);
 
+  addInputRoute(ROUTES.KILL_PROCESS, backend.killProcess);
+
 }

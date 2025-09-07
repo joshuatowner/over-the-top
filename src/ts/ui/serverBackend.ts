@@ -2,6 +2,7 @@ import {Backend} from "../data/backend";
 import ROUTES from "../data/routes";
 import {ipcRenderer} from "electron";
 import {Config} from "../backend/config/interface";
+import { KillProcessInput, KillProcessOutput } from '../data/process';
 
 export class ServerBackend implements Backend {
 
@@ -35,6 +36,9 @@ export class ServerBackend implements Backend {
     await this.connection(ROUTES.UPDATE_CONFIG, JSON.stringify(config));
     return;
   }
+
+  killProcess = async (input: KillProcessInput) =>
+    JSON.parse(await this.connection(ROUTES.KILL_PROCESS, JSON.stringify(input)));
 
 }
 

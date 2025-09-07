@@ -12,3 +12,13 @@ export interface ProcessUsageInfo {
   mem: number,
   processes: ProcessDetailInfo[],
 }
+
+export interface KillProcessInput {
+  pid: number;
+  force: boolean;
+}
+
+export interface KillProcessOutput {
+  success: boolean;
+  error?: string;
+}

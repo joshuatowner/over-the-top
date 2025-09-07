@@ -1,0 +1,90 @@
+@use "fonts.scss";
+@use "common.scss";
+
+.process-detail-container {
+  background-color: #242424; // $background
+  color: #FFFFFF; // $primary
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: 'Exo', sans-serif;
+}
+
+.process-detail-header {
+  font-size: 20px; // Reduced font size
+  font-weight: normal; // Not bolded
+  text-align: center; // Centered
+  border-bottom: 1px solid #444444;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.process-overall-usage {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #444444;
+}
+
+.process-overall-usage-item {
+  flex: 1;
+  text-align: center;
+  font-size: 16px;
+}
+
+.process-overall-usage-value {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.process-pids-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.process-pids-table th,
+.process-pids-table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #333333;
+}
+
+.process-pids-table th {
+  font-weight: bold;
+  border-bottom: 1px solid #AAA; // Changed from 2px to 1px
+}
+
+.process-action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.process-action-buttons button {
+  flex: 1; // Take equal space
+  max-width: calc(50% - 5px); // Half width minus half of the gap
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #555555;
+  color: #FFFFFF;
+  border: none;
+}
+
+.process-action-buttons button:hover {
+  background-color: #666666;
+}
+
+.selected-row {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.command-cell {
+  max-width: 200px; // Adjust as needed
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

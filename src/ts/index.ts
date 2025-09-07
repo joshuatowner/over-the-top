@@ -1,5 +1,6 @@
 import {app, BrowserWindow, ipcMain} from "electron";
 import path from "path";
+import { URL } from 'url';
 import index from "../html/index.html";
 import registerIpc from "./backend/server/ipc";
 import NodeBackend from "./backend";
@@ -17,6 +18,27 @@ async function createWindow(): Promise<void> {
       contextIsolation: false,
       zoomFactor: 1.0,
     },
+  });
+
+  mainWindow.webContents.setWindowOpenHandler(({ url }) => {
+    const parsedUrl = new URL(url);
+    if (parsedUrl.pathname.endsWith('detail.html')) {
+      return {
+        action: 'allow',
+        overrideBrowserWindowOptions: {
+        width: 600,
+        height: 500,
+        parent: mainWindow,
+        modal: true,
+        autoHideMenuBar: true,
+        webPreferences: { // Explicitly set webPreferences for the new window
+          nodeIntegration: true,
+          contextIsolation: false,
+        }
+      }
+      };
+    }
+    return { action: 'deny' };
   });
 
   mainWindow.maximize();

@@ -57,6 +57,7 @@ const DEFAULT_CONFIG: Config = {
   process: {
     timing: {
       updateInterval: 3000,
+      processDetailUpdateInterval: 10000,
     }
   },
   gpu: {

@@ -2,7 +2,10 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-    entry: './src/ts/index.ts',
+    entry: {
+        main: './src/ts/index.ts',
+        detail: './src/ts/detail-renderer.tsx'
+    },
     module: {
         rules: [
             {
@@ -73,7 +76,7 @@ module.exports = {
     mode: "development",
     target: "electron-main",
     output: {
-        filename: 'bundle.js',
+        filename: '[name].js',
         path: path.resolve(__dirname, 'dist')
     },
 };

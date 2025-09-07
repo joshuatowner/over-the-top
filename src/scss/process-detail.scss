@@ -5,86 +5,116 @@
   background-color: #242424; // $background
   color: #FFFFFF; // $primary
   height: 100%;
-  padding: 20px;
+  padding: 20px 20px 0;
   box-sizing: border-box;
   font-family: 'Exo', sans-serif;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
 }
 
 .process-detail-header {
-  font-size: 20px; // Reduced font size
-  font-weight: normal; // Not bolded
-  text-align: center; // Centered
-  border-bottom: 1px solid #444444;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
-}
-
-.process-overall-usage {
   display: flex;
-  justify-content: space-around;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid #444444;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 20px;
 }
 
-.process-overall-usage-item {
-  flex: 1;
-  text-align: center;
-  font-size: 16px;
-}
-
-.process-overall-usage-value {
+.process-detail-title {
   font-weight: bold;
-  font-size: 18px;
+}
+
+.process-detail-usage {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.process-usage-label {
+  font-weight: bold;
+}
+
+.process-usage-divider {
+  width: 1px;
+  height: 20px;
+  background-color: #444444;
+}
+
+.process-pids-container {
+  flex-grow: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .process-pids-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 14px;
+  table-layout: fixed;
+
+  th,
+  td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #333333;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    &:nth-child(1) { width: 15%; }
+    &:nth-child(2) { width: 15%; }
+    &:nth-child(3) { width: 20%; }
+    &:nth-child(4) { width: 50%; }
+  }
+
+  th {
+    font-weight: bold;
+    border-bottom: 1px solid #AAA;
+  }
+
+  tbody tr:hover {
+    cursor: pointer;
+  }
 }
 
-.process-pids-table th,
-.process-pids-table td {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #333333;
+.process-pids-table-header {
+  flex-shrink: 0;
 }
 
-.process-pids-table th {
-  font-weight: bold;
-  border-bottom: 1px solid #AAA; // Changed from 2px to 1px
+.process-pids-table-body-container {
+  flex-grow: 1;
+  min-height: 0;
+  border-bottom: 1px solid #AAA;
 }
 
 .process-action-buttons {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .process-action-buttons button {
   flex: 1; // Take equal space
   max-width: calc(50% - 5px); // Half width minus half of the gap
   padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 0;
   cursor: pointer;
-  background-color: #555555;
+  background-color: transparent;
   color: #FFFFFF;
   border: none;
 }
 
 .process-action-buttons button:hover {
-  background-color: #666666;
+  background-color: #ff5e5e;
+  color: #242424;
 }
 
 .selected-row {
   background-color: rgba(255, 255, 255, 0.1);
-}
-
-.command-cell {
-  max-width: 200px; // Adjust as needed
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }

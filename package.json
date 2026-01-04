@@ -72,7 +72,7 @@
     "react-icons": "^5.5.0",
     "react-perfect-scrollbar": "^1.5.8",
     "styled-components": "^6.1.19",
-    "systeminformation": "^5.27.7",
+    "systeminformation": "^5.29.0",
     "two.js": "0.8.19",
     "uuid": "^11.1.0",
     "voronoijs": "^1.0.0"
